@@ -10,12 +10,18 @@ const ListView = () => {
                         <div>
                            Sort By:
                         </div>
-                        <div>
+                        <div className='desktop-filter'>
                             <button>Price</button>
                             <button>Date Added</button>
                             <button>ascending</button>
                             <button>descending</button>
                         </div>
+                        <select className='mobile-filter'>
+                            <option>Price</option>
+                            <option>Date Added</option>
+                            <option>ascending</option>
+                            <option>descending</option>
+                        </select>
                     </div>
                     <div className='items-column'>
                         <Item />
