@@ -2,7 +2,15 @@
   "name": "apollos-list",
   "version": "0.1.0",
   "private": true,
+  "main": "server/index.js",
   "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "connect-pg-simple": "^4.2.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "massive": "^4.7.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
@@ -13,5 +21,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/auth/callback": {
+      "target": "http://localhost:4000"
+    },
+    "/api": {
+      "target": "http://localhost:4000"
+    }
   }
 }

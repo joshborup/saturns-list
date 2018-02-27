@@ -1,10 +1,13 @@
 import React from 'react';
 import Item from './Item';
+import Categories from './Categories'
+import Recent from './Recently'
 
 const ListView = () => {
     return (
         <div className='listView'>
             <div>
+                <Categories/>
                 <div className='item-container'>
                     <div className='filter'>
                         <div>
@@ -28,8 +31,10 @@ const ListView = () => {
                         <Item />
                         <Item />
                         <Item />
+                        <Item />
                     </div>
                 </div>
+                <Recent/>
             </div>
         </div>
     );

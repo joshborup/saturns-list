@@ -1,5 +1,10 @@
 .listView > div {
     display: flex;
+    padding: 10px;
+    max-width: 1400px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .filter {
@@ -25,7 +30,7 @@
 
 .item-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     background: lightgray;
     margin: 0 auto;
     display: flex;
@@ -37,7 +42,7 @@
 }
 
 .items-column {
-    padding: 10px;
+    padding: 10px 5px;
 }
 
 .items-column > * + * {
@@ -46,20 +51,18 @@
 }
 
 .item {
-    
-    height: 120px;
+    height: 80px;
     overflow: hidden;
     background: white;
     color: black;
     display: flex;
     border: 2px #868080 outset;
     border-radius: 4px;
+    padding: 5px 5px 5px 0px;
 }
 
-
-
 .item img {
-    width: 150px;
+    width: 100px;
     position: relative;
     left: 0;
     top: -20px;
@@ -69,8 +72,98 @@
     display: none;
 }
 
+.item >div:nth-child(2){
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.item-name, .itemPrice {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+
+.item-description {
+    font-size: 14px;
+}
+
+.date-posted {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.item > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.catergories-list .cat-container ul > * + * {
+     margin: 10px;
+}
+
+.catergories-list , .viewed-list{
+    width: 100%;
+}
+
+.catergories-list {
+    margin: 0 auto;
+
+}
+
+.itemPrice {
+    
+}
 
 @media (min-width: 768px) {
+
+    .listView > div {
+        display: flex;
+        padding: 10px;
+        max-width: 1400px;
+        flex-direction: row;
+    }
+
+    .catergories-list, .viewed-list{
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 991px) {
+
+    .item {
+    
+        height: 120px;
+       
+    }
+
+    .item-name {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+    }
+    
+    .item-description {
+        font-size: 16px;
+    }
+    
+    .date-posted {
+        font-size: 14px;
+        font-weight: bolder;
+    }
+    
+    .item > div:last-child {
+        padding: 10px;
+    }
+    
+    .item img {
+        width: 150px;
+        
+    }
 
     .mobile-filter {
         display: none;
@@ -78,5 +171,37 @@
 
     .desktop-filter{
         display: initial;
+    }
+
+    .item-container {
+       
+        max-width: 600px;
+       
+    }
+
+    .itemPrice {
+
+    }
+
+}
+
+@media (min-width: 1120px) {
+
+    .catergories-list {
+        margin: 0 0 0 auto;
+    }
+
+    .viewed-list {
+        margin: 0 auto 0 0;
+    }
+
+}
+
+@media (min-width: 1350px) {
+
+    .item-container {
+       
+        max-width: 700px;
+       
     }
 }
