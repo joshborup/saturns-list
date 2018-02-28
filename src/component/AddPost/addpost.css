@@ -1,0 +1,87 @@
+.add-post-container{
+    background: lightgrey;
+    min-height: 100vh;
+    min-width: 100vw;
+    
+}
+
+.post-padding{
+    padding: 30px;
+}
+
+.add-post-display {
+    width: 100%;
+    max-width: 1200px;
+    background:linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5));
+    margin: 0px auto;
+    text-align: center;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
+    border-radius: 4px;
+}
+
+.add-post-display > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-post-display > div > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-post-display .options {
+    width: 300px;
+    height: 40px;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+    font-size: 16px;
+    background: white;
+    border: none;
+    margin: 5px 0px;
+}
+
+.add-post-display {
+    padding: 10px;
+}
+
+.add-post-display .add-post-input {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.add-post-display .add-post-input input {
+    width: 100%;
+    height: 40px;
+    margin: 5px auto;
+}
+
+.add-post-display .add-post-input textarea {
+    width: 100%;
+    border: 4px;
+    border: none;
+    height: 200px;
+    margin: 5px auto;
+}
+
+
+.add-post-display  button {
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    margin: 10px;
+}
+
+@media (min-width: 768px){
+    .add-post-display .add-post-input textarea {
+        width: 80%;
+    }
+
+    .add-post-display .add-post-input input {
+        width: 80%
+    }
+}
+

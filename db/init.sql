@@ -31,4 +31,5 @@ CREATE TABLE posts(
     ,description TEXT NOT NULL
     ,image_path TEXT
     ,price INTEGER NOT NULL
+    ,condition TEXT NOT NULL
 )

@@ -2,10 +2,16 @@ import React from 'react';
 import Item from './Item';
 import Categories from './Categories'
 import Recent from './Recently'
+import Header from '../shared/Header';
+import { Link } from 'react-router-dom';
 
-const ListView = () => {
+
+const ListView = (props) => {
     return (
-        <div className='listView'>
+        <div>
+            <Header color={props.headerStyle}/>
+            <div className='listView'>
+            
             <div>
                 <Categories/>
                 <div className='item-container'>
@@ -37,6 +43,7 @@ const ListView = () => {
                 <Recent/>
             </div>
         </div>
+    </div>
     );
 };
 

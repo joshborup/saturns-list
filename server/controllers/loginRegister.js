@@ -16,13 +16,16 @@ module.exports = {
                     email: response[0].email,
                 }
                 req.session.user = user;
-                console.log(req.session.user);
+                res.redirect('/')
+                console.log('registered:', req.session.user)
             }).catch(error => {
                 if(error.code == 23505){
                     res.status(409).send('username or email already exists');
                 }
                 console.log(error);
             })
+        }).then(error => {
+            console.log(error);
         })
     },
     login: (req, res)=>{
@@ -44,6 +47,9 @@ module.exports = {
                         }
                         req.session.user = user;
                         console.log('logged-in:', req.session.user)
+                        req.session.save();
+                        res.redirect('/')
+                        
                     }else{
                         res.status(403).json({ message: 'Wrong password' })
                     }
@@ -53,5 +59,9 @@ module.exports = {
                 res.status(403).json({ message: "That user is not registered" })
             }
         })
+    },
+    logout: (req, res)=> {
+        req.session.destroy();
+        res.status(200).send('logged out');
     }
 }
