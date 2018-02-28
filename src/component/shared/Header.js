@@ -72,7 +72,7 @@ class Header extends Component {
                         <ul className={this.state.isAnimating ? 'show-menu' : 'hide-menu'}>
                             <Link to='/'><li style={boldheader}>Home</li></Link>
                             <Link to='/add_post'><li style={boldheader1}>Post</li></Link>
-                            <li style={boldheader2}>Account</li>
+                            <Link to='/account'><li style={boldheader2}>Account</li></Link>
                             { this.props.user ?
                             <li onClick={()=>this.logout()}>logout</li>
                             :
