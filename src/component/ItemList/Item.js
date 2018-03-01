@@ -4,14 +4,19 @@ import telescope from '../../media/telescope.jpg'
 
 const Item = (props) => {
     const {markAsSold} = props
+
+    const cutOffDesc = props.description.split(' ').splice(props.description.split(' ').length - 15).join(' ') + '...'
+    console.log(cutOffDesc)
+
     return (
         <div className='item'>
             <div>
-                <img src={telescope}/>
+                {props.image ? <img src={props.image.replace(/\{/g, '').replace(/\}/g, '').split(',').shift()}/> : <img src={telescope}/>}
+                
             </div>
             <div>
                 <span className='item-name'>{props.name}</span>
-                <span className='item-description'>{props.description}</span>
+                <span className='item-description'>{cutOffDesc}</span>
             </div>
             <div>
                 <span className='itemPrice'>Price: ${props.price} </span>

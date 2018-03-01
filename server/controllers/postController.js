@@ -2,8 +2,8 @@ module.exports = {
     newPost: (req, res) => {
         const db = req.app.get('db');
         const posted = Date().split(' ').splice(1, 4).join(' ');
-        const { cat_id, price, name, condition, description } = req.body
-        db.create_post([req.session.user.id, cat_id, posted, name, description, price, condition, true, null ]).then(() => {
+        const { cat_id, price, name, condition, description, imageArray } = req.body
+        db.create_post([req.session.user.id, cat_id, posted, name, description, price, condition, true, imageArray ]).then(() => {
 
             res.redirect('/');
 
@@ -43,5 +43,13 @@ module.exports = {
             console.log(response);
             res.status(200).send(response)
         }).catch(error => console.log(error))
+    },
+    getPostByCat: (req, res) => {
+        const db = req.app.get('db');
+        const num = req.query.num
+        db.get_items_by_cat(num).then(response => {
+            console.log(response);
+            res.status(200).send(response)
+        }).catch(error => consol.log(error))
     }
 }

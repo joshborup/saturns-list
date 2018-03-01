@@ -16,6 +16,7 @@ class AddPostToContainer extends Component {
             itemDescription:'',
             itemPrice: '',
             itemCondition:'',
+            images:[]
         }
         this.getCategory = this.getCategory.bind(this);
         this.getItemDescription = this.getItemDescription.bind(this);
@@ -23,6 +24,7 @@ class AddPostToContainer extends Component {
         this.getItemPrice = this.getItemPrice.bind(this);
         this.getItemCondition = this.getItemCondition.bind(this);
         this.post = this.post.bind(this);
+        this.getImage = this.getImage.bind(this);
     }
 
     getCategory(category){
@@ -55,8 +57,14 @@ class AddPostToContainer extends Component {
         })
     }
 
+    getImage(image){
+        this.setState({
+            images: [...this.state.images].concat(image)
+        })
+    }
+
     post(){
-        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.itemDescription}).then(response => {
+        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.itemDescription, imageArray: this.state.images}).then(response => {
             window.location.href = response.request.responseURL;
         })
     }
@@ -79,6 +87,8 @@ class AddPostToContainer extends Component {
                     itemPrice={this.state.itemPrice}
                     itemCondition={this.state.itemCondition}
                     categories={this.props.categories}
+                    images={this.state.images}
+                    getImage={this.getImage}
                 /> : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
                 {/* <AddPost/> */}
             </div>

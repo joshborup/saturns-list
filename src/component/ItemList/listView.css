@@ -30,7 +30,6 @@
 
 .item-container {
     width: 100%;
-    
     background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg');
     margin: 0 auto;
     display: flex;
@@ -55,6 +54,7 @@
 }
 
 .item {
+    margin: 5px 0px;
     height: 80px;
     overflow: hidden;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -66,10 +66,11 @@
 }
 
 .item img {
-    width: 100px;
+    
     position: relative;
     left: 0;
     top: -20px;
+    min-height: 140px;
 }
 
 .desktop-filter{
@@ -89,8 +90,9 @@
     font-weight: bolder;
 }
 
-.item-description {
+.item .item-description {
     font-size: 14px;
+    overflow: hidden;
 }
 
 .date-posted {
@@ -119,9 +121,15 @@
      margin: 10px;
      
 }
-.catergories-list .cat-container ul {
+.catergories-list .cat-container ul li{
     color: white;
     text-shadow: 0.5px 0.5px 2px black;
+    text-decoration: none;
+}
+
+.catergories-list .cat-container ul li:hover{
+    color:#F55555;
+    cursor: pointer;
 }
 
 .catergories-list , .viewed-list{
@@ -183,7 +191,7 @@
 
     .item {
     
-        height: 120px;
+        height: 100px;
        
     }
 
@@ -206,7 +214,7 @@
     }
     
     .item img {
-        width: 150px;
+        max-width: 190px;
         
     }
 

@@ -15,6 +15,7 @@ const ListView = (props) => {
             <Item
             key={i}
             name={e.name}
+            image={e.image_path}
             description={e.description}
             time={e.time_posted}
             price={e.price}
@@ -34,7 +35,9 @@ const ListView = (props) => {
                 <Categories 
                     categories={props.categories}
                     toggleAnimation={props.toggleAnimation}
-                    isAnimating={props.isAnimating}/>
+                    isAnimating={props.isAnimating}
+                    selectCategory={props.selectCategory}
+                    />
                 <div className='item-container'>
                     <div className='filter'>
                         <div>

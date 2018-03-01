@@ -48,7 +48,10 @@ app.put('/api/mark_sold', pC.markAsSold);
 app.get('/api/inactive', pC.getInactive);
 
 //get individual listings
-app.get('/api/listing/:id', pC.individualListing)
+app.get('/api/listing/:id', pC.individualListing);
+
+//get item-list by cat-id 
+app.get('/api/item_list_by_cat', pC.getPostByCat);
 
 
 

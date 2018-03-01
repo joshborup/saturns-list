@@ -9,6 +9,7 @@ const Account = (props) => {
         return (
             <Item
             key={i}
+            image={e.image_path}
             name={e.name}
             itemId={e.id}
             description={e.description}
@@ -24,6 +25,7 @@ const Account = (props) => {
     const inactive = props.inactive ? props.inactive.map((e, i) =>{
         return (
             <Item
+            image={e.image_path}
             key={i}
             name={e.name}
             itemId={e.id}

@@ -19,11 +19,6 @@ class AccountContainer extends Component {
     }
 
     componentDidMount(){
-        // axios.get('/api/get_user_posts').then(posts => {
-        //     this.setState({
-        //         posts: posts.data
-        //     })
-        // })
 
         function getUserPosts(){
            return axios.get('/api/get_user_posts');
@@ -50,9 +45,6 @@ class AccountContainer extends Component {
                     inactive: inactive.data
                 })
             })
-            // this.setState({
-            //     posts: response.data
-            // })
         })
         
     }

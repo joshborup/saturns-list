@@ -16,6 +16,7 @@ class ItemListContainer extends Component {
             isAnimating: false
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
+       this.selectCategory = this.selectCategory.bind(this);
     }
 
     componentDidMount(){
@@ -54,6 +55,17 @@ class ItemListContainer extends Component {
         console.log(this.state.isAnimating);
       }
 
+      selectCategory(num){
+        console.log(num)
+        axios.get(`/api/item_list_by_cat?num=${num}`).then(posts=> {
+            
+            this.setState({
+                posts: posts.data
+            })
+        })
+
+      }
+
 
     render() {
         return (
@@ -65,6 +77,7 @@ class ItemListContainer extends Component {
                     posts={this.state.posts}
                     toggleAnimation={this.toggleAnimation}
                     isAnimated={this.state.isAnimating}
+                    selectCategory={this.selectCategory}
                     />
                 </div>
             

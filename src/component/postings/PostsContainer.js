@@ -7,7 +7,8 @@ export default class PostsContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            individualPost: ''
+            individualPost: '',
+            file: ''
         }
     }
 
@@ -17,14 +18,13 @@ export default class PostsContainer extends Component {
             this.setState({
                 individualPost: response.data[0]})
         })
-
-
     }
+
     
     render() {
-        console.log(this.state.individualPost);
+        console.log(this.state.file);
         return (
-            <Posts postInfo={this.state.individualPost} />
+            <Posts postInfo={this.state.individualPost} upload={this.fileUpload} file={this.state.file}/>
         );
     }
 }
