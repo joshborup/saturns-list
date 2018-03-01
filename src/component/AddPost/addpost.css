@@ -47,7 +47,7 @@
 }
 
 .add-post-display .add-post-input {
-    width: 100%;
+    min-width: 100%;
     margin: 10px 0px;
 }
 
@@ -58,11 +58,14 @@
 }
 
 .add-post-display .add-post-input textarea {
-    width: 100%;
+    
+    background: white;
+    min-width: 100%;
     border: 4px;
     border: none;
     height: 200px;
     margin: 5px auto;
+    
 }
 
 
@@ -75,9 +78,21 @@
     margin: 10px;
 }
 
+.add-post-display .price-condition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-post-display .price-condition > div {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (min-width: 768px){
     .add-post-display .add-post-input textarea {
-        width: 80%;
+        min-width: 80%;
     }
 
     .add-post-display .add-post-input input {

@@ -7,13 +7,34 @@ import { Link } from 'react-router-dom';
 
 
 const ListView = (props) => {
+
+    const {markAsSold} = props;
+    const posts = props.posts ? props.posts.map((e, i) =>{
+        return (
+        <Link to={`/listing/id=${e.id}`}>
+            <Item
+            key={i}
+            name={e.name}
+            description={e.description}
+            time={e.time_posted}
+            price={e.price}
+            condition={e.condition}
+            markAsSold={markAsSold}
+            />
+        </Link>
+        )
+    }) : 'Loading'
+
     return (
         <div>
             <Header color={props.headerStyle}/>
             <div className='listView'>
             
             <div>
-                <Categories/>
+                <Categories 
+                    categories={props.categories}
+                    toggleAnimation={props.toggleAnimation}
+                    isAnimating={props.isAnimating}/>
                 <div className='item-container'>
                     <div className='filter'>
                         <div>
@@ -33,11 +54,7 @@ const ListView = (props) => {
                         </select>
                     </div>
                     <div className='items-column'>
-                        <Item />
-                        <Item />
-                        <Item />
-                        <Item />
-                        <Item />
+                        {posts}
                     </div>
                 </div>
                 <Recent/>

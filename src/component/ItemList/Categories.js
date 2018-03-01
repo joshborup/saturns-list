@@ -7,7 +7,6 @@ const Categories = (props) => {
         display: 'flex',
         flexDirection: 'column',
         alignItem: 'center',
-        background: 'lightgray',
         borderRadius: '4px',
 
     }
@@ -24,40 +23,23 @@ const Categories = (props) => {
         padding: '10px',
     }
 
+   const catlist = props.categories ?  props.categories.map((el, i) => {
+       return (
+           <li key={i}>{el.name}</li>
+       )
+   }) : 'Loading'
+    
     return (
         <div style={catStyles} className='catergories-list'>
             <div>
-                <div style={catTitle}>
+                <div onClick={() => props.toggleAnimation()} style={catTitle}>
                     <span>
                         Categories
                     </span>
                 </div>
-                <div style={catItems} className='cat-container'>
+                <div style={catItems} className={props.isAnimating ? 'cat-container hide' : 'cat-container show'} >
                     <ul>
-                        <li>Barlows</li>
-                        <li>Binoculars</li>
-                        <li>Camera Lenses</li>
-                        <li>Cases</li>
-                        <li>CCD Camera's</li>
-                        <li>Diagonals</li>
-                        <li>Digital Cameras</li>
-                        <li>Eyepieces</li>
-                        <li>Filters</li>
-                        <li>Finders</li>
-                        <li>Focusers</li>
-                        <li>Mount Alt-Az</li>
-                        <li>Mounts Equitorial</li>
-                        <li>Observatories</li>
-                        <li>Solar Filters</li>
-                        <li>Spotting Scopes</li>
-                        <li>Telescope - Astrograph</li>
-                        <li>Telescope - Catadioptric</li>
-                        <li>Telescope - Dall Kirkham</li>
-                        <li>Telescope - Reflectors</li>
-                        <li>Telescope - Refractors</li>
-                        <li>Telescope - Ritchey-Chreiten</li>
-                        <li>Tripods</li>
-                        <li>Misc..</li>
+                        {catlist}
                     </ul>
                 </div>
             </div>

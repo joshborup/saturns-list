@@ -2,6 +2,13 @@ import React from 'react';
 import './addpost.css';
 
 const AddPost = (props) => {
+
+    const catList = props.categories ?  props.categories.map((el, i) => {
+        return (
+            <option key={i} value={el.id}>{el.name}</option>
+        )
+    }) : 'Loading'
+    
     return (
         <div className='post-padding'>
         <div className='add-post-display'>
@@ -9,58 +16,39 @@ const AddPost = (props) => {
             <div>
                 <div>
                     <span>Category</span>
-                    <select className='options'>
-                        <option>Barlows</option>
-                        <option>Binoculars</option>
-                        <option>Camera Lenses</option>
-                        <option>Cases</option>
-                        <option>CCD Camera's</option>
-                        <option>Diagonals</option>
-                        <option>Digital Cameras</option>
-                        <option>Eyepieces</option>
-                        <option>Filters</option>
-                        <option>Finders</option>
-                        <option>Focusers</option>
-                        <option>Mount Alt-Az</option>
-                        <option>Mounts Equitorial</option>
-                        <option>Observatories</option>
-                        <option>Solar Filters</option>
-                        <option>Spotting Scopes</option>
-                        <option>Telescope - Astrograph</option>
-                        <option>Telescope - Catadioptric</option>
-                        <option>Telescope - Dall Kirkham</option>
-                        <option>Telescope - Reflectors</option>
-                        <option>Telescope - Refractors</option>
-                        <option>Telescope - Ritchey-Chreiten</option>
-                        <option>Tripods</option>
-                        <option>Misc..</option>
+                    <select onChange={(e)=> props.getCategory(e.target.value)} className='options'>
+                        {catList}
                     </select>
                 </div>
                 <div className='add-post-input'>
                     <span>Item Name:</span>
-                    <input type='text'/>
+                    <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.itemName}/>
                 </div>
                 <div className='add-post-input'>
                     <span>Item Description:</span>
-                    <textarea type='text'/>
+                    <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/>
                 </div>
-                <div className='add-post-input'>
-                    <span>Price:</span>
-                    <input type='text'/>
+                <div className='add-post-input price-condition'>
+                    <div>
+                        <span>Price:</span>
+                        <div>
+                            $ <input onChange={(e)=> props.getItemPrice(e.target.value)} type='text' value={props.itemPrice}/>
+                        </div>
+                    </div>
+                    <div>
+                        <span>condition:</span>
+                        <select onChange={(e) => props.getItemCondition(e.target.value)} className='options'>
+                            <option value='New' >New</option>
+                            <option value='Like New' >Like New</option>
+                            <option value='Excellent' >Excellent</option>
+                            <option value='Good' >Good</option>
+                            <option value='Fair' >Fair</option>
+                            <option value='Poor' >Poor</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
-                    <span>contition:</span>
-                    <select className='options'>
-                        <option>New</option>
-                        <option>Like New</option>
-                        <option>Excellent</option>
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                    </select>
-                </div>
-                <div>
-                    <button>Post</button>
+                    <button onClick={() => props.post()}>Post</button>
                 </div>
             </div>
         </div>

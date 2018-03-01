@@ -30,8 +30,8 @@
 
 .item-container {
     width: 100%;
-    max-width: 500px;
-    background: lightgray;
+    
+    background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg');
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -45,15 +45,19 @@
     padding: 10px 5px;
 }
 
-.items-column > * + * {
-    margin: 10px 0px;
+.items-column a {
+    text-decoration: none;
+}
+
+.items-column > ul >  * + * {
+    margin: 20px 0px;
     
 }
 
 .item {
     height: 80px;
     overflow: hidden;
-    background: white;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: black;
     display: flex;
     border: 2px #868080 outset;
@@ -76,8 +80,7 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    
+    justify-content: center;  
 
 }
 
@@ -95,25 +98,62 @@
     font-weight: bolder;
 }
 
-.item > div:last-child {
+.item > div:nth-child(1){
+    flex: 1;
+}
+
+.item > div:nth-child(2){
+    flex: 2;
+}
+
+.item > div:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    flex: 3;
 
 }
 
 .catergories-list .cat-container ul > * + * {
      margin: 10px;
+     
+}
+.catergories-list .cat-container ul {
+    color: white;
+    text-shadow: 0.5px 0.5px 2px black;
 }
 
 .catergories-list , .viewed-list{
     width: 100%;
+    background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg');
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.445);
 }
 
 .catergories-list {
     margin: 0 auto;
 
+}
+
+.soldButton {
+    max-height: 60px;
+    background: red;
+    color: white;
+    border-radius: 4px;
+    font-weight: bolder;
+    
+}
+
+
+
+.catergories-list > div > div.hide {
+    display: none;
+}
+
+.catergories-list > div > div.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -128,6 +168,14 @@
 
     .catergories-list, .viewed-list{
         max-width: 250px;
+    }
+
+    .catergories-list > div > div.cat-container {
+        display: flex;
+    }
+
+    .item-container {
+        max-width: 500px;
     }
 }
 

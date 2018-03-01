@@ -7,7 +7,6 @@ const Recent = (props) => {
         flexDirection: 'column',
         alignItem: 'center',
         margin: '0 auto 0 0',
-        background: 'lightgray',
         borderRadius: '4px',
 
     }

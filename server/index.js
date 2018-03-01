@@ -6,6 +6,8 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const lR = require('./controllers/loginRegister');
 const uC = require('./controllers/userController');
+const bI = require('./controllers/basicInfo');
+const pC = require('./controllers/postController');
 require('dotenv').config();
 
 app.use(bodyParser.json());
@@ -30,6 +32,23 @@ app.post('/login', lR.login);
 app.post('/logout', lR.logout);
 
 app.get('/api/user-data', uC.getUserData);
+
+//get categories for dropdowns
+app.get('/api/categories', bI.getCategories);
+
+//creat new post
+app.post('/api/new_item', pC.newPost);
+app.get('/api/get_all_posts', pC.getAllPosts);
+app.get('/api/get_user_posts', pC.getUserPosts);
+
+//mark as sold endpoint
+app.put('/api/mark_sold', pC.markAsSold);
+
+//get inactive for profiles
+app.get('/api/inactive', pC.getInactive);
+
+//get individual listings
+app.get('/api/listing/:id', pC.individualListing)
 
 
 

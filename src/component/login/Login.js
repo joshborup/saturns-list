@@ -16,7 +16,6 @@ const Login = (props) => {
         display:'flex',
         justifyContent: 'center',
         alignItems:'center',
-        
         }
 
     const login = {

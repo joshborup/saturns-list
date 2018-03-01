@@ -2,4 +2,97 @@
     background: lightgrey;
     min-height: 100vh;
     min-width: 100vw;
+    padding-bottom: 40px;
+
+}
+
+.account {
+    width: 100%;
+    max-width: 1200px;
+    background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg'); 
+    margin: 0 auto;
+    background-size: cover;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
+    border-radius: 4px; 
+}
+
+.profile-layout {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.profile-layout div:nth-child(2) .inactive-posts {
+    margin: 40px 0px;
+}
+
+
+
+.profile-layout .inactive-posts > div > div button {
+    height: 60px;
+}
+
+.profile-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-shadow: 0.5px 0.5px 2px black;
+}
+
+.profile-contact img {
+    width: 200px;
+}
+
+.profile-contact div span {
+    font-size: 18px;
+}
+
+.profile-contact > *+* {
+    margin: 10px 0px;
+}
+
+.active-posts > span, .inactive-posts > span{
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.active-posts div > *+*, .inactive-posts div > *+* {
+    margin: 10px 0px;
+}
+
+.active-posts > span, .inactive-posts > span{
+    font-size: 22px;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    
+}
+
+.active-posts > span {
+
+    background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+    border: 1px solid #28C76F;
+}
+
+.inactive-posts > span {
+    width: 100%;
+    border: 1px solid #B3315F;
+    background-image: linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%);
+    
+}
+
+@media (min-width:768px){
+    .profile-layout {
+        display: flex;
+        padding: 60px;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }

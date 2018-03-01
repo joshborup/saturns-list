@@ -5,15 +5,18 @@ module.exports = {
         const db = req.app.get('db');
         //deconstructing username and password
         const { first_name, last_name, username, password, email, phone, zip, city, state, country } = req.body;
+        const member_since = Date().split(' ').splice(1, 3).join(' ');
         //salt for hashing password
         const saltRounds = 12;
         bcrypt.hash(password, saltRounds).then(hashedPassword => {
-            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country]).then(response =>{
+            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since]).then(response =>{
                 //set user to a session if succsesful login
                 const user = {
                     id: response[0].id,
                     username: response[0].username,
                     email: response[0].email,
+                    location: response[0].state,
+                    memberSince: response[0].member_since
                 }
                 req.session.user = user;
                 res.redirect('/')
@@ -44,6 +47,8 @@ module.exports = {
                             id: users[0].id,
                             username: users[0].username,
                             email: users[0].email,
+                            location: users[0].state,
+                            memberSince: users[0].member_since
                         }
                         req.session.user = user;
                         console.log('logged-in:', req.session.user)

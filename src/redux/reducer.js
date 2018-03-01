@@ -9,10 +9,12 @@ var initialState = {
     city:'',
     state:'',
     zip:'',
-    country:''
+    country:'',
+    categories: ''
 }
 
 const FETCH_USER_DATA = 'FETCH_USER_DATA'
+const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 const USERNAME = 'USERNAME'
 const PASSWORD = 'PASSWORD'
 const FIRST_NAME = 'FIRST_NAME'
@@ -25,11 +27,15 @@ const ZIP = 'ZIP'
 const COUNTRY = 'COUNTRY'
 
 
+
 export default function(state=initialState, action){
     switch(action.type){
         case FETCH_USER_DATA:
     
             return {...state, user: action.payload};
+        case FETCH_CATEGORIES:
+
+            return {...state, categories: action.payload}
 
         case USERNAME:
 
@@ -78,6 +84,13 @@ export function fetchUserData(user){
     return {
         type: FETCH_USER_DATA,
         payload: user
+    }
+}
+
+export function fetchCategories(categories){
+    return {
+        type: FETCH_CATEGORIES,
+        payload: categories
     }
 }
 
