@@ -13,7 +13,7 @@ class ItemListContainer extends Component {
         this.state = {
             headerStyle: 'orange',
             posts:'',
-            isAnimating: false
+            isAnimating: true
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);

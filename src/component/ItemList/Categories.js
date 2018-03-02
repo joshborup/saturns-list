@@ -30,7 +30,7 @@ const Categories = (props) => {
            <li onClick={()=> props.selectCategory(el.id)} key={i}>{el.name}</li>
        )
    }) : 'Loading'
-    
+    console.log()
     return (
         <div style={catStyles} className='catergories-list'>
             <div>

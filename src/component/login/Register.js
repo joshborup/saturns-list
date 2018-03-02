@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import StatesDropDown from './StatesDropDown';
+import CountryDropDown from './CountryDropDown';
 
 const Register = (props) => {
     const flex = {
@@ -81,7 +83,7 @@ const Register = (props) => {
                             </div>
                             <div>
                                 State:
-                                <input onChange={(e) => props.enterState(e.target.value)} type='text' className='register-input' value={props.state}/>
+                                <StatesDropDown enterState={props.enterState} />
                             </div>
                         </div>
                         <div className='zip-country-row'>
@@ -91,7 +93,7 @@ const Register = (props) => {
                             </div>
                             <div>
                                 country:
-                                <input onChange={(e) => props.enterCountry(e.target.value)} type='text' className='register-input' value={props.country}/>
+                                <CountryDropDown enterCountry={props.enterCountry}/>
                             </div>
                         </div>
                         <div className='button-container'>
