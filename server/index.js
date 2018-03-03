@@ -53,6 +53,12 @@ app.get('/api/listing/:id', pC.individualListing);
 //get item-list by cat-id 
 app.get('/api/item_list_by_cat', pC.getPostByCat);
 
+//get user profile data
+app.get('/api/get_profile_data', uC.getProfileData)
+
+//update user profile data
+app.put('/api/update_profile_data', uC.updateProfile)
+
 
 
 const port = process.env.PORT || 4000;

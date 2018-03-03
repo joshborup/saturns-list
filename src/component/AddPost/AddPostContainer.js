@@ -16,7 +16,8 @@ class AddPostToContainer extends Component {
             itemDescription:'',
             itemPrice: '',
             itemCondition:'',
-            images:[]
+            images:[],
+            upload: 'item'
         }
         this.getCategory = this.getCategory.bind(this);
         this.getItemDescription = this.getItemDescription.bind(this);
@@ -89,6 +90,7 @@ class AddPostToContainer extends Component {
                     categories={this.props.categories}
                     images={this.state.images}
                     getImage={this.getImage}
+                    upload={this.state.upload}
                 /> : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
                 {/* <AddPost/> */}
             </div>

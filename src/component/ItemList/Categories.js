@@ -41,6 +41,7 @@ const Categories = (props) => {
                 </div>
                 <div style={catItems} className={props.isAnimating ? 'cat-container hide' : 'cat-container show'} >
                     <ul>
+                        <li onClick={()=> props.showAll()} >All</li>
                         {catlist}
                     </ul>
                 </div>

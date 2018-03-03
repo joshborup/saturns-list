@@ -1,5 +1,11 @@
 var initialState = {
     user: '',
+    profileInfo: {
+        id: '',
+        description: '',
+        profile_image: '',
+        website: ''
+    },
     password:'',
     username:'',
     firstName:'',
@@ -14,6 +20,8 @@ var initialState = {
 }
 
 const FETCH_USER_DATA = 'FETCH_USER_DATA'
+const FETCH_PROFILE_DATA = 'FETCH_PROFILE_DATA'
+const UPDATE_PROFILE_DATA = 'UPDATE_PROFILE_DATA'
 const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
 const USERNAME = 'USERNAME'
 const PASSWORD = 'PASSWORD'
@@ -28,6 +36,7 @@ const COUNTRY = 'COUNTRY'
 
 
 
+
 export default function(state=initialState, action){
     switch(action.type){
         case FETCH_USER_DATA:
@@ -35,7 +44,11 @@ export default function(state=initialState, action){
             return {...state, user: action.payload};
         case FETCH_CATEGORIES:
 
-            return {...state, categories: action.payload}
+            return {...state, categories: action.payload};
+
+        case FETCH_PROFILE_DATA: 
+        
+            return {...state, profileInfo: action.payload};
 
         case USERNAME:
 
@@ -73,6 +86,7 @@ export default function(state=initialState, action){
         case COUNTRY:
 
             return {...state, country: action.payload}
+            
         default:
 
             return state;
@@ -84,6 +98,13 @@ export function fetchUserData(user){
     return {
         type: FETCH_USER_DATA,
         payload: user
+    }
+}
+
+export function fetchProfileInfo(profile){
+    return {
+        type: FETCH_PROFILE_DATA,
+        payload: profile
     }
 }
 

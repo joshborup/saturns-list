@@ -37,6 +37,7 @@ const ListView = (props) => {
                     toggleAnimation={props.toggleAnimation}
                     isAnimating={props.isAnimated}
                     selectCategory={props.selectCategory}
+                    showAll={props.showAll}
                     />
                 <div className='item-container'>
                     <div className='filter'>

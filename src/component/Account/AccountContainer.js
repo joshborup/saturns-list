@@ -60,6 +60,7 @@ class AccountContainer extends Component {
                 posts={this.state.posts}
                 markAsSold={this.markAsSold}
                 inactive={this.state.inactive}
+                profile={this.props.profile}
                 /> 
                 : 
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>
@@ -76,7 +77,8 @@ class AccountContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        profile: state.profileInfo
     }
 }
 

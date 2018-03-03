@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ListView from './ListView';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { fetchUserData, fetchCategories } from '../../redux/reducer';
+import { fetchUserData, fetchCategories, fetchProfileInfo } from '../../redux/reducer';
 import './listView.css';
 import Categories from './Categories';
 
@@ -17,6 +17,7 @@ class ItemListContainer extends Component {
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
+       this.showAll = this.showAll.bind(this);
     }
 
     componentDidMount(){
@@ -30,6 +31,7 @@ class ItemListContainer extends Component {
         function getAllPosts(){
             return axios.get('/api/get_all_posts');
         }
+        
 
         axios.all([getUserData(), getCategories(), getAllPosts()]).then(axios.spread((user, categories, posts)=> {
             
@@ -39,6 +41,9 @@ class ItemListContainer extends Component {
                 posts: posts.data
             })
         }))
+        axios.get('/api/get_profile_data').then(profile => {
+            this.props.fetchProfileInfo(profile.data[0])
+        });
         
     }
 
@@ -52,11 +57,11 @@ class ItemListContainer extends Component {
             isAnimating: false
             })
         }
-        console.log(this.state.isAnimating);
+        
       }
 
       selectCategory(num){
-        console.log(num)
+        
         axios.get(`/api/item_list_by_cat?num=${num}`).then(posts=> {
             
             this.setState({
@@ -64,6 +69,14 @@ class ItemListContainer extends Component {
             })
         })
 
+      }
+
+      showAll(){
+        axios.get('/api/get_all_posts').then(posts => {
+            this.setState({
+                posts: posts.data
+            })
+        })
       }
 
 
@@ -78,6 +91,7 @@ class ItemListContainer extends Component {
                     toggleAnimation={this.toggleAnimation}
                     isAnimated={this.state.isAnimating}
                     selectCategory={this.selectCategory}
+                    showAll={this.showAll}
                     />
                 </div>
             
@@ -87,13 +101,15 @@ class ItemListContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.user,
-        categories: state.categories
+        categories: state.categories,
+        profile: state.profileInfo
     }
 }
 
 const mapDispatchToProps = {
     fetchUserData: fetchUserData,
-    fetchCategories: fetchCategories
+    fetchCategories: fetchCategories,
+    fetchProfileInfo: fetchProfileInfo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemListContainer)

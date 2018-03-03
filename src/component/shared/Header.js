@@ -63,7 +63,6 @@ class Header extends Component {
                         <img src={saturn}/>   
                         <h1>
                             Saturn's List
-                            {console.log(this.props.user)}
                         </h1>
                     </div>
                     

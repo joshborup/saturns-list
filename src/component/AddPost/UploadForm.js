@@ -34,7 +34,15 @@ export default class UploadForm extends Component {
           }
     
           if (response.body.secure_url !== '') {
-            this.props.getImage(response.body.secure_url)
+              
+              if(this.props.upload == 'profile'){
+                this.props.newImage(response.body.secure_url)
+                this.props.getImage(response.body.secure_url)
+
+              }else if(this.props.upload == 'item'){
+
+                this.props.getImage(response.body.secure_url)
+              }
               response.body.secure_url
           }
         });

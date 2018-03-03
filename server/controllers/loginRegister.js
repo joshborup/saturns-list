@@ -48,7 +48,7 @@ module.exports = {
                             username: users[0].username,
                             email: users[0].email,
                             location: users[0].state,
-                            memberSince: users[0].member_since
+                            memberSince: users[0].member_since,
                         }
                         req.session.user = user;
                         console.log('logged-in:', req.session.user)

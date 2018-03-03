@@ -1,0 +1,129 @@
+.edit-account {
+    width:100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.edit-account > h1 {
+    margin-bottom: 10px;
+}
+
+.edit-account > div:nth-child(2) {
+    font-size: 24px;
+}
+
+.edit-account > .change-info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-account .image-container {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+
+}
+
+.edit-account .image-container img {
+    width: 200px;  
+}
+
+.edit-account .change-info-container > *+* {
+    margin: 0px 10px;
+
+}
+
+.edit-account .change-info-container .change-description {
+    flex: 3;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.edit-account .change-info-container .change-description > *+* {
+    margin: 10px 0px;
+}
+
+.edit-account .change-info-container .change-description  textarea {
+    flex: 1;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+}
+
+.edit-account .change-info-container > div {
+    background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg');
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.445);
+}
+
+.edit-account .change-info-container > div {
+    padding: 20px;
+} 
+
+.edit-account .change-info-container .change-image {
+    
+    flex:1;
+}
+
+.edit-account .change-info-container .change-other-info *+* {
+    margin: 10px;
+    
+}
+
+.edit-account .change-info-container .change-other-info {
+    flex:2;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color:white;
+}
+.edit-account .change-info-container .change-other-info > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-account .change-info-container .change-image .upload-form {
+    background-image: linear-gradient( 135deg, #69FF97 10%, #00E4FF 100%);
+    color: grey;
+    font-weight: bolder;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.edit-account button {
+    background: linear-gradient( 135deg, #70F570 10%, #49C628 100%);
+    color: white;
+    margin: 20px;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 4px;
+    border:none;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 0.5px 0.5px 2px black;
+}
+
+
+
+.edit-account .update-cancel {
+    
+    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+}
+
+.edit-account .change-other-info span {
+    text-shadow: 0.5px 0.5px 2px black;
+}
+
+.edit-account .change-other-info input {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    
+}

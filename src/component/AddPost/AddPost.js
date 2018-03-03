@@ -61,7 +61,10 @@ const AddPost = (props) => {
                         <div className='image-uploads'>
                             {imagesUploads}
                         </div>
-                        <UploadForm getImage={props.getImage}/>
+                        <UploadForm 
+                        getImage={props.getImage}
+                        upload={props.upload}
+                        />
                     </div>
                 <div>
                     <button onClick={() => props.post()}>Post</button>

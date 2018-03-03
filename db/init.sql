@@ -24,6 +24,14 @@ CREATE TABLE users(
     , member_since TEXT NOT NULL
 );
 
+CREATE TABLE profiles(
+    id SERIAL PRIMARY KEY
+    , user_id INTEGER REFERENCES users(id)
+    , description TEXT
+    , website TEXT
+    , profile_image TEXT
+);
+
 CREATE TABLE categories(
     id SERIAL PRIMARY KEY NOT NULL
     ,name TEXT NOT NULL
