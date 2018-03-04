@@ -1,2 +1,2 @@
 SELECT * from users
-WHERE username = $1;
+WHERE username ILIKE $1;

@@ -72,7 +72,7 @@ class Header extends Component {
                             <Link to='/'><li style={boldheader}>Home</li></Link>
                             { this.props.user ? <Link to='/add_post'><li style={boldheader1}>Post</li></Link> : ''}
                             { this.props.user ? <Link to='/account'><li style={boldheader2}>Account</li></Link> : ''}
-                            { this.props.user ? <li onClick={()=>this.logout()}>logout</li> : <Link to='/account_login'><li>Login/Register</li></Link>}
+                            { this.props.user ? <li onClick={()=>this.logout()}>Logout</li> : <Link to='/account_login'><li>Login/Register</li></Link>}
                         </ul>
                     </div>
                 </div>

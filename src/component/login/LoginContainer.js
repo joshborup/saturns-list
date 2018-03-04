@@ -17,6 +17,17 @@ class LoginContainer extends Component {
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
         this.registrationSubmit = this.registrationSubmit.bind(this);
+        this.loginKeyPress = this.loginKeyPress.bind(this);
+    }
+
+    loginKeyPress(e){
+        if(e.key == 'Enter'){
+            axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{
+                console.log(response)
+                fetchUserData(response)
+                window.location.href = response.request.responseURL;
+            })
+        }
     }
 
 
@@ -104,6 +115,7 @@ class LoginContainer extends Component {
                 password={password}
                 login={this.login}
                 register={this.register}
+                loginKeyPress={this.loginKeyPress}
                 />}
             </div>     
         );

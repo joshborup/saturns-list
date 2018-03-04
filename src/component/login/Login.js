@@ -42,7 +42,7 @@ const Login = (props) => {
     return (
         <div className='login' style={loginContainer}>
             <div style={flex}>
-                <div className='login-content-container'style={login}>
+                <div onKeyPress={(e)=> props.loginKeyPress(e)} className='login-content-container'style={login}>
                     <div><h1>Login</h1></div>
                     <div>
                         Username:

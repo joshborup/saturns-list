@@ -57,12 +57,12 @@ const Account = (props) => {
                     </div>
                     <div>
                         <span>
-                            about: {props.profile.description}
+                            About: {props.profile.description}
                         </span>
                     </div>
                     <div>
                         <span>
-                            website: {props.profile.website}
+                            Website: {props.profile.website}
                         </span>
                     </div>
                     <div>
@@ -72,7 +72,7 @@ const Account = (props) => {
                     </div>
                     <div>
                         <span>
-                            Member since: {props.user.memberSince}
+                            Member Since: {props.user.memberSince}
                         </span>
                     </div>
                 </div>
