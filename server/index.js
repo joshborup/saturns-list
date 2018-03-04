@@ -59,6 +59,9 @@ app.get('/api/get_profile_data', uC.getProfileData)
 //update user profile data
 app.put('/api/update_profile_data', uC.updateProfile)
 
+//update user date
+app.put('/api/update_user_data', uC.updateUser)
+
 
 
 const port = process.env.PORT || 4000;

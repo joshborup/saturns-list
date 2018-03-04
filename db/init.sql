@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS profiles;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS categories;
@@ -13,9 +14,9 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY
     , first_name VARCHAR(64) NOT NULL
     , last_name VARCHAR(64) NOT NULL
-    , username VARCHAR(64) NOT NULL
+    , username VARCHAR(64) UNIQUE NOT NULL 
     , password TEXT NOT NULL
-    , email TEXT NOT NULL
+    , email TEXT UNIQUE NOT NULL
     , phone TEXT
     , zip INTEGER
     , city VARCHAR(72) NOT NULL

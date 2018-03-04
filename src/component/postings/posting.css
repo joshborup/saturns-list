@@ -55,7 +55,8 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.445);
 }
 .posts .pic-description .description > span {
-    background: linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%);
+    /* background: linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%); */
+    background: #777777;
     color: white;
     border-radius: 4px 4px 0px 0px;
     padding: 10px;

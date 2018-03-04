@@ -61,8 +61,9 @@ const ListView = (props) => {
                         {posts}
                     </div>
                 </div>
-                <Recent/>
+                
             </div>
+            
         </div>
     </div>
     );

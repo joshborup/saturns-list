@@ -13,11 +13,11 @@ const Categories = (props) => {
     }
 
     const catTitle = {
-        background: 'linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%)',
+        // background: 'linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%)',
+        background:'#777777',
         color: 'white',
         borderRadius: '4px 4px 0px 0px',
         padding: '10px',
-
     }
 
     const catItems = {
@@ -35,9 +35,11 @@ const Categories = (props) => {
         <div style={catStyles} className='catergories-list'>
             <div>
                 <div onClick={() => props.toggleAnimation()} style={catTitle}>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'} > &#8681; </span>
                     <span>
                         Categories
                     </span>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'}  > &#8681; </span>
                 </div>
                 <div style={catItems} className={props.isAnimating ? 'cat-container hide' : 'cat-container show'} >
                     <ul>

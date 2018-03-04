@@ -25,7 +25,7 @@ class EditAccount extends Component {
     }
 
     render(){
-        const newImage = this.state.newImage ? <img src={this.state.newImage} /> : this.props.profile.profile_image ? <img src={this.props.profile.profile_image}/> : <img src={saturn}/>
+        const newImage = this.state.newImage ? <img src={this.state.newImage} /> : this.props.profile.profile_image !== 'No Info' ? <img src={this.props.profile.profile_image}/> : <img src={saturn}/>
     return (
         <div>
             <Header />
@@ -33,7 +33,7 @@ class EditAccount extends Component {
                 <h1>
                     Edit Account Page
                 </h1>
-                <div>
+                <div className='username'>
                         {this.props.user.username}
                 </div>
                 <div className='change-info-container'>
@@ -47,18 +47,18 @@ class EditAccount extends Component {
                     </div>
                     <div className='change-description'>
                         <h1>Description</h1>
-                        <textarea>{this.props.profile.description}</textarea>
+                        <textarea onChange={(e) => this.props.updateDescription(e.target.value)} value={this.props.description}></textarea>
                         
                     </div>
                     <div className='change-other-info'>
                         <h1>other</h1>
                         <div>
                             <span>Website</span>
-                            <input value={this.props.profile.website}/>
+                            <input onChange={(e) => this.props.updateWebsite(e.target.value)} value={this.props.website}/>
                         </div>
                         <div>
                             <span>Email</span>
-                            <input value={this.props.user.email}/>
+                            <input onChange={(e) => this.props.updateEmail(e.target.value)} value={this.props.email}/>
                         </div>
                     </div>
                 </div>

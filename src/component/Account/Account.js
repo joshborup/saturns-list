@@ -50,7 +50,7 @@ const Account = (props) => {
                 <div className='profile-contact'>
                 <h1>{props.user.username}</h1>
                     <div className='image-container'>
-                        {props.profile.profile_image ? <img src={props.profile.profile_image} /> : <img src={saturn}/>}
+                        {props.profile.profile_image !== 'No Info' ? <img src={props.profile.profile_image} /> : <img src={saturn}/>}
                     </div>
                     <div>
                         <Link to='/edit_account'><button className='edit-profile'>Edit Profile</button></Link>
