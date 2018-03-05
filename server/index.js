@@ -44,6 +44,9 @@ app.get('/api/get_user_posts', pC.getUserPosts);
 //mark as sold endpoint
 app.put('/api/mark_sold', pC.markAsSold);
 
+// reactivate listing
+app.put('/api/reactivate', pC.reactivate);
+
 //get inactive for profiles
 app.get('/api/inactive', pC.getInactive);
 

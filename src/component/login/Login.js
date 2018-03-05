@@ -46,7 +46,8 @@ const Login = (props) => {
                     <div><h1>Login</h1></div>
                     <div>
                         Username:
-                        <input onChange={(e) => props.enterUserName(e.target.value)} type='text' className='login-name' value={props.username}/>
+                        <input onChange={(e) => props.enterUserName(e.target.value)} type='text' className='login-name' value={props.username}ref={(input) => { this.nameInput = input; }} 
+          defaultValue="will focus"/>
                     </div>
                     <div>
                         Password:

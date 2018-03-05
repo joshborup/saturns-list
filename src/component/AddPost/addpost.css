@@ -1,21 +1,20 @@
 .add-post-container{
-    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
-    min-height: 100vh;
+    /* background: linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/account.jpg');    min-height: 100vh; */
+    background: #F9F9F9;
     min-width: 100vw;
+    background-size: cover;
     
 }
 
-.post-padding{
-    padding: 30px;
-}
+
 
 .add-post-display {
     width: 100%;
     max-width: 1200px;
-    background:linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5));
+    /* background:linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)); */
+    background: transparent;
     margin: 0px auto;
     text-align: center;
-    box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
     border-radius: 4px;
 }
 
@@ -29,6 +28,9 @@
 .add-post-display > div > div {
     display: flex;
     flex-direction: column;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-post-display .options {
@@ -49,20 +51,25 @@
 .add-post-display .add-post-input {
     min-width: 100%;
     margin: 10px 0px;
+    
 }
 
 .add-post-display .add-post-input input {
     width: 100%;
     height: 40px;
     margin: 5px auto;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
 }
 
 .add-post-display .add-post-input textarea {
     
     background: white;
     min-width: 100%;
-    border: 4px;
+    border-radius: 2px;
     border: none;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
     height: 200px;
     margin: 5px auto;
     
@@ -70,12 +77,15 @@
 
 
 .add-post-display  button {
-    width: 150px;
+    width: 200px;
     height: 40px;
+    color: white;
+    font-weight: bolder;
     border-radius: 4px;
     border: none;
-    font-size: 16px;
+    font-size: 18px;
     margin: 10px;
+    background: linear-gradient( 135deg, #70F570 10%, #49C628 100%);
 }
 
 .add-post-display .price-condition {
@@ -83,6 +93,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
 }
 
 .add-post-display .price-condition > div {
@@ -90,9 +101,15 @@
     flex-direction: column;
 }
 
+.add-post-display .total-image-uploads{
+    display: flex;
+    flex-direction: column;
+}
+
 .upload-images-container {
     justify-content: center;
     align-items: center;
+    margin: 20px;
 }
 
 .image-uploads {
@@ -103,11 +120,55 @@
 
 .image-uploads > img {
     width: 100px;
-    
     padding: 5px;
 }
+.add-post-display .condition-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.add-post-display .pricebox {
+    height: 40px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
+    font-size: 16px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 2px;
+}
+
+.add-post-display .condition-container > div{
+    padding: 15px;
+    
+}
+
+.add-post-display .condition-container span {
+    display: block;
+}
+
+.add-post-display select {
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
+    border-radius: 2px;
+}
+
+.add-post-display .nodisplay {
+    display: none;
+}
+
+
 
 @media (min-width: 768px){
+
+    .add-post-display .total-image-uploads{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-post-display .image-uploads {
+        display: flex;
+        flex-direction: row;
+    }
     .add-post-display .add-post-input textarea {
         min-width: 80%;
         font-size: 16px;
@@ -116,6 +177,14 @@
     .add-post-display .add-post-input input {
         width: 80%;
         font-size: 16px;
+    }
+
+    .add-post-display .condition-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
     }
 }
 

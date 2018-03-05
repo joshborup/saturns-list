@@ -30,6 +30,14 @@ module.exports = {
             res.status(200).send(response)
         }).catch(error => console.log(error))
     },
+    reactivate: (req, res) => {
+        const db = req.app.get('db');
+        const { id, userId } = req.body
+        db.reactivate([id, userId]).then((response)=>{
+            console.log('item marked as sold')
+            res.status(200).send(response)
+        }).catch(error => console.log(error))
+    },
     getInactive: (req, res)=> {
         const db = req.app.get('db');
         db.get_inactive_posts(req.session.user.id).then(response => {

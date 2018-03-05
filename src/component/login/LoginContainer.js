@@ -20,6 +20,8 @@ class LoginContainer extends Component {
         this.loginKeyPress = this.loginKeyPress.bind(this);
     }
 
+    
+
     loginKeyPress(e){
         if(e.key == 'Enter'){
             axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{

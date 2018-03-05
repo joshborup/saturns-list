@@ -20,6 +20,7 @@ const Account = (props) => {
                 condition={e.condition}
                 user={props.user}
                 markAsSold={props.markAsSold}
+                isActive={props.isActive}
                 />
            
         )
@@ -37,12 +38,14 @@ const Account = (props) => {
             time={e.time_posted}
             price={e.price}
             condition={e.condition}
+            notActive={props.notActive}
+            reactivate={props.reactivate}
             />
        
         )
     }) : 'Loading';
 
-    
+    console.log(props.user)
     return (
         <div className='account'>
             

@@ -8,16 +8,17 @@ const Categories = (props) => {
         display: 'flex',
         flexDirection: 'column',
         alignItem: 'center',
-        borderRadius: '4px',
+        borderRadius: '2px',
 
     }
 
     const catTitle = {
         // background: 'linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%)',
-        background:'#777777',
+        background: 'radial-gradient( #6E6E6E, #2c3e50)',
         color: 'white',
-        borderRadius: '4px 4px 0px 0px',
-        padding: '10px',
+        borderRadius: '2px 2px 0px 0px',
+        padding: '12.5px',
+        
     }
 
     const catItems = {

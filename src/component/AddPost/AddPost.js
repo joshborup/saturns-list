@@ -15,34 +15,22 @@ const AddPost = (props) => {
             <img key={i} src={e}/>
         )
     }) : 'no images yet';
-    
+
+    const displayNone = {
+        display: 'none'
+    }
+    const displayInit = {
+        display: 'initial'
+    }
+    console.log(props.images.length)
     return (
         <div className='post-padding'>
         <div className='add-post-display'>
+            
              <h1>Add a new post</h1>
             <div>
                 <div>
-                    <span>Category</span>
-                    <select onChange={(e)=> props.getCategory(e.target.value)} className='options'>
-                        <option value="" selected="selected">Select A Category</option>
-                        {catList}
-                    </select>
-                </div>
-                <div className='add-post-input'>
-                    <span>Item Name:</span>
-                    <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.itemName}/>
-                </div>
-                <div className='add-post-input'>
-                    <span>Item Description:</span>
-                    <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/>
-                </div>
-                <div className='add-post-input price-condition'>
-                    <div>
-                        <span>Price:</span>
-                        <div>
-                            $ <input onChange={(e)=> props.getItemPrice(e.target.value)} type='text' value={props.itemPrice}/>
-                        </div>
-                    </div>
+                <div className='condition-container'>
                     <div>
                         <span>condition:</span>
                         <select onChange={(e) => props.getItemCondition(e.target.value)} className='options'>
@@ -55,17 +43,68 @@ const AddPost = (props) => {
                             <option value='Poor' >Poor</option>
                         </select>
                     </div>
-                    
-                </div>
-                    <div className='upload-images-container'>
-                        <div className='image-uploads'>
-                            {imagesUploads}
+                    <div>
+                        <span>Category</span>
+                        <select onChange={(e)=> props.getCategory(e.target.value)} className='options'>
+                            <option value="" selected="selected">Select A Category</option>
+                            {catList}
+                        </select>
+                    </div>
+                    <div>
+                        <span>Price:</span>
+                        <div>
+                            $ <input className='pricebox' onChange={(e)=> props.getItemPrice(e.target.value)} type='text' value={props.itemPrice}/>
                         </div>
-                        <UploadForm 
+                    </div>
+                    </div>
+                </div>
+                <div className='add-post-input'>
+                    <span>Item Name:</span>
+                    <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.itemName}/>
+                </div>
+                <div className='add-post-input'>
+                    <span>Item Description:</span>
+                    <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/>
+                </div>
+                <div className='image-uploads'>
+                            {imagesUploads}
+                </div>
+            
+                <div className='total-image-uploads'>
+                    
+                    <div className={props.images.length >= 1 ? 'nodisplay' :'upload-images-container'}>
+                       
+                        <UploadForm
                         getImage={props.getImage}
                         upload={props.upload}
                         />
                     </div>
+
+                    <div className={props.images.length >= 2 ? 'nodisplay' :'upload-images-container'}>
+                        
+                        <UploadForm
+                        getImage={props.getImage}
+                        upload={props.upload}
+                        />
+                    </div>
+
+                    <div className={props.images.length >= 3 ? 'nodisplay' :'upload-images-container'}>
+                        
+                        <UploadForm
+                        getImage={props.getImage}
+                        upload={props.upload}
+                        />
+                    </div>
+
+                    <div className={props.images.length >= 4 ? 'nodisplay' :'upload-images-container'}>
+                        
+                        <UploadForm
+                        getImage={props.getImage}
+                        upload={props.upload}
+                        />
+                    </div>
+
+                </div>
                 <div>
                     <button onClick={() => props.post()}>Post</button>
                 </div>

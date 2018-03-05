@@ -12,10 +12,12 @@ class AccountContainer extends Component {
         this.state = {
             headerStyle:'orange',
             posts: '',
-            inactive:''
-            
+            inactive:'',
+            isActive: true,
+            notActive: true
         }
         this.markAsSold = this.markAsSold.bind(this);
+        this.reactivate = this.reactivate.bind(this);
     }
 
     componentDidMount(){
@@ -49,6 +51,19 @@ class AccountContainer extends Component {
         
     }
 
+    reactivate(itemId){
+
+        axios.put('/api/reactivate', {id: itemId , userId: this.props.user.id}).then((response)=>{
+            axios.get('/api/inactive').then(inactive=> {
+                this.setState({
+                    posts: response.data,
+                    inactive: inactive.data
+                })
+            })
+        })
+        
+    }
+
     render() {
         return (
             <div className='account-container'>
@@ -61,6 +76,9 @@ class AccountContainer extends Component {
                 markAsSold={this.markAsSold}
                 inactive={this.state.inactive}
                 profile={this.props.profile}
+                isActive={this.state.isActive}
+                notActive={this.state.notActive}
+                reactivate={this.reactivate}
                 /> 
                 : 
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>
