@@ -33,6 +33,7 @@
     width: 100%;
     margin: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -48,7 +49,7 @@
 
 .posts .pic-description .description {
     width: 100%;
-    margin: 0px 0px 0px 20px;
+    margin: 0px;
     border-radius: 2px;
     background: white;
     flex: 3;
@@ -93,4 +94,20 @@
 
 .posts .pic-description .pic .thumbnails img {
     width: 30%;
+}
+
+@media (min-width:768px) {
+    .posts .pic-description {
+        width: 100%;
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .posts .pic-description .description {
+       
+        margin: 0px 0px 0px 20px;
+        
+    }
 }

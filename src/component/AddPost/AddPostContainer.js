@@ -4,6 +4,7 @@ import axios from 'axios';
 import AddPost from './AddPost';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchUserData } from '../../redux/reducer';
 import Categories from '../ItemList/Categories';
 
 class AddPostToContainer extends Component {
@@ -26,6 +27,12 @@ class AddPostToContainer extends Component {
         this.getItemCondition = this.getItemCondition.bind(this);
         this.post = this.post.bind(this);
         this.getImage = this.getImage.bind(this);
+    }
+
+    componentDidMount(){
+        axios.get('/api/user-data').then(user => {
+            this.props.fetchUserData(user.data);
+        })
     }
 
     getCategory(category){
@@ -105,4 +112,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(AddPostToContainer)
+const mapDispatchToProps = {
+    fetchUserData: fetchUserData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPostToContainer)

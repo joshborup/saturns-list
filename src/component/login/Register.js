@@ -79,7 +79,7 @@ const Register = (props) => {
                         <div className='city-state-row'>
                             <div>
                                 City:
-                                <input onChange={(e) => props.enterCity(e.target.value)} type='text' className='register-input' value={props.city}/>
+                                <input onChange={(e) => props.enterCity(e.target.value)} type='text' className='register-input' value={props.city} autocomplete='on'/>
                             </div>
                             <div>
                                 State:

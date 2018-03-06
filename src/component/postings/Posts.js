@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../shared/Header';
 import saturn from '../../media/saturn.svg';
-
+import ImageGallery from 'react-image-gallery';
+import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import './posting.css'
 
 const Posts = (props) => {
@@ -9,10 +10,20 @@ const Posts = (props) => {
     const postInfo = props.postInfo ? props.postInfo  :'loading'
 
     const images = postInfo.image_path ? postInfo.image_path.replace(/\{/g, '').replace(/\}/g, '').split(',') : console.log('no images to display')
+    
+    const dynamObj = images ? images.map((e,i) => {
+        return ({
+            original: e,
+            thumbnail: e,
+          })
+    }) : null
+    
 
-
-  
-    console.log(images)
+     const showGal = dynamObj != null ? 
+     <ImageGallery 
+        showPlayButton={false}
+        items={dynamObj}
+     /> : 'loading'
     return (
 
 
@@ -35,12 +46,13 @@ const Posts = (props) => {
                     </div>
                     <div className='pic-description'>
                         <div className='pic'>
-                            {postInfo.image_path ? <img src={images[0]}/> : <img src={saturn}/>}
+                            {showGal}
+                            {/* {postInfo.image_path ? <img src={images[0]}/> : <img src={saturn}/>}
                             <div className='thumbnails'>
                                 {postInfo.image_path ? <img src={images[1]}/> : <img src={saturn}/>}
                                 {postInfo.image_path ? <img src={images[2]}/> : <img src={saturn}/>}
                                 {postInfo.image_path ? <img src={images[3]}/> : <img src={saturn}/>}
-                            </div>
+                            </div> */}
                         </div>
                         <div className='description'>
                             <span>Item Description</span>

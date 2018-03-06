@@ -4,6 +4,7 @@ import Account from './Account';
 import Header from '../shared/Header';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { fetchUserData, fetchCategories, fetchProfileInfo } from '../../redux/reducer';
 import './account.css'
 
 class AccountContainer extends Component {
@@ -22,6 +23,10 @@ class AccountContainer extends Component {
 
     componentDidMount(){
 
+        function getUserData(){
+            return axios.get('/api/user-data');
+        }
+
         function getUserPosts(){
            return axios.get('/api/get_user_posts');
         }
@@ -30,11 +35,16 @@ class AccountContainer extends Component {
             return axios.get('/api/inactive');
         }
 
-        axios.all([getUserPosts(), getInactivePosts()]).then(axios.spread((posts, inactive)=> {
+        axios.all([getUserData(),getUserPosts(), getInactivePosts()]).then(axios.spread((user, posts, inactive)=> {
             this.setState({
                 posts: posts.data,
                 inactive: inactive.data
             })
+            this.props.fetchUserData(user.data);
+
+            axios.get('/api/get_profile_data').then(profile => {
+                this.props.fetchProfileInfo(profile.data[0])
+            });
         }))
     }
 
@@ -100,4 +110,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(AccountContainer)
+const mapDispatchToProps = {
+    fetchUserData: fetchUserData,
+    fetchProfileInfo: fetchProfileInfo
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountContainer)

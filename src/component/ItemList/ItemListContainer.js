@@ -65,16 +65,19 @@ class ItemListContainer extends Component {
         axios.get(`/api/item_list_by_cat?num=${num}`).then(posts=> {
             
             this.setState({
-                posts: posts.data
+                posts: posts.data,
+                isAnimating:true
             })
         })
 
+    
       }
 
       showAll(){
         axios.get('/api/get_all_posts').then(posts => {
             this.setState({
-                posts: posts.data
+                posts: posts.data,
+                isAnimating:true
             })
         })
       }

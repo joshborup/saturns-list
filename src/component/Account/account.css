@@ -65,6 +65,9 @@
     height: 200px;
     width: 200px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
 }
@@ -121,6 +124,10 @@
 
 .account-posts {
     width: 90%;
+}
+
+.account-container .item-name, .itemPrice {
+    font-size: 12px;
 }
 
 @media (min-width:768px){

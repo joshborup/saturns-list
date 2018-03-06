@@ -53,7 +53,7 @@
 }
 
 .items-column {
-    padding: 10px 5px;
+    margin-top: 5px;
 }
 
 .items-column a {
@@ -171,19 +171,25 @@
     max-height: 30px;
     background: green;
     color: white;
-    font-size: 16px;
+    font-size: 10px;
+    border: none;
     border-radius: 2px;
     font-weight: bolder;
     text-shadow: 0.5px 0.5px 2px black;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.445);
 }
 
+.reactivateButton:active {
+    box-shadow: none;
+}
+
 .soldButton {
     min-height: 30px;
     max-height: 30px;
     background: red;
-    font-size: 16px;
+    font-size: 10px;
     color: white;
+    border: none;
     border-radius: 2px;
     font-weight: bolder;
     text-shadow: 0.5px 0.5px 2px black;
@@ -247,13 +253,27 @@
         display: flex;
     }
 
+    .item-container .item-name{
+        font-size: 13px;
+    }
+    
+
     .catergories-list .down-arrow, .catergories-list .up-arrow {
         display: none;
     }
 
-    /* .item-container {
-        max-width: 500px;
-    } */
+    .reactivateButton {
+        
+        
+        font-size: 16px;
+       
+    }
+    
+    .soldButton {
+        
+        font-size: 16px;
+        
+    }
 }
 
 @media (min-width: 991px) {

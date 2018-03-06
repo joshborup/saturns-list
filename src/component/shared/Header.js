@@ -3,6 +3,7 @@ import saturn from '../../media/saturn.svg';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { fetchUserData } from '../../redux/reducer';
 import './shared.css';
 
 
@@ -17,6 +18,11 @@ class Header extends Component {
           this.logout = this.logout.bind(this);
         }
 
+        componentDidMount(){
+            axios.get('/api/user-data').then(user => {
+                this.props.fetchUserData(user.data);
+            })
+        }
 
         logout(){
             axios.post('/logout').then((response) => {
@@ -87,4 +93,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = {
+    fetchUserData:fetchUserData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
