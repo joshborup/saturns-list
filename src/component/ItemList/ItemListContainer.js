@@ -13,11 +13,15 @@ class ItemListContainer extends Component {
         this.state = {
             headerStyle: 'orange',
             posts:'',
-            isAnimating: true
+            isAnimating: true,
+            pageCount: 0,
+            itemCount: '',
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
        this.showAll = this.showAll.bind(this);
+       this.nextPage = this.nextPage.bind(this);
+       this.prevPage = this.prevPage.bind(this);
     }
 
     componentDidMount(){
@@ -31,14 +35,17 @@ class ItemListContainer extends Component {
         function getAllPosts(){
             return axios.get('/api/get_all_posts');
         }
-        
+        function getItemCount(){
+            return axios.get('/api/get_item_count');
+        }
 
-        axios.all([getUserData(), getCategories(), getAllPosts()]).then(axios.spread((user, categories, posts)=> {
+        axios.all([getUserData(), getCategories(), getAllPosts(), getItemCount()]).then(axios.spread((user, categories, posts, itemCount)=> {
             
             this.props.fetchCategories(categories.data);
             this.props.fetchUserData(user.data);
             this.setState({
-                posts: posts.data
+                posts: posts.data,
+                itemCount: itemCount.data[0].count
             })
         }))
         axios.get('/api/get_profile_data').then(profile => {
@@ -73,6 +80,37 @@ class ItemListContainer extends Component {
     
       }
 
+      nextPage(){
+        if(this.state.itemCount > this.state.pageCount){
+        const page = this.state.pageCount + 2
+        this.setState({
+                pageCount: page
+        })
+        axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+            this.setState({
+                posts: posts.data,
+                
+            })
+        })
+    }
+    }
+
+    prevPage(){
+        
+        if(this.state.pageCount > 0) {
+            const page = this.state.pageCount - 2
+        this.setState({
+                pageCount: page
+        })
+        axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+            this.setState({
+                posts: posts.data,
+                
+            })
+        })
+        }
+    }
+
       showAll(){
         axios.get('/api/get_all_posts').then(posts => {
             this.setState({
@@ -84,6 +122,7 @@ class ItemListContainer extends Component {
 
 
     render() {
+        console.log(this.state.itemCount)
         return (
             
                 <div>
@@ -95,6 +134,8 @@ class ItemListContainer extends Component {
                     isAnimated={this.state.isAnimating}
                     selectCategory={this.selectCategory}
                     showAll={this.showAll}
+                    nextPage={this.nextPage}
+                    prevPage={this.prevPage}
                     />
                 </div>
             

@@ -102,6 +102,15 @@
 .item-name, .itemPrice {
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
+    
+}
+
+.item-container .item-name {
+    color: #101BAA;
+}
+
+.item-container .item-name:hover {
+    color: #B75B22;
 }
 
 .item-container .itemPrice {
@@ -232,6 +241,25 @@
     transform: rotate(0deg);
 }
 
+.item-container .page {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-container .page button{
+   height: 30px;
+   width: 120px;
+   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+   font-size: 16px;
+   background: #FFFFFF;
+}
+
+.item-container .page button:last-child {
+    margin-left: 10px;
+}
+
+
+
 @media (min-width: 768px) {
 
     .listView > div {
@@ -291,7 +319,8 @@
     .item-container .item-name {
         font-family: 'Montserrat', sans-serif;
         font-weight: bolder;
-        font-size: 15px;
+        font-size: 18px;
+        color: #101BAA;
     }
     
     .item .item-description {
@@ -327,7 +356,7 @@
     } */
 
     .item-container .itemPrice {
-        font-size: 15px;
+        font-size: 18px;
     }
 
 }

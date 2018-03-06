@@ -60,6 +60,10 @@ const ListView = (props) => {
                     <div className='items-column'>
                         {posts}
                     </div>
+                    <div className='page'>
+                        <button onClick={()=> props.prevPage()}>Previous Page</button>
+                        <button onClick={()=> props.nextPage()}>Next Page</button>
+                    </div>
                 </div>
                 
             </div>

@@ -59,5 +59,18 @@ module.exports = {
             console.log(response);
             res.status(200).send(response)
         }).catch(error => consol.log(error))
+    },
+    getPostsByPage: (req, res) => {
+        const pageCount = req.query.pageCount
+        const db = req.app.get('db');
+        db.get_posts_by_page(pageCount).then(response => {
+            res.status(200).send(response)
+        }).catch(error => console.log(error))
+    },
+    itemCount: (req, res) => {
+        const db = req.app.get('db');
+        db.item_count().then(response => {
+            res.status(200).send(response);
+        })
     }
 }

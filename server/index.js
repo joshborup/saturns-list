@@ -65,6 +65,11 @@ app.put('/api/update_profile_data', uC.updateProfile)
 //update user date
 app.put('/api/update_user_data', uC.updateUser)
 
+//get all posts by page
+app.get('/api/get_all_posts_by_page', pC.getPostsByPage)
+
+app.get('/api/get_item_count', pC.itemCount);
+
 
 
 const port = process.env.PORT || 4000;
