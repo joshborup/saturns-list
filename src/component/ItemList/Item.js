@@ -48,7 +48,7 @@ render(){
                 <span className='item-name'>{this.props.name}</span>
                 <span className='item-description'>{cutOffDesc}</span>
 
-                {this.state.seller ? <span className='item-posted-by'>sold by: {this.state.seller}</span> : ''}
+                {this.props.hideSeller ? '' : this.state.seller ? <span className='item-posted-by'>sold by: {this.state.seller}</span> : ''}
             </div>
             <div>
                 <span className='itemPrice'>Price: ${this.props.price} </span>

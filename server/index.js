@@ -83,5 +83,7 @@ app.get('/api/get_seller_by_id', pC.getSellerId)
 //get public profile info
 app.get('/api/profile/:id', uC.getPublicProfile);
 
+app.get('/api/get_user_posts_public/:id', pC.getUserPostsById)
+
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

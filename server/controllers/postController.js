@@ -93,5 +93,12 @@ module.exports = {
         db.get_seller_by_id(seller_id).then(response => {
             res.status(200).send(response);
         }).catch(error => console.log(error))
+    },
+    getUserPostsById: (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params;
+        db.get_users_posts(id).then(userPosts => {
+            res.status(200).send(userPosts)
+        })
     }
 }

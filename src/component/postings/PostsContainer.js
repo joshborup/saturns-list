@@ -22,7 +22,7 @@ export default class PostsContainer extends Component {
 
             axios.get(`/api/get_seller_by_id?seller_id=${response.data[0].seller_id}`).then(seller => {
                 this.setState({
-                    seller: seller.data[0].username
+                    seller: seller.data[0]
                 })
             })
 
@@ -32,7 +32,7 @@ export default class PostsContainer extends Component {
 
     
     render() {
-        console.log(this.state.seller)
+        
         return (
             <Posts 
                 postInfo={this.state.individualPost} 

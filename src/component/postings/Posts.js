@@ -37,7 +37,7 @@ const Posts = (props) => {
                         <div>
                             <span className='postedby'>
                                Posted By: </span>
-                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'>{props.seller}</span></Link>
+                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'>{props.seller.username}</span></Link>
                             
                         </div>
                         <div>

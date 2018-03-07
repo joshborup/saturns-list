@@ -7,19 +7,119 @@
     justify-content: center;
 }
 
+.profile-container > *+* {
+    margin: 20px 0px;
+}
+
+.profile-container > div:first-child {
+    background-image: url('../../media/login.jpg');
+    background-position: center center;
+    border-radius: 2px;
+}
+
+.profile-container > div:first-child > h1{
+    font: bolder 12vw "Montserrat";
+    font-size: 36px;
+    color: black;
+    mix-blend-mode: screen;
+    background-color: rgba(204, 199, 197, 0.877);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    padding: 20px;  
+    border-radius: 2px;
+}
+
 .user-info-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-.user-info-container .profle-image {
-    flex: 1;
+.user-info-container > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.user-info-container .profle-image img {
+.user-info-container > *+* {
+    margin: 0px;
+}
+
+.user-info-container > div > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-container > div > *+*{
+    margin: 10px 0px;
+}
+
+.user-info-container .image-container img {
     width: 100%;
 }
 
 .user-info-container .profile-info {
+    display: flex;
+    
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    flex:1;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.user-info-container > div:nth-child(2) {
+    width: 100%;
+}
+
+.user-info-container .profile-info span {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.user-info-container .image-container {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    margin-bottom: 10px;
+}
+
+.profile-container .active-posts {
+    display: flex;
+    align-items: center;
+   
+    flex-direction: column;
+    
     flex: 1;
+    border-radius: 2px;
+}
+
+.profile-container .active-posts span {
+    width: 100%;
+}
+
+.profile-container .active-posts a {
+    width: 100%;
+    text-decoration: none;
+}
+
+
+
+@media (min-width: 768px){
+    .user-info-container > *+* {
+        margin: 0px 0px 0px 20px;
+    }
+}
+
+@media (min-width: 991px){
+    .user-info-container{
+        flex-direction: row;
+    }
 }

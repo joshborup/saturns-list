@@ -16,7 +16,8 @@ const Categories = (props) => {
         // background: 'linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%)',
         background: 'radial-gradient( #6E6E6E, #2c3e50)',
         color: 'white',
-        borderRadius: '2px 2px 0px 0px',
+        borderTopRightRadius: '2px',
+        borderTopLeftRadius: '2px',
         padding: '12.5px',
         
     }
