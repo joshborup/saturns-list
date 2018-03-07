@@ -72,5 +72,19 @@ module.exports = {
         db.item_count().then(response => {
             res.status(200).send(response);
         })
+    },
+    getPostsByCat: (req, res) => {
+        const db = req.app.get('db');
+        const {pageCount, cat_id} = req.query
+        db.get_cat_by_page([cat_id, pageCount]).then(response => {
+            res.status(200).send(response);
+        })
+    },
+    getCatItemCount: (req, res) => {
+        const db = req.app.get('db');
+        const {cat_id} = req.query;
+        db.cat_item_count(cat_id).then(response => {
+            res.status(200).send(response);
+        }).catch(error => console.log(error))
     }
 }

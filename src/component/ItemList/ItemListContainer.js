@@ -16,6 +16,7 @@ class ItemListContainer extends Component {
             isAnimating: true,
             pageCount: 0,
             itemCount: '',
+            catId: '',
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
@@ -69,60 +70,104 @@ class ItemListContainer extends Component {
 
       selectCategory(num){
         
-        axios.get(`/api/item_list_by_cat?num=${num}`).then(posts=> {
-            
+        function getCatItemCount(){
+            return axios.get(`/api/get_cat_item_count?cat_id=${num}`)
+        }
+        function getPostsByCat(){
+            return axios.get(`/api/item_list_by_cat?num=${num}`)
+        }
+        axios.all([getCatItemCount(), getPostsByCat()]).then(axios.spread((itemCount, posts) => {
             this.setState({
                 posts: posts.data,
-                isAnimating:true
+                isAnimating:true,
+                catId: num,
+                pageCount:0,
+                itemCount: itemCount.data[0].count
             })
+            
         })
-
     
-      }
+        )}
 
       nextPage(){
-        if(this.state.itemCount > this.state.pageCount){
-        const page = this.state.pageCount + 2
-        this.setState({
-                pageCount: page
-        })
-        axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
-            this.setState({
-                posts: posts.data,
+        if(this.state.catId){
+            if(this.state.itemCount > this.state.pageCount){
+                const page = this.state.pageCount + 1
+                this.setState({
+                        pageCount: page
+                })
+                axios.get(`/api/get_all_cats_by_page?pageCount=${page}&cat_id=${this.state.catId}`).then(posts=> {
+                    this.setState({
+                        posts: posts.data,
+                        
+                    })
+                })
+            }   
+            
+        }   else {
+            if(this.state.itemCount > this.state.pageCount){
+                const page = this.state.pageCount + 1
+                this.setState({
+                        pageCount: page
+                })
+                axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+                    this.setState({
+                        posts: posts.data,
+                        
+                    })
+                })
                 
-            })
-        })
-    }
+            } 
+        }
     }
 
     prevPage(){
-        
-        if(this.state.pageCount > 0) {
-            const page = this.state.pageCount - 2
-        this.setState({
-                pageCount: page
-        })
-        axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+        if(this.state.catId){
+            if(this.state.pageCount > 0){
+                const page = this.state.pageCount - 1
+                this.setState({
+                        pageCount: page
+                })
+                axios.get(`/api/get_all_cats_by_page?pageCount=${page}&cat_id=${this.state.catId}`).then(posts=> {
+                    this.setState({
+                        posts: posts.data,
+                        
+                    })
+                })
+                console.log(this.state.pageCount);
+            }   
+            
+        }   else { 
+            if(this.state.pageCount > 0) {
+                const page = this.state.pageCount - 1
             this.setState({
-                posts: posts.data,
-                
+                    pageCount: page
             })
-        })
+            axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+                this.setState({
+                    posts: posts.data,
+                    
+                })
+            })
+            }
         }
+        
     }
 
       showAll(){
         axios.get('/api/get_all_posts').then(posts => {
             this.setState({
                 posts: posts.data,
-                isAnimating:true
+                isAnimating:true,
+                catId: '',
+                pageCount:0
             })
         })
       }
 
 
     render() {
-        console.log(this.state.itemCount)
+        
         return (
             
                 <div>

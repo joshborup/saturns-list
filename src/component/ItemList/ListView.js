@@ -25,7 +25,9 @@ const ListView = (props) => {
         </Link>
         )
     }) : 'Loading'
+    const noMoreItems = props.posts.length ? '' : 'You have reached the end'
 
+    // console.log(props.posts.length)
     return (
         <div>
             <Header color={props.headerStyle}/>
@@ -59,6 +61,7 @@ const ListView = (props) => {
                     </div>
                     <div className='items-column'>
                         {posts}
+                        <p>{noMoreItems}</p>
                     </div>
                     <div className='page'>
                         <button onClick={()=> props.prevPage()}>Previous Page</button>

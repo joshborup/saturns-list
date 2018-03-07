@@ -54,6 +54,11 @@
 
 .items-column {
     margin-top: 5px;
+    color: #6E6E6E;
+}
+
+.items-column p {
+    font-size: 22px;
 }
 
 .items-column a {
@@ -251,7 +256,12 @@
    width: 120px;
    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
    font-size: 16px;
-   background: #FFFFFF;
+   background: #F9F9F9;
+   
+}
+
+.item-container .page button:hover {
+    background: #FFFFFF;
 }
 
 .item-container .page button:last-child {

@@ -68,9 +68,14 @@ app.put('/api/update_user_data', uC.updateUser)
 //get all posts by page
 app.get('/api/get_all_posts_by_page', pC.getPostsByPage)
 
+// get item count
 app.get('/api/get_item_count', pC.itemCount);
 
+//get all posts by cat 
+app.get('/api/get_all_cats_by_page', pC.getPostsByCat)
 
+// get cat item count
+app.get('/api/get_cat_item_count', pC.getCatItemCount);
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))
