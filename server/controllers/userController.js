@@ -23,6 +23,13 @@ module.exports = {
             req.session.user.email = email;
             res.status(200).json(req.session.user)
         })
+    },
+    getPublicProfile: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.get_profile(id).then(response => {
+            res.status(200).send(response)
+        }) 
     }
 
 }

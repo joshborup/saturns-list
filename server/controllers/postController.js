@@ -86,5 +86,12 @@ module.exports = {
         db.cat_item_count(cat_id).then(response => {
             res.status(200).send(response);
         }).catch(error => console.log(error))
+    },
+    getSellerId: (req, res) => {
+        const db = req.app.get('db');
+        const {seller_id} = req.query;
+        db.get_seller_by_id(seller_id).then(response => {
+            res.status(200).send(response);
+        }).catch(error => console.log(error))
     }
 }

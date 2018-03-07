@@ -8,7 +8,8 @@ export default class PostsContainer extends Component {
         super(props)
         this.state = {
             individualPost: '',
-            file: ''
+            file: '',
+            seller:''
         }
     }
 
@@ -16,15 +17,29 @@ export default class PostsContainer extends Component {
         const id = window.location.href.split('=').pop();
         axios.get(`/api/listing/${id}`).then(response => {
             this.setState({
-                individualPost: response.data[0]})
+                individualPost: response.data[0]
+            })
+
+            axios.get(`/api/get_seller_by_id?seller_id=${response.data[0].seller_id}`).then(seller => {
+                this.setState({
+                    seller: seller.data[0].username
+                })
+            })
+
         })
+        
     }
 
     
     render() {
-        console.log(this.state.file);
+        console.log(this.state.seller)
         return (
-            <Posts postInfo={this.state.individualPost} upload={this.fileUpload} file={this.state.file}/>
+            <Posts 
+                postInfo={this.state.individualPost} 
+                upload={this.fileUpload} 
+                file={this.state.file}
+                seller={this.state.seller}
+                />
         );
     }
 }

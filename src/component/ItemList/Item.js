@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import telescope from '../../media/telescope.jpg'
+import telescope from '../../media/telescope.jpg';
 
-const Item = (props) => {
-    const {markAsSold} = props
+export default class Item extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            seller_id:'',
+            seller: ''
+        }
+    }
 
-    const cutOffDesc = props.description.split(' ').splice(props.description.split(' ').length - 15).join(' ') + '...'
-    console.log(cutOffDesc)
+    componentDidMount(){
+        const seller_id = this.props.seller_id
+        this.setState({
+            seller_id: seller_id
+        })
+        axios.get(`/api/get_seller_by_id?seller_id=${seller_id}`).then(seller => {
+            console.log(seller.data[0].username);
+            this.setState({
+                seller: seller.data[0].username
+            })
+        })
+    }
+    
+
+render(){
+    const { markAsSold } = this.props
+
+    const cutOffDesc = this.props.description.split(' ').splice(this.props.description.split(' ').length - 15).join(' ') + '...'
+    console.log(this.state.seller_id);
 
     const flex = {
         display:'flex',
@@ -18,23 +41,25 @@ const Item = (props) => {
     return (
         <div className='item'>
             <div>
-                {props.image ? <img src={props.image.replace(/\{/g, '').replace(/\}/g, '').split(',').shift()}/> : <img src={telescope}/>}
+                {this.props.image ? <img src={this.props.image.replace(/\{/g, '').replace(/\}/g, '').split(',').shift()}/> : <img src={telescope}/>}
                 
             </div>
             <div>
-                <span className='item-name'>{props.name}</span>
+                <span className='item-name'>{this.props.name}</span>
                 <span className='item-description'>{cutOffDesc}</span>
+
+                {this.state.seller ? <span className='item-posted-by'>sold by: {this.state.seller}</span> : ''}
             </div>
             <div>
-                <span className='itemPrice'>Price: ${props.price} </span>
-                <span className='date-posted'>Date Posted: {props.time}</span>
+                <span className='itemPrice'>Price: ${this.props.price} </span>
+                <span className='date-posted'>Date Posted: {this.props.time}</span>
             </div>
             <div style={flex}>
-                {props.isActive ? <button onClick={()=> props.markAsSold(props.itemId)} className='soldButton'>mark as sold</button> : props.notActive ? <button onClick={()=> props.reactivate(props.itemId)} className='reactivateButton'>re-list</button> : null}
+                {this.props.isActive ? <button onClick={()=> this.props.markAsSold(this.props.itemId)} className='soldButton'>mark as sold</button> : this.props.notActive ? <button onClick={()=> this.props.reactivate(this.props.itemId)} className='reactivateButton'>re-list</button> : null}
                 
             </div>
         </div>
     );
+}
 };
 
-export default Item

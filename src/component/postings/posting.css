@@ -25,7 +25,7 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.445);
 }
 
-.posts > div > div:first-child span {
+.posts > div > .name-time .item-name {
     font-size: 34px;
 }
 
@@ -72,13 +72,23 @@
     padding: 20px;
 }
 
-.posts .pic-description .description > div > div:first-child {
+.posts .pic-description .description > div > div:first-child{
+    flex: 1;
+    font-size: 14px;
+}
+
+.posts .pic-description .description > div > div:first-child span {
+    font-size: 18px;
+    font-weight: bolder;
+}
+.posts .pic-description .description > div > div:nth-child(2) {
     flex: 5;
 }
 
 .posts .pic-description .description .posting-price {
     font-size: 24px;
     flex: 1;
+    font-weight: bolder;
 }
 
 .posts .thumbnails {
@@ -94,6 +104,22 @@
 
 .posts .pic-description .pic .thumbnails img {
     width: 30%;
+}
+
+.posts .postedby {
+    font-size: 16px;
+    color: black;
+
+}
+
+.posts > div > .name-time .username {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.posts > div > .name-time .username:hover {
+    color: blue;
+    cursor: pointer;
 }
 
 @media (min-width:768px) {

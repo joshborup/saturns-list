@@ -21,6 +21,7 @@ const ListView = (props) => {
             price={e.price}
             condition={e.condition}
             markAsSold={markAsSold}
+            seller_id={e.seller_id}
             />
         </Link>
         )

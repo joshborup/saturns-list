@@ -40,6 +40,7 @@ class ItemListContainer extends Component {
             return axios.get('/api/get_item_count');
         }
 
+
         axios.all([getUserData(), getCategories(), getAllPosts(), getItemCount()]).then(axios.spread((user, categories, posts, itemCount)=> {
             
             this.props.fetchCategories(categories.data);
@@ -92,7 +93,7 @@ class ItemListContainer extends Component {
       nextPage(){
         if(this.state.catId){
             if(this.state.itemCount > this.state.pageCount){
-                const page = this.state.pageCount + 1
+                const page = this.state.pageCount + 10
                 this.setState({
                         pageCount: page
                 })
@@ -106,14 +107,13 @@ class ItemListContainer extends Component {
             
         }   else {
             if(this.state.itemCount > this.state.pageCount){
-                const page = this.state.pageCount + 1
+                const page = this.state.pageCount + 10
                 this.setState({
                         pageCount: page
                 })
-                axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts=> {
+                axios.get(`/api/get_all_posts_by_page?pageCount=${page}`).then(posts => {
                     this.setState({
                         posts: posts.data,
-                        
                     })
                 })
                 
@@ -124,11 +124,11 @@ class ItemListContainer extends Component {
     prevPage(){
         if(this.state.catId){
             if(this.state.pageCount > 0){
-                const page = this.state.pageCount - 1
+                const page = this.state.pageCount - 10
                 this.setState({
                         pageCount: page
                 })
-                axios.get(`/api/get_all_cats_by_page?pageCount=${page}&cat_id=${this.state.catId}`).then(posts=> {
+                axios.get(`/api/get_all_cats_by_page?pageCount=${page}&cat_id=${this.state.catId}`).then(posts => {
                     this.setState({
                         posts: posts.data,
                         
@@ -139,7 +139,7 @@ class ItemListContainer extends Component {
             
         }   else { 
             if(this.state.pageCount > 0) {
-                const page = this.state.pageCount - 1
+                const page = this.state.pageCount - 10
             this.setState({
                     pageCount: page
             })

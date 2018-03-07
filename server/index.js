@@ -77,5 +77,11 @@ app.get('/api/get_all_cats_by_page', pC.getPostsByCat)
 // get cat item count
 app.get('/api/get_cat_item_count', pC.getCatItemCount);
 
+// get seller by id
+app.get('/api/get_seller_by_id', pC.getSellerId)
+
+//get public profile info
+app.get('/api/profile/:id', uC.getPublicProfile);
+
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))
