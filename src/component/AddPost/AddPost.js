@@ -1,6 +1,10 @@
 import React from 'react';
 import './addpost.css';
 import UploadForm from './UploadForm';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+
 
 const AddPost = (props) => {
 
@@ -62,9 +66,11 @@ const AddPost = (props) => {
                     <span>Item Name:</span>
                     <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.itemName}/>
                 </div>
-                <div className='add-post-input'>
+                <div className='add-post-input item-description-input'>
                     <span>Item Description:</span>
-                    <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/>
+                    {/* <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/> */}
+                    <ReactQuill value={props.text}
+                  onChange={props.handleChange} />
                 </div>
                 <div className='image-uploads'>
                             {imagesUploads}

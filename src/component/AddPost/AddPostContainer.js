@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { fetchUserData } from '../../redux/reducer';
 import Categories from '../ItemList/Categories';
 
+
 class AddPostToContainer extends Component {
     constructor(props){
         super(props)
@@ -18,7 +19,9 @@ class AddPostToContainer extends Component {
             itemPrice: '',
             itemCondition:'',
             images:[],
-            upload: 'item'
+            upload: 'item',
+            text: ''
+            
         }
         this.getCategory = this.getCategory.bind(this);
         this.getItemDescription = this.getItemDescription.bind(this);
@@ -27,6 +30,8 @@ class AddPostToContainer extends Component {
         this.getItemCondition = this.getItemCondition.bind(this);
         this.post = this.post.bind(this);
         this.getImage = this.getImage.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        
     }
 
     componentDidMount(){
@@ -34,6 +39,11 @@ class AddPostToContainer extends Component {
             this.props.fetchUserData(user.data);
         })
     }
+
+    handleChange(value) {
+        this.setState({ text: value })
+    }
+ 
 
     getCategory(category){
         this.setState({
@@ -72,7 +82,7 @@ class AddPostToContainer extends Component {
     }
 
     post(){
-        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.itemDescription, imageArray: this.state.images}).then(response => {
+        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: this.state.images}).then(response => {
             window.location.href = response.request.responseURL;
         })
     }
@@ -98,6 +108,9 @@ class AddPostToContainer extends Component {
                     images={this.state.images}
                     getImage={this.getImage}
                     upload={this.state.upload}
+                    handleChange={this.handleChange}
+                    text={this.state.text}
+                    
                 /> : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
                 {/* <AddPost/> */}
             </div>

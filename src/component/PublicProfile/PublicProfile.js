@@ -23,7 +23,7 @@ const PublicProfile = (props) => {
         </Link>
         )
     }) : 'Loading'
-
+    console.log(props.seller);
     return (
         <div>
             <Header />
@@ -45,6 +45,10 @@ const PublicProfile = (props) => {
                         <div>
                             <span className='public-email'>Email:</span>
                             {props.user ? <span>{props.seller.email}</span> : <span>Please <Link to='/account_login'>Login</Link> to see user emails</span>}
+                        </div>
+                        <div>
+                            <span className='public-website'>website:</span>
+                            {props.seller.website !== 'No Info' ? <a href={'https://' + props.seller.website}>{props.seller.website}</a> : props.seller.website }
                         </div>
                     </div>
                     <div>

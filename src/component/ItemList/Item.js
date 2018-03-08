@@ -11,25 +11,25 @@ export default class Item extends Component {
         }
     }
 
-    componentDidMount(){
-        const seller_id = this.props.seller_id
-        this.setState({
-            seller_id: seller_id
-        })
-        axios.get(`/api/get_seller_by_id?seller_id=${seller_id}`).then(seller => {
-            console.log(seller.data[0].username);
-            this.setState({
-                seller: seller.data[0].username
-            })
-        })
-    }
+    // componentDidMount(){
+    //     const seller_id = this.props.seller_id
+    //     this.setState({
+    //         seller_id: seller_id
+    //     })
+    //     axios.get(`/api/get_seller_by_id?seller_id=${seller_id}`).then(seller => {
+    //         console.log(seller.data[0].username);
+    //         this.setState({
+    //             seller: seller.data[0].username
+    //         })
+    //     })
+    // }
     
 
 render(){
     const { markAsSold } = this.props
 
     const cutOffDesc = this.props.description.split(' ').splice(this.props.description.split(' ').length - 15).join(' ') + '...'
-    console.log(this.state.seller_id);
+    console.log(this.props.description);
 
     const flex = {
         display:'flex',
@@ -48,7 +48,7 @@ render(){
                 <span className='item-name'>{this.props.name}</span>
                 <span className='item-description'>{cutOffDesc}</span>
 
-                {this.props.hideSeller ? '' : this.state.seller ? <span className='item-posted-by'>sold by: {this.state.seller}</span> : ''}
+                {this.props.hideSeller ? '' : this.props.username ? <span className='item-posted-by'>sold by: {this.props.username}</span> : ''}
             </div>
             <div>
                 <span className='itemPrice'>Price: ${this.props.price} </span>

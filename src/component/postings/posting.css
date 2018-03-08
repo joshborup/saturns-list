@@ -65,6 +65,17 @@
     display: block;
 }
 
+.posts .item-description-info div:first-child{
+    display: flex;
+    flex-direction: column;
+}
+
+.posts .item-description-info div:nth-child(2) {
+    text-align: initial;
+}
+
+
+
 .posts .pic-description .description > div{
     display: flex;
     justify-content: space-between;
@@ -75,6 +86,7 @@
 .posts .pic-description .description > div > div:first-child{
     flex: 1;
     font-size: 14px;
+    
 }
 
 .posts .pic-description .description > div > div:first-child span {

@@ -65,8 +65,8 @@ const Posts = (props) => {
                                 <div>
                                    Condition: <span>{postInfo.condition}</span>
                                 </div>
-                                <div>
-                                    {postInfo.description}
+                                <div dangerouslySetInnerHTML={{__html: postInfo.description}}>
+                                
                                 </div>
                                 <div className='posting-price'>
                                     $ {postInfo.price}

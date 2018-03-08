@@ -63,15 +63,16 @@
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
 }
 
-.add-post-display .add-post-input textarea {
+.add-post-display .item-description-input .quill{
     
     background: white;
-    min-width: 100%;
+    width: 100%;
     border-radius: 2px;
     border: none;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445); 
     height: 200px;
-    margin: 5px auto;
+    margin: 5px auto 35px;
+    overflow: scroll;
     
 }
 
