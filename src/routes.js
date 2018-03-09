@@ -6,7 +6,8 @@ import AddPostContainer from './component/AddPost/AddPostContainer';
 import AccountContainer from './component/Account/AccountContainer';
 import PostsContainer from './component/postings/PostsContainer';
 import EditAccountContainer from './component/EditAccount/EditAccountContainer';
-import PublicProfileContainer from './component/PublicProfile/PublicProfileContainer'
+import PublicProfileContainer from './component/PublicProfile/PublicProfileContainer';
+import EditPostContainer from './component/EditPost/EditPostContainer';
 
 export default (
     
@@ -18,6 +19,7 @@ export default (
         <Route path='/listing/:id' component={PostsContainer}/>
         <Route path='/edit_account' component={EditAccountContainer}/>
         <Route path='/profile/:id' component={PublicProfileContainer}/>
+        <Route path='/edit_post/:id' component={EditPostContainer} />
     </Switch>
 
 )

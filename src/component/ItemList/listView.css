@@ -110,6 +110,10 @@
     
 }
 
+.itemPrice > span {
+    color: green;
+}
+
 .item-container .item-name {
     color: #101BAA;
 }
@@ -196,6 +200,7 @@
     border-radius: 2px;
     font-weight: bolder;
     text-shadow: 0.5px 0.5px 2px black;
+    width: 100%;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.445);
 }
 
@@ -214,6 +219,7 @@
     font-weight: bolder;
     text-shadow: 0.5px 0.5px 2px black;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.445);
+    width: 100%;
 }
 
 .soldButton:active {
@@ -241,12 +247,14 @@
 
 
 .catergories-list .up-arrow {
+    
     display: inline-block;
     transition: 0.4;
     transform: rotate(180deg);
 }
 
 .catergories-list .down-arrow{
+    
     display: inline-block;
     transition: 0.4s;
     transform: rotate(0deg);

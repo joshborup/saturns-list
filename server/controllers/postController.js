@@ -100,5 +100,21 @@ module.exports = {
         db.get_users_posts(id).then(userPosts => {
             res.status(200).send(userPosts)
         })
+    },
+    deletePost: (req, res) => {
+        const db = req.app.get('db');
+        const {item_id, seller_id} = req.query;
+        console.log(item_id, seller_id)
+        db.delete_item_by_id([item_id, seller_id]).then((response)=>{
+            res.status(200).send(response);
+        }).catch(error => console.log(error))
+    },
+    updateListing: (req, res) => {
+        const db = req.app.get('db');
+        const {seller_id, condition, cat_id, price, itemName, description, image_path, item_id} = req.body;
+        // console.log('sellerid', seller_id, 'condition', condition, 'cat_id', cat_id,'price', price, 'itemname', itemName, 'description', description, 'images', image_path);
+        db.update_listing([seller_id, condition, cat_id, price, itemName, description, image_path, item_id]).then(()=>{
+            res.status(200).json('/account')
+        }).catch(error => console.log(error));
     }
 }

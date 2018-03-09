@@ -18,7 +18,7 @@ const Posts = (props) => {
             thumbnail: e,
           })
     }) : null
-    
+    console.log('user:', props.user)
 
      const showGal = dynamObj != null ? 
      <ImageGallery 
@@ -46,18 +46,15 @@ const Posts = (props) => {
                             </span>
                         </div>
                         <div>
+                            <div className='title-posting-price'>
+                                    $ {postInfo.price}
+                                </div>
                                Date Posted: {postInfo.time_posted}
                         </div>
                     </div>
                     <div className='pic-description'>
                         <div className='pic'>
                             {showGal}
-                            {/* {postInfo.image_path ? <img src={images[0]}/> : <img src={saturn}/>}
-                            <div className='thumbnails'>
-                                {postInfo.image_path ? <img src={images[1]}/> : <img src={saturn}/>}
-                                {postInfo.image_path ? <img src={images[2]}/> : <img src={saturn}/>}
-                                {postInfo.image_path ? <img src={images[3]}/> : <img src={saturn}/>}
-                            </div> */}
                         </div>
                         <div className='description'>
                             <span>Item Description</span>
@@ -75,6 +72,7 @@ const Posts = (props) => {
                         </div>
                     </div>
                 </div>
+                {props.user ? <a href={`mailto:${props.seller.email}`}><button>Contact Seller</button> </a>: 'Please Login or Create an Account to Contact the seller'}
             </div>
         </div>
     );

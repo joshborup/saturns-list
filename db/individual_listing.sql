@@ -1,2 +1,4 @@
-SELECT * FROM posts
-WHERE id = $1;
+SELECT posts.*, categories.name as cat_name FROM 
+posts JOIN categories
+ON (categories.id = posts.catergory_id)
+WHERE posts.id = $1;

@@ -1,22 +1,23 @@
 import React from 'react';
-import './addpost.css';
-import UploadForm from './UploadForm';
+import './editpost.css';
+import UploadForm from '../AddPost/UploadForm';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-
-
-const AddPost = (props) => {
-
+const EditPost = (props) => {
     const catList = props.categories ?  props.categories.map((el, i) => {
         return (
             <option key={i} value={el.id}>{el.name}</option>
         )
     }) : 'Loading';
 
+
     const imagesUploads = props.images ? props.images.map((e,i) => {
         return(
-            <img key={i} src={e}/>
+            <div className='edit-image-upload'>
+                <img key={i} src={e}/>
+                <button onClick={()=>props.delete(i)}>Delete</button>
+            </div>
         )
     }) : 'no images yet';
 
@@ -26,7 +27,10 @@ const AddPost = (props) => {
     const displayInit = {
         display: 'initial'
     }
+
+    console.log
     return (
+       
         <div className='post-padding'>
         <div className='add-post-display'>
             
@@ -36,7 +40,7 @@ const AddPost = (props) => {
                 <div className='condition-container'>
                     <div>
                         <span>condition:</span>
-                        <select onChange={(e) => props.getItemCondition(e.target.value)} className='options'>
+                        <select onChange={(e) => props.getItemCondition(e.target.value)} className='options' value={props.condition}>
                             <option value="" selected="selected">Select Condition</option>
                             <option value='New' >New</option>
                             <option value='Like New' >Like New</option>
@@ -48,7 +52,7 @@ const AddPost = (props) => {
                     </div>
                     <div>
                         <span>Category</span>
-                        <select onChange={(e)=> props.getCategory(e.target.value)} className='options'>
+                        <select onChange={(e)=> props.getCategory(e.target.value)} className='options' value={props.catId}>
                             <option value="" selected="selected">Select A Category</option>
                             {catList}
                         </select>
@@ -56,19 +60,19 @@ const AddPost = (props) => {
                     <div>
                         <span>Price:</span>
                         <div>
-                            $ <input className='pricebox' onChange={(e)=> props.getItemPrice(e.target.value)} type='text' value={props.itemPrice}/>
+                            $ <input className='pricebox' onChange={(e)=> props.getItemPrice(e.target.value)} type='text' value={props.price}/>
                         </div>
                     </div>
                     </div>
                 </div>
                 <div className='add-post-input'>
                     <span>Item Name:</span>
-                    <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.itemName}/>
+                    <input onChange={(e)=> props.getItemName(e.target.value)} type='text' value={props.name}/>
                 </div>
                 <div className='add-post-input item-description-input'>
                     <span>Item Description:</span>
                     {/* <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/> */}
-                    <ReactQuill value={props.text}
+                    <ReactQuill value={props.description}
                   onChange={props.handleChange} />
                 </div>
                 <div className='image-uploads'>
@@ -110,13 +114,15 @@ const AddPost = (props) => {
                     </div>
 
                 </div>
-                <div>
-                    <button onClick={() => props.post()}>Post</button>
+                <div className='buttonContainer'>
+                    <button onClick={() => props.update()}>Update</button>
+                    <button onClick={() => props.cancel()}>Cancel</button>
                 </div>
             </div>
         </div>
         </div>
+        
     );
 };
 
-export default AddPost;
+export default EditPost;

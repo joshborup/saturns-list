@@ -19,6 +19,11 @@ const Categories = (props) => {
         borderTopRightRadius: '2px',
         borderTopLeftRadius: '2px',
         padding: '12.5px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItem: 'center',
+        textAlign: 'center'
         
     }
 
@@ -37,11 +42,11 @@ const Categories = (props) => {
         <div style={catStyles} className='catergories-list'>
             <div>
                 <div onClick={() => props.toggleAnimation()} style={catTitle}>
-                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'} > &#8681; </span>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'} > &#9661; </span>
                     <span>
                         Categories
                     </span>
-                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'}  > &#8681; </span>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'}  > &#9661; </span>
                 </div>
                 <div style={catItems} className={props.isAnimating ? 'cat-container hide' : 'cat-container show'} >
                     <ul>

@@ -85,5 +85,10 @@ app.get('/api/profile/:id', uC.getPublicProfile);
 
 app.get('/api/get_user_posts_public/:id', pC.getUserPostsById)
 
+app.delete('/api/delete_post_by_id', pC.deletePost)
+
+//update listing
+app.put('/api/update_listing', pC.updateListing)
+
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

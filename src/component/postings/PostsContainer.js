@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Posts from './Posts';
+import { connect } from 'react-redux';
+import { fetchUserData } from '../../redux/reducer';
 
 
-export default class PostsContainer extends Component {
+class PostsContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -27,6 +29,9 @@ export default class PostsContainer extends Component {
             })
 
         })
+        axios.get('/api/user-data').then(user => {
+            this.props.fetchUserData(user.data);
+        })
         
     }
 
@@ -39,7 +44,20 @@ export default class PostsContainer extends Component {
                 upload={this.fileUpload} 
                 file={this.state.file}
                 seller={this.state.seller}
+                user={this.props.user}
                 />
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = {
+    fetchUserData:fetchUserData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer)

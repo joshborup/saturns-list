@@ -17,12 +17,16 @@ class ItemListContainer extends Component {
             pageCount: 0,
             itemCount: '',
             catId: '',
+            priceOrder:true,
+            timeOrder: true,
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
        this.showAll = this.showAll.bind(this);
        this.nextPage = this.nextPage.bind(this);
        this.prevPage = this.prevPage.bind(this);
+       this.reversePosts = this.reversePosts.bind(this);
+       this.reversePrice = this.reversePrice.bind(this);
     }
 
     componentDidMount(){
@@ -67,6 +71,50 @@ class ItemListContainer extends Component {
             })
         }
         
+      }
+
+      reversePrice(){
+        if(this.state.priceOrder){
+        var priceLow = [...this.state.posts].sort(function(a, b){
+            return a.price - b.price;
+        });
+           this.setState({
+               posts: priceLow,
+               priceOrder: false
+           })
+        }else {
+            var priceLow = [...this.state.posts].sort(function(a, b){
+                return b.price - a.price;
+            });
+               this.setState({
+                   posts: priceLow,
+                   priceOrder: true
+               })
+        }
+        console.log(this.state.posts);
+      }
+
+      reversePosts(){ 
+        if(this.state.timeOrder){
+            var time = [...this.state.posts].sort(function(a, b){
+                return a.time_posted.split(' ').pop().split(':').join('') - b.time_posted.split(' ').pop().split(':').join('');
+            });
+               this.setState({
+                   posts: time,
+                   timeOrder: false
+               })
+            }else {
+                var time = [...this.state.posts].sort(function(a, b){
+                    return b.time_posted.split(' ').pop().split(':').join('') - a.time_posted.split(' ').pop().split(':').join('');
+                });
+                   this.setState({
+                       posts: time,
+                       timeOrder: true
+                   })
+            }
+        //   this.setState({
+        //       posts: this.state.posts.reverse()
+        //   })
       }
 
       selectCategory(num){
@@ -181,6 +229,8 @@ class ItemListContainer extends Component {
                     showAll={this.showAll}
                     nextPage={this.nextPage}
                     prevPage={this.prevPage}
+                    reversePosts={this.reversePosts}
+                    reversePrice={this.reversePrice}
                     />
                 </div>
             

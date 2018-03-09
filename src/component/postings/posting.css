@@ -26,7 +26,7 @@
 }
 
 .posts > div > .name-time .item-name {
-    font-size: 34px;
+    font-size: 20px;
 }
 
 .posts .pic-description {
@@ -95,12 +95,26 @@
 }
 .posts .pic-description .description > div > div:nth-child(2) {
     flex: 5;
+    padding: 10px;
+    
+}
+
+.posts .pic-description .description > div > div:nth-child(2) li {
+    list-style-type: initial;
 }
 
 .posts .pic-description .description .posting-price {
-    font-size: 24px;
+    font-size: 17px;
     flex: 1;
     font-weight: bolder;
+    color: green;
+    display: none;
+}
+
+.posts .title-posting-price {
+    font-size: 24px;
+    font-weight: bolder;
+    color: green;
 }
 
 .posts .thumbnails {
@@ -146,6 +160,28 @@
     .posts .pic-description .description {
        
         margin: 0px 0px 0px 20px;
+        
+    }
+
+    .posts > div > .name-time .item-name {
+        font-size: 34px;
+    }
+
+    .posts .pic-description .description .posting-price {
+        font-size: 24px;
+        flex: 1;
+        font-weight: bolder;
+        display: initial;
+    }
+
+    .posts .title-posting-price {
+        display: none;
+    }
+}
+
+@media (min-width:991px) {
+    .posts .pic-description .description .posting-price {
+        font-size: 28px;
         
     }
 }

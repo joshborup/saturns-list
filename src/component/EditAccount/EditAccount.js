@@ -3,6 +3,8 @@ import Header from '../shared/Header';
 import saturn from '../../media/saturn.svg';
 import selfie from '../../media/aztronomy.jpg';
 import UploadForm from '../AddPost/UploadForm'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import './edit.css';
 
 const CLOUDINARY_UPLOAD_PRESET = 'ahhubrf1';
@@ -47,8 +49,9 @@ class EditAccount extends Component {
                     </div>
                     <div className='change-description'>
                         <h1>Description</h1>
-                        <textarea onChange={(e) => this.props.updateDescription(e.target.value)} value={this.props.description}></textarea>
-                        
+                        {/* <textarea onChange={(e) => this.props.updateDescription(e.target.value)} value={this.props.description}></textarea> */}
+                        <ReactQuill value={this.props.description}
+                            onChange={this.props.updateDescription} />
                     </div>
                     <div className='change-other-info'>
                         <h1>other</h1>

@@ -48,16 +48,12 @@ const ListView = (props) => {
                            Sort By:
                         </div>
                         <div className='desktop-filter'>
-                            <button>Price</button>
-                            <button>Date Added</button>
-                            <button>ascending</button>
-                            <button>descending</button>
+                            <button onClick={()=>props.reversePrice()}>Price</button>
+                            <button onClick={()=>props.reversePosts()}>Date Added</button>
                         </div>
-                        <select className='mobile-filter'>
+                        <select className='mobile-filter' onChange={(e)=> e.target.value == 'Price' ? props.reversePrice() : props.reversePosts()}>
                             <option>Price</option>
                             <option>Date Added</option>
-                            <option>ascending</option>
-                            <option>descending</option>
                         </select>
                     </div>
                     <div className='items-column'>

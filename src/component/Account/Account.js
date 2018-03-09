@@ -40,12 +40,13 @@ const Account = (props) => {
             condition={e.condition}
             notActive={props.notActive}
             reactivate={props.reactivate}
+            deletePost={props.deletePost}
+            seller_id={props.user.id}
             />
        
         )
     }) : 'Loading';
 
-    console.log(props.user)
     return (
         <div className='account'>
             
@@ -60,8 +61,11 @@ const Account = (props) => {
                     </div>
                     <div>
                         <span>
-                            About: {props.profile.description}
+                        About:
                         </span>
+                        <div dangerouslySetInnerHTML={{__html: props.profile.description}}>
+                                
+                        </div>
                     </div>
                     <div>
                         <span>

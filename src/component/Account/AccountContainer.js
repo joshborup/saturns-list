@@ -19,6 +19,7 @@ class AccountContainer extends Component {
         }
         this.markAsSold = this.markAsSold.bind(this);
         this.reactivate = this.reactivate.bind(this);
+        this.deletePost = this.deletePost.bind(this);
     }
 
     componentDidMount(){
@@ -61,6 +62,17 @@ class AccountContainer extends Component {
         
     }
 
+    deletePost(item_id, seller_id){
+        console.log(item_id, seller_id);
+        axios.delete(`/api/delete_post_by_id/?item_id=${item_id}&seller_id=${seller_id}`).then((inactive)=>{
+                    console.log(inactive);
+                this.setState({
+                    inactive: inactive.data
+                })
+           
+        })
+    }
+
     reactivate(itemId){
 
         axios.put('/api/reactivate', {id: itemId , userId: this.props.user.id}).then((response)=>{
@@ -89,6 +101,7 @@ class AccountContainer extends Component {
                 isActive={this.state.isActive}
                 notActive={this.state.notActive}
                 reactivate={this.reactivate}
+                deletePost={this.deletePost}
                 /> 
                 : 
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>
