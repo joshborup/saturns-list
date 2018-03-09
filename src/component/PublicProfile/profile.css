@@ -110,7 +110,10 @@
     text-decoration: none;
 }
 
-
+.profile-container .social-media {
+    display: flex;
+    flex-direction: row;
+}
 
 @media (min-width: 768px){
     .user-info-container > *+* {

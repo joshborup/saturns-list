@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../shared/Header';
 import Item from '../ItemList/Item';
 import { Link } from 'react-router-dom';
+import facebook from '../../media/facebook.svg'
+import instagram from '../../media/instagram.svg'
 import './profile.css'
 
 const PublicProfile = (props) => {
@@ -41,6 +43,10 @@ const PublicProfile = (props) => {
                             <span>
                             {props.seller.member_since}
                             </span>
+                        </div>
+                        <div className='social-media'>
+                            {props.sellerInfo.facebook ? <a href={props.sellerInfo.facebook}><img src={facebook} /></a>: ''}
+                            {props.sellerInfo.instagram ? <a href={props.sellerInfo.instagram}><img src={instagram} /> </a>: ''}
                         </div>
                         <div>
                             <span className='public-email'>Email:</span>

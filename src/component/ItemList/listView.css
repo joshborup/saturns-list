@@ -386,6 +386,10 @@
         font-size: 18px;
     }
 
+    .item > div:nth-child(3) {
+        padding: 10px;
+    }
+
 }
 
 @media (min-width: 1120px) {

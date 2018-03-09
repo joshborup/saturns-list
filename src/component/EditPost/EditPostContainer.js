@@ -65,9 +65,9 @@ class EditPostContainer extends Component {
     }
  
 
-    getCategory(category){
+    getCategory(catId){
         this.setState({
-            category: category
+            catId: catId
         })
     }
 

@@ -63,6 +63,18 @@ class EditAccount extends Component {
                             <span>Email</span>
                             <input onChange={(e) => this.props.updateEmail(e.target.value)} value={this.props.email}/>
                         </div>
+                        <div>
+                            <span>Instagram</span>
+                            <div className='enter-social-media'>
+                            https://www.instagram.com/<input onChange={(e) => this.props.updateInstagram(e.target.value)} value={this.props.instagram}/>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Facebook</span>
+                            <div className='enter-social-media'>
+                            https://www.facebook.com/<input onChange={(e) => this.props.updateFacebook(e.target.value)} value={this.props.facebook}/>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button className='update-submit' onClick={() => this.props.submitUpdate()}>submit</button>

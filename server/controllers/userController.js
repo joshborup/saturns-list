@@ -11,8 +11,8 @@ module.exports = {
     },
     updateProfile: (req, res) => {
         const db = req.app.get('db');
-        const { image, description, website } = req.body;
-        db.update_profile_data([ req.session.user.id, image, description, website]).then(profile => {
+        const { image, description, website, facebook, instagram } = req.body;
+        db.update_profile_data([ req.session.user.id, image, description, website, facebook, instagram]).then(profile => {
             res.send(profile)
         })
     },

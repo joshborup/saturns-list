@@ -11,7 +11,11 @@ class EditAccountContainer extends Component {
             image: '',
             description:'',
             website:'',
-            email: ''
+            email: '',
+            instagram: '',
+            fullInstagram: '',
+            facebook:'',
+            fullFacebook:''
         }
         this.getImage = this.getImage.bind(this);
         this.submitUpdate = this.submitUpdate.bind(this);
@@ -19,16 +23,31 @@ class EditAccountContainer extends Component {
         this.updateDescription = this.updateDescription.bind(this);
         this.updateWebsite = this.updateWebsite.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
+        this.updateInstagram = this.updateInstagram.bind(this);
+        this.updateFacebook = this.updateFacebook.bind(this);
     }
 
     componentDidMount(){
         const user = this.props.user;
         const profile = this.props.profile;
+        let instagram = '';
+        let facebook = '';
+        if(this.props.profile.facebook){
+            facebook = this.props.profile.facebook.split('/').pop();
+        }
+        if(this.props.profile.instagram){
+
+            instagram = this.props.profile.instagram.split('/').pop()
+        }
         this.setState({
             image: profile.profile_image,
             description: profile.description,
             website: profile.website,
-            email: user.email
+            email: user.email,
+            instagram: instagram,
+            facebook:facebook,
+            fullFacebook: profile.facebook,
+            fullInstagram: profile.instagram
         })
     }
 
@@ -50,6 +69,40 @@ class EditAccountContainer extends Component {
         })
     }
 
+    updateInstagram(instagram){
+        const fullInstagram = `https://www.instagram.com/${instagram}`
+
+        if(!instagram){
+            this.setState({
+                fullInstagram: null,
+                instagram: ''
+            })
+        }else{
+            this.setState({
+                instagram: instagram,
+                fullInstagram: fullInstagram
+            })
+        }
+
+        
+    }
+
+    updateFacebook(facebook){
+        const fullFacebook = `https://www.facebook.com/${facebook}`
+        if(!facebook){
+            this.setState({
+                fullFacebook: null,
+                facebook:''
+            })
+        }else {
+            this.setState({
+                facebook: facebook,
+                fullFacebook: fullFacebook
+            })
+        }
+           
+    }
+
     getImage(image){
         this.setState({
             image: image
@@ -67,7 +120,13 @@ class EditAccountContainer extends Component {
          })
         
 
-        axios.put('/api/update_profile_data', {image: this.state.image, description: this.state.description, website: this.state.website}).then(response => {
+        axios.put('/api/update_profile_data', {
+            image: this.state.image, 
+            description: this.state.description, 
+            website: this.state.website, 
+            facebook: this.state.fullFacebook,
+            instagram: this.state.fullInstagram
+        }).then(response => {
             
             this.props.fetchProfileInfo(response.data[0])
             this.props.history.goBack()
@@ -79,6 +138,7 @@ class EditAccountContainer extends Component {
     }
     
     render() {
+        console.log(this.state.fullFacebook)
         return (
             <div>
                 <EditAccount 
@@ -94,6 +154,10 @@ class EditAccountContainer extends Component {
                     updateDescription={this.updateDescription}
                     email={this.state.email}
                     updateEmail={this.updateEmail}
+                    facebook={this.state.facebook}
+                    instagram={this.state.instagram}
+                    updateFacebook={this.updateFacebook}
+                    updateInstagram={this.updateInstagram}
                 />
             </div>
         );
