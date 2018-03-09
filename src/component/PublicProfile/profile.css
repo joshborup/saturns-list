@@ -122,4 +122,24 @@
     .user-info-container{
         flex-direction: row;
     }
+
+    .profile-container .itemPrice {
+        font-size: 18px;
+    }
+
+    .profile-container .item-name {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 18px;
+        color: #101BAA;
+    }
+    
+    .profile-container .item .item-description {
+        font-size: 14px;
+    }
+    
+    .profile-container .date-posted {
+        font-size: 14px;
+        font-weight: bolder;
+    }
 }

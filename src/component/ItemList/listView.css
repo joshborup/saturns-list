@@ -118,7 +118,7 @@
     color: #101BAA;
 }
 
-.item-container .item-name:hover {
+.item-container .item:hover .item-name {
     color: #B75B22;
 }
 

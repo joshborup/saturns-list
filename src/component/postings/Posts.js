@@ -72,7 +72,7 @@ const Posts = (props) => {
                         </div>
                     </div>
                 </div>
-                {props.user ? <a href={`mailto:${props.seller.email}`}><button>Contact Seller</button> </a>: 'Please Login or Create an Account to Contact the seller'}
+                {props.user ? <a href={`mailto:${props.seller.email}`}><button className='contact-button'>Contact Seller</button> </a>: 'Please Login or Create an Account to Contact the seller'}
             </div>
         </div>
     );

@@ -4,7 +4,9 @@ var initialState = {
         id: '',
         description: '',
         profile_image: '',
-        website: ''
+        website: '',
+        instagram:'',
+        facebook:''
     },
     password:'',
     username:'',

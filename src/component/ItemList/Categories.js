@@ -13,7 +13,7 @@ const Categories = (props) => {
     }
 
     const catTitle = {
-        // background: 'linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%)',
+    
         background: 'radial-gradient( #6E6E6E, #2c3e50)',
         color: 'white',
         borderTopRightRadius: '2px',

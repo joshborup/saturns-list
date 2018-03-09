@@ -54,7 +54,9 @@ const PublicProfile = (props) => {
                     <div>
                     <div className='profile-info'>
                         <span>About:</span>
-                        <div>{props.sellerInfo.description}</div>
+                        <div dangerouslySetInnerHTML={{__html: props.sellerInfo.description}}>
+                                
+                        </div>
                         <div></div>
                     </div>
                     <div className='active-posts'>

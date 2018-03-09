@@ -3,7 +3,8 @@ import selfie from '../../media/aztronomy.jpg';
 import Item from '../ItemList/Item';
 import {Link} from 'react-router-dom';
 import saturn from '../../media/saturn.svg';
-
+import facebook from '../../media/facebook.svg'
+import instagram from '../../media/instagram.svg'
 
 const Account = (props) => {
     const posts = props.posts ? props.posts.map((e, i) =>{
@@ -46,7 +47,7 @@ const Account = (props) => {
        
         )
     }) : 'Loading';
-
+    console.log(props.profile);
     return (
         <div className='account'>
             
@@ -66,6 +67,10 @@ const Account = (props) => {
                         <div dangerouslySetInnerHTML={{__html: props.profile.description}}>
                                 
                         </div>
+                    </div>
+                    <div className='social-media'>
+                        {props.profile.facebook ? <a href={props.profile.facebook}><img src={facebook} /></a>: ''}
+                        {props.profile.instagram ? <a href={props.profile.instagram}><img src={instagram} /> </a>: ''}
                     </div>
                     <div>
                         <span>

@@ -138,6 +138,19 @@
     font-size: 12px;
 }
 
+.social-media {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.social-media img {
+    width: 40px;
+    margin: 0 10px;
+}
+
 @media (min-width:768px){
     .profile-layout {
         display: flex;
