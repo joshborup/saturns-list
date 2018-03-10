@@ -25,6 +25,14 @@ CREATE TABLE users(
     , member_since TEXT NOT NULL
 );
 
+CREATE TABLE reviews(
+id SERIAL NOT NULL PRIMARY KEY
+, user_id INTEGER REFERENCES users(id)
+, review TEXT
+, rating INTEGER NOT NULL
+, reviewer_id INTEGER REFERENCES users(id)
+);
+
 CREATE TABLE profiles(
     id SERIAL PRIMARY KEY
     , user_id INTEGER REFERENCES users(id)

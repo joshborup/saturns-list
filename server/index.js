@@ -27,7 +27,7 @@ app.use(session({
     } 
 }))
 
-app.post('/register', lR.register)
+app.post('/register', lR.register);
 app.post('/login', lR.login);
 app.post('/logout', lR.logout);
 
@@ -57,38 +57,44 @@ app.get('/api/listing/:id', pC.individualListing);
 app.get('/api/item_list_by_cat', pC.getPostByCat);
 
 //get user profile data
-app.get('/api/get_profile_data', uC.getProfileData)
+app.get('/api/get_profile_data', uC.getProfileData);
 
 //update user profile data
-app.put('/api/update_profile_data', uC.updateProfile)
+app.put('/api/update_profile_data', uC.updateProfile);
 
 //update user date
-app.put('/api/update_user_data', uC.updateUser)
+app.put('/api/update_user_data', uC.updateUser);
 
 //get all posts by page
-app.get('/api/get_all_posts_by_page', pC.getPostsByPage)
+app.get('/api/get_all_posts_by_page', pC.getPostsByPage);
 
 // get item count
 app.get('/api/get_item_count', pC.itemCount);
 
 //get all posts by cat 
-app.get('/api/get_all_cats_by_page', pC.getPostsByCat)
+app.get('/api/get_all_cats_by_page', pC.getPostsByCat);
 
 // get cat item count
 app.get('/api/get_cat_item_count', pC.getCatItemCount);
 
 // get seller by id
-app.get('/api/get_seller_by_id', pC.getSellerId)
+app.get('/api/get_seller_by_id', pC.getSellerId);
 
 //get public profile info
 app.get('/api/profile/:id', uC.getPublicProfile);
 
-app.get('/api/get_user_posts_public/:id', pC.getUserPostsById)
+app.get('/api/get_user_posts_public/:id', pC.getUserPostsById);
 
-app.delete('/api/delete_post_by_id', pC.deletePost)
+app.delete('/api/delete_post_by_id', pC.deletePost);
 
 //update listing
-app.put('/api/update_listing', pC.updateListing)
+app.put('/api/update_listing', pC.updateListing);
+
+//get user rating info
+app.get('/api/user-reviews', uC.getUserRatingInfo);
+
+//leave review 
+app.post('/api/leave_review', uC.leaveReview)
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

@@ -11,12 +11,22 @@ class PublicProfileContainer extends Component {
             sellerInfo: '',
             seller: '',
             posts: '',
-            hideSeller: true
+            userReviews:[],
+            review: '',
+            hideSeller: true,
+            userRating:''
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.rating = this.rating.bind(this);
+        this.submitReview= this.submitReview.bind(this);
     }
 
     componentDidMount(){
         const id = window.location.href.split('').pop();
+        console.log(id);
+        function getUserReviews(){
+            return axios.get(`/api/user-reviews?seller_id=${id}`)
+        }
 
         function getUserData(){
             return axios.get('/api/user-data');
@@ -30,14 +40,16 @@ class PublicProfileContainer extends Component {
             return axios.get(`/api/profile/${id}`)
         }
         
-        axios.all([getPostByUser(), getProfileInfo(), getUserData()]).then(axios.spread((posts, profile, user) => {
-            
+        axios.all([getPostByUser(), getProfileInfo(), getUserData(), getUserReviews()]).then(axios.spread((posts, profile, user, userReviews) => {
             this.setState({
                 sellerInfo: profile.data[0],
-                posts: posts.data
+                posts: posts.data,
+                userReviews: userReviews.data
+                
             })
             this.props.fetchUserData(user.data);
             axios.get(`/api/get_seller_by_id?seller_id=${profile.data[0].id}`).then(seller => {
+                
                 this.setState({
                     seller: seller.data[0]
                 })
@@ -45,8 +57,27 @@ class PublicProfileContainer extends Component {
         }))
     }
 
+    rating(userRating){
+        this.setState({
+            userRating:userRating
+        })
+    }
+
+    handleChange(value) {
+        this.setState({ review: value })
+    }
+
+    submitReview(){
+        const id = window.location.href.split('').pop();
+        axios.post('/api/leave_review', {user: id, rating: this.state.userRating, review: this.state.review}).then(userReviews => {
+            this.setState({
+                userReviews: userReviews.data
+            })
+        })
+    }
 
     render() {
+
         return (
             <PublicProfile 
             sellerInfo={this.state.sellerInfo} 
@@ -54,6 +85,12 @@ class PublicProfileContainer extends Component {
             posts={this.state.posts}
             hideSeller={this.state.hideSeller}
             user={this.props.user}
+            review={this.state.review}
+            userReviews={this.state.userReviews}
+            handleChange={this.handleChange}
+            userRating={this.state.userRating}
+            rating={this.rating}
+            submitReview={this.submitReview}
             />
         );
     }

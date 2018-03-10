@@ -19,6 +19,8 @@ class ItemListContainer extends Component {
             catId: '',
             priceOrder:true,
             timeOrder: true,
+            dateArrange: '',
+            priceArrange: ''
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
@@ -80,7 +82,9 @@ class ItemListContainer extends Component {
         });
            this.setState({
                posts: priceLow,
-               priceOrder: false
+               priceOrder: false,
+               priceArrange: ' Price: Lowest to Highest',
+               dateArrange: ''
            })
         }else {
             var priceLow = [...this.state.posts].sort(function(a, b){
@@ -88,28 +92,39 @@ class ItemListContainer extends Component {
             });
                this.setState({
                    posts: priceLow,
-                   priceOrder: true
+                   priceOrder: true,
+                   priceArrange: ' Price: Highest to Lowest',
+                   dateArrange: ''
                })
         }
-        console.log(this.state.posts);
+        console.log(this.state.priceArrange);
       }
 
       reversePosts(){ 
+          console.log()
         if(this.state.timeOrder){
             var time = [...this.state.posts].sort(function(a, b){
-                return a.time_posted.split(' ').pop().split(':').join('') - b.time_posted.split(' ').pop().split(':').join('');
+                let time1 = new Date(a.time_posted)
+                let time2 = new Date(b.time_posted)
+                return time1.getTime() - time2.getTime();
             });
                this.setState({
                    posts: time,
-                   timeOrder: false
+                   timeOrder: false,
+                   dateArrange: ' Date: Oldest to Newest',
+                   priceArrange: ''
                })
             }else {
                 var time = [...this.state.posts].sort(function(a, b){
-                    return b.time_posted.split(' ').pop().split(':').join('') - a.time_posted.split(' ').pop().split(':').join('');
+                    let time1 = new Date(a.time_posted)
+                    let time2 = new Date(b.time_posted)
+                    return time2.getTime() - time1.getTime();
                 });
                    this.setState({
                        posts: time,
-                       timeOrder: true
+                       timeOrder: true,
+                       dateArrange: ' Date: Newest to Oldest',
+                       priceArrange: ''
                    })
             }
         //   this.setState({
@@ -231,6 +246,8 @@ class ItemListContainer extends Component {
                     prevPage={this.prevPage}
                     reversePosts={this.reversePosts}
                     reversePrice={this.reversePrice}
+                    dateArrange={this.state.dateArrange}
+                    priceArrange={this.state.priceArrange}
                     />
                 </div>
             

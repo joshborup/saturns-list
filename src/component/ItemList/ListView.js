@@ -28,7 +28,7 @@ const ListView = (props) => {
     }) : 'Loading'
     const noMoreItems = props.posts.length ? '' : 'You have reached the end'
 
-    // console.log(props.posts.length)
+    console.log(props.dateArrange, props.priceArrange);
     return (
         <div>
             <Header color={props.headerStyle}/>
@@ -46,9 +46,13 @@ const ListView = (props) => {
                     <div className='filter'>
                         <div>
                            Sort By:
+                           <span>{props.priceArrange}</span>
+                           <span>{props.dateArrange}</span>
                         </div>
                         <div className='desktop-filter'>
+                            
                             <button onClick={()=>props.reversePrice()}>Price</button>
+                            
                             <button onClick={()=>props.reversePosts()}>Date Added</button>
                         </div>
                         <select className='mobile-filter' onChange={(e)=> e.target.value == 'Price' ? props.reversePrice() : props.reversePosts()}>

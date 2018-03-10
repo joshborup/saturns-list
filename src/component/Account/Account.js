@@ -3,8 +3,9 @@ import selfie from '../../media/aztronomy.jpg';
 import Item from '../ItemList/Item';
 import {Link} from 'react-router-dom';
 import saturn from '../../media/saturn.svg';
-import facebook from '../../media/facebook.svg'
-import instagram from '../../media/instagram.svg'
+import facebook from '../../media/facebook.svg';
+import instagram from '../../media/instagram.svg';
+import astrobin from '../../media/astrobin.png';
 
 const Account = (props) => {
     const posts = props.posts ? props.posts.map((e, i) =>{
@@ -71,6 +72,7 @@ const Account = (props) => {
                     <div className='social-media'>
                         {props.profile.facebook ? <a href={props.profile.facebook}><img src={facebook} /></a>: ''}
                         {props.profile.instagram ? <a href={props.profile.instagram}><img src={instagram} /> </a>: ''}
+                        {props.profile.astrobin ? <a href={props.profile.astrobin}><img src={astrobin} /> </a>: ''}
                     </div>
                     <div>
                         <span>

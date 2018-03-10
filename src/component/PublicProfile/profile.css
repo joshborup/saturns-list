@@ -115,6 +115,59 @@
     flex-direction: row;
 }
 
+.reviews > *+* {
+    margin: 5px 0px;
+}
+
+.write-review {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.write-review > div:nth-child(2){
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.write-review > div:nth-child(2) >div:first-child{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0px; 
+}
+
+.write-review > div:nth-child(2) >div:last-child {
+    flex: 1;
+}
+
+.write-review > div:nth-child(2) >div:last-child >div{
+    overflow: scroll;
+    border: lightgray solid 1px;
+    
+}
+
+.reviews {
+    width: 100%;
+}
+.reviews > span {
+    background: linear-gradient(135deg, #667db6, #0082c8, #0082c8);
+    border: 1px solid #0082c8;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    width: 100%;
+    font-size: 22px;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px black;
+}
 @media (min-width: 768px){
     .user-info-container > *+* {
         margin: 0px 0px 0px 20px;
@@ -128,6 +181,10 @@
 
     .profile-container .itemPrice {
         font-size: 18px;
+    }
+
+    .write-review > div:nth-child(2) >div:first-child{
+        margin-right: 20px; 
     }
 
     .profile-container .item-name {

@@ -120,6 +120,23 @@
 }
 
 
+
+.user-reviews {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    padding: 20px;
+}
+
+.user-reviews >div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
 @media (min-width: 768px){
 
     

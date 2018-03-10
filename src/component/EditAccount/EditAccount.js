@@ -75,6 +75,12 @@ class EditAccount extends Component {
                             https://www.facebook.com/<input onChange={(e) => this.props.updateFacebook(e.target.value)} value={this.props.facebook}/>
                             </div>
                         </div>
+                        <div>
+                            <span>Astrobin</span>
+                            <div className='enter-social-media'>
+                            https://www.astrobin.com/users/<input onChange={(e) => this.props.updateAstrobin(e.target.value)} value={this.props.astrobin}/>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button className='update-submit' onClick={() => this.props.submitUpdate()}>submit</button>

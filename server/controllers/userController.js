@@ -11,8 +11,8 @@ module.exports = {
     },
     updateProfile: (req, res) => {
         const db = req.app.get('db');
-        const { image, description, website, facebook, instagram } = req.body;
-        db.update_profile_data([ req.session.user.id, image, description, website, facebook, instagram]).then(profile => {
+        const { image, description, website, facebook, instagram, astrobin } = req.body;
+        db.update_profile_data([ req.session.user.id, image, description, website, facebook, instagram, astrobin]).then(profile => {
             res.send(profile)
         })
     },
@@ -30,6 +30,20 @@ module.exports = {
         db.get_profile(id).then(response => {
             res.status(200).send(response)
         }) 
+    },
+    getUserRatingInfo: (req, res) => {
+        const db = req.app.get('db');
+        const { seller_id } = req.query;
+        db.get_user_rating(seller_id).then(response => {
+            res.status(200).send(response)
+        })
+    },
+    leaveReview: (req, res) => {
+        const db = req.app.get('db');
+        const {user, review, rating} = req.body;
+        db.review_user([user, review, rating, req.session.user.id]).then(response => {
+            res.status(200).send(response)
+        })
     }
 
 }

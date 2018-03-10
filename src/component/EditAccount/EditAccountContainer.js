@@ -15,7 +15,9 @@ class EditAccountContainer extends Component {
             instagram: '',
             fullInstagram: '',
             facebook:'',
-            fullFacebook:''
+            fullFacebook:'',
+            astrobin: '',
+            fullAstrobin: ''
         }
         this.getImage = this.getImage.bind(this);
         this.submitUpdate = this.submitUpdate.bind(this);
@@ -25,6 +27,7 @@ class EditAccountContainer extends Component {
         this.updateEmail = this.updateEmail.bind(this);
         this.updateInstagram = this.updateInstagram.bind(this);
         this.updateFacebook = this.updateFacebook.bind(this);
+        this.updateAstrobin = this.updateAstrobin.bind(this);
     }
 
     componentDidMount(){
@@ -32,12 +35,17 @@ class EditAccountContainer extends Component {
         const profile = this.props.profile;
         let instagram = '';
         let facebook = '';
+        let astrobin = '';
         if(this.props.profile.facebook){
             facebook = this.props.profile.facebook.split('/').pop();
         }
         if(this.props.profile.instagram){
 
             instagram = this.props.profile.instagram.split('/').pop()
+        }
+        if(this.props.profile.astrobin){
+
+            astrobin = this.props.profile.astrobin.split('/').pop()
         }
         this.setState({
             image: profile.profile_image,
@@ -46,8 +54,11 @@ class EditAccountContainer extends Component {
             email: user.email,
             instagram: instagram,
             facebook:facebook,
+            astrobin: astrobin,
             fullFacebook: profile.facebook,
-            fullInstagram: profile.instagram
+            fullInstagram: profile.instagram,
+            fullAstrobin: profile.astrobin
+           
         })
     }
 
@@ -103,6 +114,22 @@ class EditAccountContainer extends Component {
            
     }
 
+    updateAstrobin(astrobin){
+        const fullAstrobin = `https://www.astrobin.com/users/${astrobin}`
+        if(!astrobin){
+            this.setState({
+                fullAstrobin: null,
+                astrobin:''
+            })
+        }else {
+            this.setState({
+                astrobin: astrobin,
+                fullAstrobin: fullAstrobin
+            })
+        }
+           
+    }
+
     getImage(image){
         this.setState({
             image: image
@@ -125,7 +152,8 @@ class EditAccountContainer extends Component {
             description: this.state.description, 
             website: this.state.website, 
             facebook: this.state.fullFacebook,
-            instagram: this.state.fullInstagram
+            instagram: this.state.fullInstagram,
+            astrobin: this.state.fullAstrobin
         }).then(response => {
             
             this.props.fetchProfileInfo(response.data[0])
@@ -138,7 +166,7 @@ class EditAccountContainer extends Component {
     }
     
     render() {
-        console.log(this.state.fullFacebook)
+        
         return (
             <div>
                 <EditAccount 
@@ -156,8 +184,10 @@ class EditAccountContainer extends Component {
                     updateEmail={this.updateEmail}
                     facebook={this.state.facebook}
                     instagram={this.state.instagram}
+                    astrobin={this.state.astrobin}
                     updateFacebook={this.updateFacebook}
                     updateInstagram={this.updateInstagram}
+                    updateAstrobin={this.updateAstrobin}
                 />
             </div>
         );
