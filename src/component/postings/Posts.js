@@ -10,7 +10,7 @@ const Posts = (props) => {
 
     const postInfo = props.postInfo ? props.postInfo  :'loading'
 
-    const images = postInfo.image_path ? postInfo.image_path.replace(/\{/g, '').replace(/\}/g, '').split(',') : console.log('no images to display')
+    const images = postInfo.image_path ? postInfo.image_path.replace(/\{/g, '').replace(/\}/g, '').split(',') : ''
     
     const dynamObj = images ? images.map((e,i) => {
         return ({
@@ -18,7 +18,7 @@ const Posts = (props) => {
             thumbnail: e,
           })
     }) : null
-    console.log('user:', props.user)
+    
 
      const showGal = dynamObj != null ? 
      <ImageGallery 

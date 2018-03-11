@@ -28,7 +28,7 @@ const EditPost = (props) => {
         display: 'initial'
     }
 
-    console.log
+    
     return (
        
         <div className='post-padding'>

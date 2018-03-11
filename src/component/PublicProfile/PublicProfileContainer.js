@@ -23,7 +23,6 @@ class PublicProfileContainer extends Component {
 
     componentDidMount(){
         const id = window.location.href.split('').pop();
-        console.log(id);
         function getUserReviews(){
             return axios.get(`/api/user-reviews?seller_id=${id}`)
         }

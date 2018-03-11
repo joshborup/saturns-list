@@ -142,7 +142,6 @@ class EditAccountContainer extends Component {
     submitUpdate(){
 
          axios.put('/api/update_user_data', {email: this.state.email}).then(user => {
-            console.log('update email:', user.data.email)
             this.props.fetchUserData(user.data);
          })
         

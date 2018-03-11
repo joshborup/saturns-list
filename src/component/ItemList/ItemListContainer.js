@@ -97,11 +97,10 @@ class ItemListContainer extends Component {
                    dateArrange: ''
                })
         }
-        console.log(this.state.priceArrange);
       }
 
       reversePosts(){ 
-          console.log()
+         
         if(this.state.timeOrder){
             var time = [...this.state.posts].sort(function(a, b){
                 let time1 = new Date(a.time_posted)
@@ -197,7 +196,7 @@ class ItemListContainer extends Component {
                         
                     })
                 })
-                console.log(this.state.pageCount);
+                
             }   
             
         }   else { 

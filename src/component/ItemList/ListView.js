@@ -28,7 +28,7 @@ const ListView = (props) => {
     }) : 'Loading'
     const noMoreItems = props.posts.length ? '' : 'You have reached the end'
 
-    console.log(props.dateArrange, props.priceArrange);
+    
     return (
         <div>
             <Header color={props.headerStyle}/>

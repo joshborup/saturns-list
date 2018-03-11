@@ -6,6 +6,7 @@ import facebook from '../../media/facebook.svg';
 import instagram from '../../media/instagram.svg';
 import astrobin from '../../media/astrobin.png';
 import Reviews from '../shared/Reviews'
+import ReactStars from 'react-stars';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './profile.css'
@@ -106,7 +107,15 @@ const PublicProfile = (props) => {
                             <div>
                                 <div>
                                     <span>Rate User</span>
-                                    <input onChange={(e) => props.rating(e.target.value)} value={props.userRating}/>
+                                    <ReactStars
+                                    count={5}
+                                    onChange={props.rating}
+                                    size={24}
+                                    color2={'#ffd700'}
+                                    value={props.userRating} 
+                                    half={false}
+                                    />
+                                    
                                 </div>
                                 <div>
                                     <ReactQuill value={props.review}

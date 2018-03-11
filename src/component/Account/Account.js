@@ -48,7 +48,6 @@ const Account = (props) => {
        
         )
     }) : 'Loading';
-    console.log(props.profile);
     return (
         <div className='account'>
             

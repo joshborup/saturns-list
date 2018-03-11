@@ -4,7 +4,7 @@
 }
 
 .login-content-container {
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
     background-image: linear-gradient( 135deg, rgba(94, 252, 232, 0.2), rgba(115, 110, 254, 0.2)); 
     color: white;

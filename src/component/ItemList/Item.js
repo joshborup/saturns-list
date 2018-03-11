@@ -21,7 +21,7 @@ render(){
     var stripedHtml = this.props.description.replace(/<[^>]+>/g, '');
 
     const cutOffDesc = stripedHtml.split(' ').splice(stripedHtml.split(' ').length - 15).join(' ') + '...'
-    console.log(this.props.seller_id, this.props.itemId);
+    
 
     
 

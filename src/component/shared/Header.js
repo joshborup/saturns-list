@@ -26,7 +26,7 @@ class Header extends Component {
 
         logout(){
             axios.post('/logout').then((response) => {
-                console.log(response);
+                
                 window.location.href = '/account_login'
             })
 
@@ -61,7 +61,7 @@ class Header extends Component {
             color: this.props.color3
         }
 
-        console.log(this.props.user)
+        
         return (
             <div className={this.state.isAnimating ? 'header grow' : 'header shrink'} >
                 <div>

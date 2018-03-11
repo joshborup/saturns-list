@@ -25,7 +25,7 @@ class LoginContainer extends Component {
     loginKeyPress(e){
         if(e.key == 'Enter'){
             axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{
-                console.log(response)
+                
                 fetchUserData(response)
                 window.location.href = response.request.responseURL;
             })
@@ -35,14 +35,14 @@ class LoginContainer extends Component {
 
     login(){
         axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{
-            console.log(response)
+            
             fetchUserData(response)
             window.location.href = response.request.responseURL;
         })
     }
 
     registrationSubmit(){
-        console.log(this.props.password, this.props.username, this.props.firstName, this.props.lastName, this.props.email, this.props.state, this.props.city, this.state.zip, this.state.country);
+        
         if(this.props.username && this.props.password && this.props.firstName && this.props.lastName && this.props.email && this.props.state && this.props.city && this.props.zip && this.props.country){
             axios.post('/register', {
                 username: this.props.username,
@@ -56,7 +56,6 @@ class LoginContainer extends Component {
                 zip: this.props.zip,
                 country: this.props.country
             }).then((response)=>{
-                console.log(response)
                 fetchUserData(response)
                 window.location.href = response.request.responseURL;
             })
