@@ -6,10 +6,46 @@ import facebook from '../../media/facebook.svg';
 import instagram from '../../media/instagram.svg';
 import astrobin from '../../media/astrobin.png';
 import Reviews from '../shared/Reviews'
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 import ReactStars from 'react-stars';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './profile.css'
+
+
+const styles = {
+    headline: {
+      fontSize: 24,
+      paddingTop: 16,
+      marginBottom: 12,
+      fontWeight: 400,
+    },
+    slide: {
+      padding: 10,
+    },
+  };
+
+  const tabStyle={
+      main: {
+          width: '100%',
+          
+      },
+      active: {
+        background: 'linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%)',
+        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+      },
+      inactive: {
+        background: 'linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%)',
+        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+      },
+      reviews: {
+          background: 'linear-gradient(135deg, #667db6, #0082c8, #0082c8)',
+          boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+      }
+      
+      
+  }
 
 const PublicProfile = (props) => {
 
@@ -86,61 +122,140 @@ const PublicProfile = (props) => {
                         </div>
                         <div></div>
                     </div>
-                    <div className='active-posts'>
+
+
+                    {/* <div className='active-posts'>
                             <span>Active Posts</span>
                             {userPosts}
                     </div>
-                    <div className='reviews'>
-                        <span>
-                            User Reviews
-                        </span>
-                        {reveiwList}
-                    </div>
                     <div>
-                        {
-                        props.user && props.user.id != props.sellerInfo.id 
-                        ?
-                         hasReviewed.length == 0
-                        ? 
-                        <div className='write-review'>
-                            <span>Write Review</span>
-                            <div>
+                        <div className='reviews'>
+                            <span>
+                                User Reviews
+                            </span>
+                            {reveiwList}
+                        </div>
+                        <div>
+                            {
+                            props.user && props.user.id != props.sellerInfo.id 
+                            ?
+                            hasReviewed.length == 0
+                            ? 
+                            <div className='write-review'>
+                                <span>Write Review</span>
                                 <div>
-                                    <span>Rate User</span>
-                                    <ReactStars
-                                    count={5}
-                                    onChange={props.rating}
-                                    size={24}
-                                    color2={'#ffd700'}
-                                    value={props.userRating} 
-                                    half={false}
-                                    />
-                                    
+                                    <div>
+                                        <span>Rate User</span>
+                                        <ReactStars
+                                        count={5}
+                                        onChange={props.rating}
+                                        size={24}
+                                        color2={'#ffd700'}
+                                        value={props.userRating} 
+                                        half={false}
+                                        />
+                                        
+                                    </div>
+                                    <div>
+                                        <ReactQuill value={props.review}
+                                        onChange={props.handleChange} />
+                                    </div>
                                 </div>
-                                <div>
-                                    <ReactQuill value={props.review}
-                                    onChange={props.handleChange} />
+                                <button onClick={()=> props.submitReview()}>Submit</button>
+                            </div>
+                            
+                            : 
+                            'You have already reviewed this user'
+                            : 
+                            props.user.id == props.sellerInfo.id 
+                            ?
+                            'You cant review youself'
+                            :
+                            'You must log in to leave a review'
+                            }
+                        </div>
+                    </div> */}
+
+
+
+
+                            <div className='myTabs'>
+                            <Tabs
+                            onChange={props.handleSlideChange}
+                            value={props.slideIndex}
+                            style={tabStyle.main}
+                            >
+                            <Tab style={tabStyle.active} label="Active Posts" value={0} />
+                            <Tab style={tabStyle.reviews} label="User Reviews" value={1} />
+                            </Tabs>
+                            <SwipeableViews
+                            index={props.slideIndex}
+                            onChangeIndex={props.handleSlideChange}
+                            style={tabStyle.main}
+                            >
+                            <div style={styles.slide}>
+                                <div className='active-posts'>
+                                    {userPosts}
                                 </div>
                             </div>
-                            <button onClick={()=> props.submitReview()}>Submit</button>
+                            <div style={styles.slide}>
+                            <div>
+                                <div className='reviews'>
+                                    {reveiwList}
+                                </div>
+                                <div className='write-review-container'>
+                                    {
+                                    props.user && props.user.id != props.sellerInfo.id 
+                                    ?
+                                    hasReviewed.length == 0
+                                    ? 
+                                    <div className='write-review'>
+                                        <span>Write Review</span>
+                                        <div>
+                                            <div>
+                                                <span>Rate User</span>
+                                                <ReactStars
+                                                count={5}
+                                                onChange={props.rating}
+                                                size={24}
+                                                color2={'#ffd700'}
+                                                value={props.userRating} 
+                                                half={false}
+                                                />
+                                                
+                                            </div>
+                                            <div>
+                                                <ReactQuill value={props.review}
+                                                onChange={props.handleChange} />
+                                            </div>
+                                        </div>
+                                        <button onClick={()=> props.submitReview()}>Submit</button>
+                                    </div>
+                                    
+                                    : 
+                                    'You have already reviewed this user'
+                                    : 
+                                    props.user.id == props.sellerInfo.id 
+                                    ?
+                                    'You cant review youself'
+                                    :
+                                    'You must log in to leave a review'
+                                    }
+                                </div>
+                            </div>
+                            </div>
+                            </SwipeableViews>
                         </div>
-                        
-                        : 
-                        'You have already reviewed this user'
-                        : 
-                        props.user.id == props.sellerInfo.id 
-                        ?
-                        'You cant review youself'
-                        :
-                        'You must log in to leave a review'
-                        }
-                    </div>
-                    </div>
+
+
+
+
                 </div>
-                
             </div>
-            
+                
         </div>
+            
+    </div>
     );
 };
 

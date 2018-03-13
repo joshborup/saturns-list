@@ -19,6 +19,7 @@ class PublicProfileContainer extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.rating = this.rating.bind(this);
         this.submitReview= this.submitReview.bind(this);
+        this.handleSlideChange = this.handleSlideChange.bind(this);
     }
 
     componentDidMount(){
@@ -62,6 +63,12 @@ class PublicProfileContainer extends Component {
         })
     }
 
+    handleSlideChange = (value) => {
+        this.setState({
+          slideIndex: value,
+        });
+      };
+
     handleChange(value) {
         this.setState({ review: value })
     }
@@ -90,6 +97,8 @@ class PublicProfileContainer extends Component {
             userRating={this.state.userRating}
             rating={this.rating}
             submitReview={this.submitReview}
+            handleSlideChange={this.handleSlideChange}
+            slideIndex={this.state.slideIndex}
             />
         );
     }

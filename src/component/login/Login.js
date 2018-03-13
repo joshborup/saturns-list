@@ -53,12 +53,18 @@ const Login = (props) => {
                         Password:
                         <input onChange={(e) => props.enterPassword(e.target.value)} type='password' className='password' value={props.password}/>
                     </div>
+                    <div className='error-message'>
+                        {props.message}
+                    </div>
                     <div className='button-container'>
                         <button onClick={() => props.login()} style={loginButton} className='login-button'>Login</button>
                         <button onClick={() => props.register()} style={registerButton} className='register-button'>Register</button>
                         
                     </div>
-                    <Link className='browse' to='/'><span>Browse</span></Link>
+                    <div className='link-container'>
+                        <Link className='browse' to='/'><button className='forgot'><span>Browse</span></button></Link>
+                        <button onClick={()=> props.forgot()} className='forgot'><span>Forgot Password</span></button>
+                    </div>
                 </div>
             </div>
         </div>

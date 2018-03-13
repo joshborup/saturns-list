@@ -97,7 +97,10 @@ const Register = (props) => {
                             </div>
                         </div>
                         <div className='button-container'>
-                            {props.message}
+                            <div className='error-message'>
+                                {props.message}
+                            </div>
+                            
                             <button onClick={() => props.submit()} className='submit-button'>Submit</button>
                             <span onClick={() => props.register()}  className='go-back-button'>Go Back</span>
                         </div>

@@ -27,7 +27,7 @@
 
 
 .profile-layout div:nth-child(2) .inactive-posts {
-    margin: 40px 0px;
+   
 }
 
 
@@ -151,6 +151,24 @@
     margin: 0 10px;
 }
 
+.myTabs {
+    width: 100%;
+    min-width: 0px;
+}
+
+.myTabs .user-reviews > div:first-child {
+    margin: 0 10px;
+}
+
+.myTabs .user-reviews > div:first-child > span:first-child > div:first-child {
+    display: flex;
+    transform: scale(0.8);
+}
+
+.myTabs .user-reviews > div:first-child > span:first-child > div:first-child span:first-child {
+    margin: 10px 0px;
+}
+
 @media (min-width:768px){
     .profile-layout {
         display: flex;
@@ -172,6 +190,11 @@
 
     .account-container .itemPrice {
         font-size: 16px;
+    }
+
+    .myTabs .user-reviews > div:first-child > span:first-child > div:first-child {
+        display: flex;
+        transform: scale(1);
     }
 }
 

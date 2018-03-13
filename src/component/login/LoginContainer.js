@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Login from './Login';
 import { connect } from 'react-redux';
-import Register from './Register'
+import Register from './Register';
+import ForgotPassword from './ForgotPassword';
 import { fetchUserData, enterUserName, enterPassword, enterFirstName, enterLastName, enterEmail, enterPhone, enterCity, enterState, enterZip, enterCountry} from '../../redux/reducer';
 import axios from 'axios';
 
@@ -12,12 +13,17 @@ class LoginContainer extends Component {
             username: '',
             password: '',
             register: false,
-            message:null
+            message:'',
+            forgotPassword: false,
+            emailForForgotten: ''
         }
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
         this.registrationSubmit = this.registrationSubmit.bind(this);
         this.loginKeyPress = this.loginKeyPress.bind(this);
+        this.forgot = this.forgot.bind(this);
+        this.enterEmailForReset = this.enterEmailForReset.bind(this);
+        this.resetPasswordButton = this.resetPasswordButton.bind(this);
     }
 
     
@@ -27,7 +33,13 @@ class LoginContainer extends Component {
             axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{
                 
                 fetchUserData(response)
-                window.location.href = response.request.responseURL;
+                if(!response.data.message){
+                    window.location.href = response.request.responseURL;
+                    }else{
+                        this.setState({
+                            message: response.data.message
+                        })
+                    }
             })
         }
     }
@@ -35,15 +47,20 @@ class LoginContainer extends Component {
 
     login(){
         axios.post('/login', {username: this.props.username, password: this.props.password}).then((response)=>{
-            
             fetchUserData(response)
+            if(!response.data.message){
             window.location.href = response.request.responseURL;
-        })
+            }else{
+                this.setState({
+                    message: response.data.message
+                })
+            }
+        }).catch(error => console.log(error));
     }
 
     registrationSubmit(){
         
-        if(this.props.username && this.props.password && this.props.firstName && this.props.lastName && this.props.email && this.props.state && this.props.city && this.props.zip && this.props.country){
+        if(this.props.username.length >= 4 && this.props.password.length >= 7 && this.props.firstName && this.props.lastName && this.props.email && this.props.state && this.props.city && this.props.zip && this.props.country){
             axios.post('/register', {
                 username: this.props.username,
                 password: this.props.password,
@@ -59,19 +76,61 @@ class LoginContainer extends Component {
                 fetchUserData(response)
                 window.location.href = response.request.responseURL;
             })
-        }else(
-            this.setState({message: 'please fill out all required fields'})
-        )
+        }else if(this.props.username.length < 4){
+            this.setState({
+                message: 'username must be atleast 4 characters'
+            })
+        }else if(this.props.password.length < 7){
+            this.setState({
+                message: 'password must be atlease 7 characters'
+            })
+        }else{
+
+            this.setState({
+                message: 'please fill out all required fields'
+            })
+        }
+
+    }
+
+    forgot(){
+        if(!this.state.forgotPassword){
+        this.setState({
+            forgotPassword: true,
+            message: ''
+        })
+        }else {
+            this.setState({
+                forgotPassword: false,
+                message: ''
+            })
+        }
+    }
+
+    resetPasswordButton(){
+        axios.put('/api/forgot_password', {email: this.state.emailForForgotten}).then(response => {
+            this.setState({
+                message: response.data.message
+            })
+        })
+    }
+
+    enterEmailForReset(email){
+        this.setState({
+            emailForForgotten: email
+        })
     }
 
     register(){
         if(!this.state.register){
         this.setState({
-            register: true
+            register: true,
+            message: ''
         })
         }else {
             this.setState({
-                register:false
+                register:false,
+                message: ''
             })
         }
     }
@@ -109,6 +168,16 @@ class LoginContainer extends Component {
                 message={this.state.message}
                 />
                 :
+                this.state.forgotPassword
+                ?
+                <ForgotPassword
+                forgot={this.forgot}
+                enterEmailForReset={this.enterEmailForReset}
+                emailForForgotten={this.state.emailForForgotten}
+                message={this.state.message}
+                resetPasswordButton={this.resetPasswordButton}
+                />
+                :
                 <Login
                 enterPassword={this.props.enterPassword}
                 enterUserName={this.props.enterUserName}
@@ -117,6 +186,8 @@ class LoginContainer extends Component {
                 login={this.login}
                 register={this.register}
                 loginKeyPress={this.loginKeyPress}
+                message={this.state.message}
+                forgot={this.forgot}
                 />}
             </div>     
         );

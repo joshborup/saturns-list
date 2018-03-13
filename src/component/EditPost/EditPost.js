@@ -34,7 +34,7 @@ const EditPost = (props) => {
         <div className='post-padding'>
         <div className='add-post-display'>
             
-             <h1>Add a new post</h1>
+             <h1>Edit Post</h1>
             <div>
                 <div>
                 <div className='condition-container'>

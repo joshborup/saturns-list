@@ -8,6 +8,7 @@ import PostsContainer from './component/postings/PostsContainer';
 import EditAccountContainer from './component/EditAccount/EditAccountContainer';
 import PublicProfileContainer from './component/PublicProfile/PublicProfileContainer';
 import EditPostContainer from './component/EditPost/EditPostContainer';
+import ResetPasswordContainer from './component/ResetPassword/ResetPasswordContainer';
 
 export default (
     
@@ -20,6 +21,7 @@ export default (
         <Route path='/edit_account' component={EditAccountContainer}/>
         <Route path='/profile/:id' component={PublicProfileContainer}/>
         <Route path='/edit_post/:id' component={EditPostContainer} />
+        <Route path='/reset_password' component={ResetPasswordContainer}/>
     </Switch>
 
 )

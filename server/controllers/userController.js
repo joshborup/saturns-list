@@ -44,6 +44,12 @@ module.exports = {
         db.review_user([user, review, rating, req.session.user.id]).then(response => {
             res.status(200).send(response)
         })
+    },
+    getMyUserReviews: (req, res) => {
+        const db = req.app.get('db');
+        db.getMyUserReviews(req.session.user.id).then(response => {
+            res.status(200).send(response)
+        })
     }
 
 }

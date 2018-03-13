@@ -6,13 +6,17 @@ import './index.css';
 import {Provider} from 'react-redux';
 import App from './App';
 import store from './redux/store';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
 <BrowserRouter>
-    <Provider store={store}>    
-        <App />
+    <Provider store={store}>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <App />
+        </MuiThemeProvider>
     </Provider> 
 </BrowserRouter> 
 , document.getElementById('root'));

@@ -126,9 +126,6 @@ class ItemListContainer extends Component {
                        priceArrange: ''
                    })
             }
-        //   this.setState({
-        //       posts: this.state.posts.reverse()
-        //   })
       }
 
       selectCategory(num){

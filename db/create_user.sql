@@ -1,6 +1,6 @@
 INSERT INTO users
-(first_name, last_name, username, password, email, phone, zip, city, state, country, member_since) 
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+(first_name, last_name, username, password, email, phone, zip, city, state, country, member_since, pass_reset_string) 
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 INSERT INTO profiles
 (user_id, description, website, profile_image )

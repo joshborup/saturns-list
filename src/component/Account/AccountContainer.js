@@ -15,14 +15,21 @@ class AccountContainer extends Component {
             posts: '',
             inactive:'',
             isActive: true,
-            notActive: true
+            notActive: true,
+            slideIndex: 0,
+            userReviews: ''
         }
         this.markAsSold = this.markAsSold.bind(this);
         this.reactivate = this.reactivate.bind(this);
         this.deletePost = this.deletePost.bind(this);
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidMount(){
+
+        function getUserReviews(){
+            return axios.get('/api/my-user-reviews')
+        }
 
         function getUserData(){
             return axios.get('/api/user-data');
@@ -36,10 +43,11 @@ class AccountContainer extends Component {
             return axios.get('/api/inactive');
         }
 
-        axios.all([getUserData(),getUserPosts(), getInactivePosts()]).then(axios.spread((user, posts, inactive)=> {
+        axios.all([getUserData(),getUserPosts(), getInactivePosts(), getUserReviews()]).then(axios.spread((user, posts, inactive, userReviews)=> {
             this.setState({
                 posts: posts.data,
-                inactive: inactive.data
+                inactive: inactive.data,
+                userReviews: userReviews.data
             })
             this.props.fetchUserData(user.data);
 
@@ -86,6 +94,12 @@ class AccountContainer extends Component {
         
     }
 
+    handleChange = (value) => {
+        this.setState({
+          slideIndex: value,
+        });
+      };
+
     render() {
         return (
             <div className='account-container'>
@@ -102,6 +116,9 @@ class AccountContainer extends Component {
                 notActive={this.state.notActive}
                 reactivate={this.reactivate}
                 deletePost={this.deletePost}
+                handleChange={this.handleChange}
+                slideIndex={this.state.slideIndex}
+                userReviews={this.state.userReviews}
                 /> 
                 : 
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>

@@ -8,6 +8,9 @@ const lR = require('./controllers/loginRegister');
 const uC = require('./controllers/userController');
 const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
+const fP = require('./controllers/forgotPassword');
+
+
 require('dotenv').config();
 
 app.use(bodyParser.json());
@@ -22,10 +25,14 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     cookie: {
-        // 1 hour
+        // 2 weeks
         maxAge: 60 * 60 * 24 * 14 * 1000
     } 
 }))
+
+
+
+
 
 app.post('/register', lR.register);
 app.post('/login', lR.login);
@@ -95,6 +102,14 @@ app.get('/api/user-reviews', uC.getUserRatingInfo);
 
 //leave review 
 app.post('/api/leave_review', uC.leaveReview)
+
+//get reviews for account page 
+
+app.get('/api/my-user-reviews', uC.getMyUserReviews);
+
+app.put('/api/forgot_password', fP.forgotPassword);
+
+app.put('/api/reset_password', fP.resetPassword);
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

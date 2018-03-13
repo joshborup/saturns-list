@@ -63,6 +63,21 @@
     flex-direction: column;
 }
 
+.login div .link-container {
+    display: flex;
+    margin: 0 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.login .link-container .forgot {
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    height: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
 
 
 #registration-container .submit-button {
@@ -130,4 +145,77 @@
 #registration-container > .city-state-row div, #registration-container > .zip-country-row div, #registration-container > .first-last-row div, #registration-container > .email-phone-row  div {
     max-width: 160px;
     
+}
+
+.error-message {
+    color: red;
+    font-weight: bolder;
+    font-family: 'Montserrat';
+}
+
+.forgotPassword-container {
+    background:linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/login.jpg') ;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+
+}
+
+.forgotPassword-container > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.forgotPassword-container .forgot {
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    height: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+
+.forgotPassword-container > div > div {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    max-width: 380px;
+
+}
+
+.forgotPassword-container > div > div > *+* {
+    margin: 10px 0px;
+}
+
+.forgotPassword-container .submit-button {
+    background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%);
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 140px;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 2px;
+}
+
+.forgotPassword-container .forgotten-email {
+    width: 100%;
+    background: transparent;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+    border: 2px solid white;
+    border-radius: 3px;
 }

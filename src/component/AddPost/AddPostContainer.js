@@ -82,7 +82,13 @@ class AddPostToContainer extends Component {
     }
 
     post(){
-        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: this.state.images}).then(response => {
+        let imageArray;
+        if(this.state.images.length){
+            imageArray = this.state.images;
+        }else{
+            imageArray = ['http://res.cloudinary.com/saturnslist/image/upload/v1520883790/tarae1i8srjcnx7fvgbw.png']
+        }
+        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: imageArray}).then(response => {
             window.location.href = response.request.responseURL;
         })
     }

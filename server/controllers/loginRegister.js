@@ -6,10 +6,12 @@ module.exports = {
         //deconstructing username and password
         const { first_name, last_name, username, password, email, phone, zip, city, state, country } = req.body;
         const member_since = Date().split(' ').splice(1, 3).join(' ');
+
+        const random_reset_string = Math.random().toString(36).substring(2);
         //salt for hashing password
         const saltRounds = 12;
         bcrypt.hash(password, saltRounds).then(hashedPassword => {
-            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since]).then(response =>{
+            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since, random_reset_string]).then(response =>{
                 //set user to a session if succsesful login
                 const user = {
                     id: response[0].id,
@@ -51,19 +53,21 @@ module.exports = {
                             memberSince: users[0].member_since,
                         }
                         req.session.user = user;
-                        console.log('logged-in:', req.session.user)
+                        
                         req.session.save();
                         res.redirect('/')
                         
                     }else{
-                        res.status(403).json({ message: 'Wrong password' })
+                        console.log('wrong password')
+                        res.json({message:"Wrong username/password"})
                     }
                 })
 
             }else {
-                res.status(403).json({ message: "That user is not registered" })
+                console.log('wrong username')
+                res.json({message:"Wrong username/password"})
             }
-        })
+        }).catch(error => console.log(error))
     },
     logout: (req, res)=> {
         req.session.destroy();
