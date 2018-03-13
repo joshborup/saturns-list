@@ -9,7 +9,6 @@ import store from './redux/store';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
 <BrowserRouter>
@@ -20,4 +19,3 @@ ReactDOM.render(
     </Provider> 
 </BrowserRouter> 
 , document.getElementById('root'));
-registerServiceWorker();

@@ -3,7 +3,6 @@ const app = express();
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-require('dotenv').config();
 var pgSession = require('connect-pg-simple')(session);
 var pg = require('pg');
 const bcrypt = require('bcrypt');
@@ -13,7 +12,10 @@ const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
 const fP = require('./controllers/forgotPassword');
 
-pg.defaults.ssl = true;
+
+require('dotenv').config();
+
+
 
 
 
@@ -53,8 +55,8 @@ massive(process.env.CONNECTION_STRING).then(db => {
  
 app.use(session({
     store: new pgSession({
-        conString : process.env.CONNECTION_STRING,
-     }),
+        conString:process.env.CONNECTION_STRING
+        }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
