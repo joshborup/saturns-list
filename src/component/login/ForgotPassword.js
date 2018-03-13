@@ -4,7 +4,7 @@ const ForgotPassword = (props) => {
     return (
         <div className='forgotPassword-container'>
             <div>
-                <div>
+                <div onKeyPress={(e) => props.resetKeyPress(e)}>
                     <div>Forgot password?</div>
                     <h3>Enter the email you registered with</h3>
                     <input className='forgotten-email' onChange={(e)=> props.enterEmailForReset(e.target.value)} value={props.emailForForgotten}/>

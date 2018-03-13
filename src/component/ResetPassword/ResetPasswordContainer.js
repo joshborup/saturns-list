@@ -9,13 +9,14 @@ export default class ResetPasswordContainer extends Component {
         this.state = {
             newPassword: '',
             re_enterPassword: '',
-            email: 'joshborup@gmail.com',
+            email: '',
             reset_key: '',
             message:''
         }
         this.enterNewPassword = this.enterNewPassword.bind(this);
         this.reEnterNewPassword = this.reEnterNewPassword.bind(this);
         this.resetPass = this.resetPass.bind(this);
+        this.resetKeyPress = this.resetKeyPress.bind(this);
     }
 
     componentDidMount(){
@@ -35,6 +36,26 @@ export default class ResetPasswordContainer extends Component {
             re_enterPassword: password
         })
     }
+
+    resetKeyPress(e){
+        if(e.key == 'Enter'){
+            if(this.state.newPassword == this.state.re_enterPassword){
+                axios.put('/api/reset_password', {password: this.state.newPassword , reset_key: this.state.reset_key}).then(response => {
+                    this.setState({
+                        message: response.data.message
+                    })
+                    setTimeout(function() {
+                        window.location.href = '/account_login';
+                      }, 3000);
+                })
+            } else {
+                this.setState({
+                    message: 'Your passwords do not match'
+                })
+            }
+        }
+    }
+
 
     resetPass(){
         if(this.state.newPassword == this.state.re_enterPassword){
@@ -65,6 +86,7 @@ export default class ResetPasswordContainer extends Component {
             email={this.state.email}
             message={this.state.message}
             resetPass={this.resetPass}
+            resetKeyPress={this.resetKeyPress}
             />
         );
     }

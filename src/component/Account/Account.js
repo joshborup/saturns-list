@@ -137,26 +137,7 @@ const Account = (props) => {
                         </span>
                     </div>
                 </div>
-                {/* <div className='account-posts'> */}
-                    {/* <div className='active-posts'>
-                        <span>
-                            Active Posts
-                        </span>
-                        <div>
-                            {posts}
-                        </div>
-                    </div> */}
-                    {/* <div className='inactive-posts'>
-                        <span>
-                            Inactive Posts
-                        </span>
-                        <div>
-                            {inactive}
-                        </div>
-                    </div> */}
-
-
-
+            
                          <div className='myTabs'>
                             <Tabs
                             onChange={props.handleChange}

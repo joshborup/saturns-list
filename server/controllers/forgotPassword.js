@@ -24,8 +24,18 @@ module.exports = {
             const mailOptions = {
                 from: 'no.reply.saturns.list@gmail.com', // sender address
                 to: response[0].email, // list of receivers
-                subject: 'test', // Subject line
-                html: `<a href="http://localhost:4001/reset_password?reset_key=${random_reset_string}">reset your password here</p>`// plain text body
+                subject: 'Reset Password Saturns List', // Subject line
+                html: `<body style='text-align: center; background-color:#F1F2F4; width:100%; padding: 40px 0px'>
+                    <div>
+                        <img style='margin: 10px auto;' src='http://res.cloudinary.com/saturnslist/image/upload/v1520963194/saturn.png'/>
+                    <div>
+                    <div style='background-color: white; padding:10px; width:320px; margin: 0 auto; border-radius:3px;'>
+                        <div style='font-size: 28px; background-color:grey; color:white; padding: 5px;'>Saturns List Password Reset</div>
+                        <h1 style='color: #777777'>Reset Password</h1>
+                        <p style>Use the link below to set up a new password for your account. if you did not request to reset your password, ignore this email</p>
+                        <a style='text-decoration: none' href="http://localhost:4001/reset_password?reset_key=${random_reset_string}"><button style='width: 150px; background-color: #F85D49; color: white; font-size: 16px; height:60px; padding:5px; border: none; border-radius: 3px; box-sizing: border-box; font-weight: 900;'>RESET PASSWORD</button></a>
+                    </div>
+                <body>`// plain text body
               };
             
             transporter.sendMail(mailOptions, function (err, info) {

@@ -126,6 +126,12 @@
     color: #101BAA;
 }
 
+.account-container .item {
+    height:100px;
+    display: flex;
+   
+}
+
 .account-container .item-name:hover {
     color: #B75B22;
 }
@@ -195,6 +201,10 @@
     .myTabs .user-reviews > div:first-child > span:first-child > div:first-child {
         display: flex;
         transform: scale(1);
+    }
+
+    .account-container .item {
+        height:120px;
     }
 }
 

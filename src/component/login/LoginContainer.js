@@ -15,7 +15,8 @@ class LoginContainer extends Component {
             register: false,
             message:'',
             forgotPassword: false,
-            emailForForgotten: ''
+            emailForForgotten: '',
+            
         }
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
@@ -24,6 +25,7 @@ class LoginContainer extends Component {
         this.forgot = this.forgot.bind(this);
         this.enterEmailForReset = this.enterEmailForReset.bind(this);
         this.resetPasswordButton = this.resetPasswordButton.bind(this);
+        this.resetKeyPress = this.resetKeyPress.bind(this);
     }
 
     
@@ -115,6 +117,16 @@ class LoginContainer extends Component {
         })
     }
 
+    resetKeyPress(e){
+        if(e.key == 'Enter'){
+            axios.put('/api/forgot_password', {email: this.state.emailForForgotten}).then(response => {
+                this.setState({
+                    message: response.data.message
+                })
+            })
+        }
+    }
+
     enterEmailForReset(email){
         this.setState({
             emailForForgotten: email
@@ -176,6 +188,7 @@ class LoginContainer extends Component {
                 emailForForgotten={this.state.emailForForgotten}
                 message={this.state.message}
                 resetPasswordButton={this.resetPasswordButton}
+                resetKeyPress={this.resetKeyPress}
                 />
                 :
                 <Login

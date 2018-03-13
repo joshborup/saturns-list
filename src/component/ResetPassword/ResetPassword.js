@@ -8,7 +8,7 @@ const ResetPassword = (props) => {
     return (
         <div className='resetPassword'>
             <div>
-                <div>
+                <div onKeyPress={(e)=> props.resetKeyPress(e)}>
                     <h1>Reset password</h1>
                     <h2>{props.email}</h2>
                     <div>
@@ -19,7 +19,7 @@ const ResetPassword = (props) => {
                         Re-Enter Password:
                         <input onChange={(e) => props.reEnterNewPassword(e.target.value)} type='password' className='password' value={props.re_enterPassword}/>
                     </div>
-                    <div className='error-message'>
+                    <div className={props.message == 'Updated Password Successfully, you will be redirected to the login screen in a few seconds' ? 'success-message' : 'error-message'} >
                         {props.message}
                     </div>
                     <div className='reset-button-container'>

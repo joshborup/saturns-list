@@ -48,8 +48,10 @@ const Posts = (props) => {
                         <div>
                             <div className='title-posting-price'>
                                     $ {postInfo.price}
-                                </div>
+                            </div>
+                            <div className='date-posted'>
                                Date Posted: {postInfo.time_posted}
+                            </div>
                         </div>
                     </div>
                     <div className='pic-description'>
