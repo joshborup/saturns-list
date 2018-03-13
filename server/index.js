@@ -15,6 +15,18 @@ require('dotenv').config();
 
 app.use(bodyParser.json());
 
+// massive({
+//     host: '127.0.0.1',
+//     port: process.env.DB_PORT,
+//     database: 'joshborup',
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD
+//   }).then(db => {
+//     console.log('database connected')
+//     app.set('db', db)
+// })
+
+
 massive(process.env.CONNECTION_STRING).then(db => {
     console.log('database connected')
     app.set('db', db)
