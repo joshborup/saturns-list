@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS profiles;
+DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS categories;
@@ -23,6 +24,7 @@ CREATE TABLE users(
     , state VARCHAR(72) 
     , country INTEGER NOT NULL REFERENCES country(country_id)
     , member_since TEXT NOT NULL
+    ,pass_reset_string TEXT
 );
 
 CREATE TABLE reviews(
@@ -39,6 +41,9 @@ CREATE TABLE profiles(
     , description TEXT
     , website TEXT
     , profile_image TEXT
+    , instagram TEXT
+    , facebook TEXT
+    , astrobin TEXT
 );
 
 CREATE TABLE categories(

@@ -3,6 +3,9 @@ const app = express();
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+require('dotenv').config();
+var pgSession = require('connect-pg-simple')(session);
+var pg = require('pg');
 const bcrypt = require('bcrypt');
 const lR = require('./controllers/loginRegister');
 const uC = require('./controllers/userController');
@@ -10,8 +13,10 @@ const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
 const fP = require('./controllers/forgotPassword');
 
+pg.defaults.ssl = true;
 
-require('dotenv').config();
+
+
 
 app.use(bodyParser.json());
 
@@ -27,22 +32,35 @@ app.use(bodyParser.json());
 // })
 
 
+
+
 massive(process.env.CONNECTION_STRING).then(db => {
     console.log('database connected')
     app.set('db', db)
 })
 
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     saveUninitialized: true,
+//     resave: false,
+//     cookie: {
+//         // 2 weeks
+//         maxAge: 60 * 60 * 24 * 14 * 1000
+//     } 
+// }))
+
+
+ 
 app.use(session({
+    store: new pgSession({
+        conString : process.env.CONNECTION_STRING,
+     }),
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
     resave: false,
-    cookie: {
-        // 2 weeks
-        maxAge: 60 * 60 * 24 * 14 * 1000
-    } 
-}))
-
-
+    saveUninitialized: true,
+    cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
+    
+}));
 
 
 
