@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../shared/Header';
 import Item from '../ItemList/Item';
 import { Link } from 'react-router-dom';
+import saturn from '../../media/saturn.svg';
 import facebook from '../../media/facebook.svg';
 import instagram from '../../media/instagram.svg';
 import astrobin from '../../media/astrobin.png';
@@ -92,7 +93,7 @@ const PublicProfile = (props) => {
                 <div className='user-info-container'>
                     <div>
                         <div className='image-container'>
-                            <img src={props.sellerInfo.profile_image}/>
+                            {props.sellerInfo.profile_image !== 'No Info' ? <img src={props.sellerInfo.profile_image} /> : <img src={saturn}/>} 
                         </div>
                         <div>
                             <span>Member since:</span>
@@ -122,61 +123,6 @@ const PublicProfile = (props) => {
                         </div>
                         <div></div>
                     </div>
-
-
-                    {/* <div className='active-posts'>
-                            <span>Active Posts</span>
-                            {userPosts}
-                    </div>
-                    <div>
-                        <div className='reviews'>
-                            <span>
-                                User Reviews
-                            </span>
-                            {reveiwList}
-                        </div>
-                        <div>
-                            {
-                            props.user && props.user.id != props.sellerInfo.id 
-                            ?
-                            hasReviewed.length == 0
-                            ? 
-                            <div className='write-review'>
-                                <span>Write Review</span>
-                                <div>
-                                    <div>
-                                        <span>Rate User</span>
-                                        <ReactStars
-                                        count={5}
-                                        onChange={props.rating}
-                                        size={24}
-                                        color2={'#ffd700'}
-                                        value={props.userRating} 
-                                        half={false}
-                                        />
-                                        
-                                    </div>
-                                    <div>
-                                        <ReactQuill value={props.review}
-                                        onChange={props.handleChange} />
-                                    </div>
-                                </div>
-                                <button onClick={()=> props.submitReview()}>Submit</button>
-                            </div>
-                            
-                            : 
-                            'You have already reviewed this user'
-                            : 
-                            props.user.id == props.sellerInfo.id 
-                            ?
-                            'You cant review youself'
-                            :
-                            'You must log in to leave a review'
-                            }
-                        </div>
-                    </div> */}
-
-
 
 
                             <div className='myTabs'>
