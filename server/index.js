@@ -11,6 +11,7 @@ const uC = require('./controllers/userController');
 const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
 const fP = require('./controllers/forgotPassword');
+const aD = require('./controllers/admin');
 
 
 require('dotenv').config();
@@ -136,6 +137,9 @@ app.put('/api/forgot_password', fP.forgotPassword);
 
 app.put('/api/reset_password', fP.resetPassword);
 
+
+//admin api's
+app.get('/api/get_unapproved_posts', aD.getUnapproved);
 
 //for production
 

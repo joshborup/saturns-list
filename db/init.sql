@@ -24,7 +24,8 @@ CREATE TABLE users(
     , state VARCHAR(72) 
     , country INTEGER NOT NULL REFERENCES country(country_id)
     , member_since TEXT NOT NULL
-    ,pass_reset_string TEXT
+    , pass_reset_string TEXT
+    , admin BOOLEAN
 );
 
 CREATE TABLE reviews(
@@ -48,7 +49,7 @@ CREATE TABLE profiles(
 
 CREATE TABLE categories(
     id SERIAL PRIMARY KEY NOT NULL
-    ,name TEXT NOT NULL
+    , name TEXT NOT NULL
 );
 
 INSERT INTO categories (name) VALUES ('Barlow');
@@ -87,6 +88,7 @@ CREATE TABLE posts(
     ,price INTEGER NOT NULL
     ,condition TEXT NOT NULL
     ,active BOOLEAN NOT NULL
+    ,approved BOOLEAN
 );
 
 INSERT INTO country (country_id, country_name) VALUES (840,'United States');

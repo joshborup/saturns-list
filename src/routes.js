@@ -9,6 +9,7 @@ import EditAccountContainer from './component/EditAccount/EditAccountContainer';
 import PublicProfileContainer from './component/PublicProfile/PublicProfileContainer';
 import EditPostContainer from './component/EditPost/EditPostContainer';
 import ResetPasswordContainer from './component/ResetPassword/ResetPasswordContainer';
+import AdminContainer from './component/Admin/AdminContainer';
 
 export default (
     
@@ -22,6 +23,7 @@ export default (
         <Route path='/profile/:id' component={PublicProfileContainer}/>
         <Route path='/edit_post/:id' component={EditPostContainer} />
         <Route path='/reset_password' component={ResetPasswordContainer}/>
+        <Route path='/saturn_admin' component={AdminContainer}/>
     </Switch>
 
 )

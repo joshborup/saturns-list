@@ -1,0 +1,12 @@
+.admin-container > div {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.admin-container .awaiting-approval {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}

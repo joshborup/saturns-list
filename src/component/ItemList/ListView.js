@@ -65,8 +65,8 @@ const ListView = (props) => {
                         <p>{noMoreItems}</p>
                     </div>
                     <div className='page'>
-                        <button onClick={()=> props.prevPage()}>Previous Page</button>
-                        <button onClick={()=> props.nextPage()}>Next Page</button>
+                        <button onClick={()=> props.prevPage()}>Previous</button>
+                        <button onClick={()=> props.nextPage()}>Next</button>
                     </div>
                 </div>
                 

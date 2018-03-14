@@ -11,14 +11,15 @@ module.exports = {
         //salt for hashing password
         const saltRounds = 12;
         bcrypt.hash(password, saltRounds).then(hashedPassword => {
-            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since, random_reset_string]).then(response =>{
+            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since, random_reset_string, false]).then(response =>{
                 //set user to a session if succsesful login
                 const user = {
                     id: response[0].id,
                     username: response[0].username,
                     email: response[0].email,
                     location: response[0].state,
-                    memberSince: response[0].member_since
+                    memberSince: response[0].member_since,
+                    Admin: response[0].admin
                 }
                 req.session.user = user;
                 res.redirect('/')
@@ -51,6 +52,7 @@ module.exports = {
                             email: users[0].email,
                             location: users[0].state,
                             memberSince: users[0].member_since,
+                            Admin: users[0].admin
                         }
                         req.session.user = user;
                         

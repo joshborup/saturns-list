@@ -27,6 +27,12 @@
     
 }
 
+.AdminGrow {
+    transition: 0.4s;
+    height: 320px;
+    
+}
+
 .shrink {
     transition: 0.4s;
     height: 60px;
