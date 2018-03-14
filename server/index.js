@@ -15,23 +15,14 @@ const fP = require('./controllers/forgotPassword');
 
 require('dotenv').config();
 
-
-
+//for production
+//app.use( express.static( `${__dirname}/../build` ) );
 
 
 
 app.use(bodyParser.json());
 
-// massive({
-//     host: '127.0.0.1',
-//     port: process.env.DB_PORT,
-//     database: 'joshborup',
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD
-//   }).then(db => {
-//     console.log('database connected')
-//     app.set('db', db)
-// })
+
 
 
 
@@ -41,28 +32,30 @@ massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
 
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     saveUninitialized: true,
-//     resave: false,
-//     cookie: {
-//         // 2 weeks
-//         maxAge: 60 * 60 * 24 * 14 * 1000
-//     } 
-// }))
+//For Development
 
-
- 
 app.use(session({
-    store: new pgSession({
-        conString:process.env.CONNECTION_STRING
-        }),
     secret: process.env.SESSION_SECRET,
-    resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
+    resave: false,
+    cookie: {
+        // 2 weeks
+        maxAge: 60 * 60 * 24 * 14 * 1000
+    } 
+}))
+
+
+// for production 
+// app.use(session({
+//     store: new pgSession({
+//         conString:process.env.CONNECTION_STRING
+//         }),
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
     
-}));
+// }));
 
 
 
@@ -142,6 +135,14 @@ app.get('/api/my-user-reviews', uC.getMyUserReviews);
 app.put('/api/forgot_password', fP.forgotPassword);
 
 app.put('/api/reset_password', fP.resetPassword);
+
+
+//for production
+
+// const path = require('path')
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))
