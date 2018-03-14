@@ -79,6 +79,8 @@ const PublicProfile = (props) => {
             condition={e.condition}
             seller_id={e.seller_id}
             hideSeller={props.hideSeller}
+            active={e.active}
+            approved={e.approved}
             />
         </Link>
         )

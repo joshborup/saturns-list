@@ -110,6 +110,9 @@ const AddPost = (props) => {
                     </div>
 
                 </div>
+                <div className='approval-message'>
+                    {props.message}
+                </div>
                 <div>
                     <button onClick={() => props.post()}>Post</button>
                 </div>

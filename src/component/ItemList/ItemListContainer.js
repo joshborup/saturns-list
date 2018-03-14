@@ -20,7 +20,8 @@ class ItemListContainer extends Component {
             priceOrder:true,
             timeOrder: true,
             dateArrange: '',
-            priceArrange: ''
+            priceArrange: '',
+            hideItems: true,
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
@@ -244,6 +245,7 @@ class ItemListContainer extends Component {
                     reversePrice={this.reversePrice}
                     dateArrange={this.state.dateArrange}
                     priceArrange={this.state.priceArrange}
+                    hideItems={this.state.hideItems}
                     />
                 </div>
             

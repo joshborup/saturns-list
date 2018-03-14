@@ -69,8 +69,10 @@ const Account = (props) => {
                 price={e.price}
                 condition={e.condition}
                 user={props.user}
+                active={e.active}
                 markAsSold={props.markAsSold}
                 isActive={props.isActive}
+                approved={e.approved}
                 />
            
         )
@@ -92,10 +94,13 @@ const Account = (props) => {
             reactivate={props.reactivate}
             deletePost={props.deletePost}
             seller_id={props.user.id}
+            approved={e.approved}
             />
        
         )
     }) : 'Loading';
+
+    console.log(props.inactive);
     return (
         <div className='account'>
             

@@ -20,7 +20,8 @@ class AddPostToContainer extends Component {
             itemCondition:'',
             images:[],
             upload: 'item',
-            text: ''
+            text: '',
+            message:''
             
         }
         this.getCategory = this.getCategory.bind(this);
@@ -89,7 +90,15 @@ class AddPostToContainer extends Component {
             imageArray = ['https://res.cloudinary.com/saturnslist/image/upload/v1520883790/tarae1i8srjcnx7fvgbw.png']
         }
         axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: imageArray}).then(response => {
-            window.location.href = response.request.responseURL;
+            
+            this.setState({
+                message: 'Thank you for your submission, Your post is pending approval and will be reviewed shortly you will be redirected to the home page in a few seconds'
+
+            })
+            setTimeout(function() {
+                window.location.href = response.request.responseURL;
+              }, 4000);
+           
         })
     }
     
@@ -116,6 +125,7 @@ class AddPostToContainer extends Component {
                     upload={this.state.upload}
                     handleChange={this.handleChange}
                     text={this.state.text}
+                    message={this.state.message}
                     
                 /> : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
                 {/* <AddPost/> */}

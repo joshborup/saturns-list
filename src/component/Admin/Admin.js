@@ -1,10 +1,13 @@
 import React from 'react';
 import Item from '../ItemList/Item';
+import {Link } from 'react-router-dom';
+import UserSignUpData from './UserSignUpData';
 
 const Admin = (props) => {
 
     const posts = props.posts ? props.posts.map((e, i) =>{
         return (
+        
             <Item
             key={i}
             name={e.name}
@@ -14,6 +17,10 @@ const Admin = (props) => {
             price={e.price}
             condition={e.condition}
             username={e.username}
+            itemId={e.id}
+            admin={props.admin}
+            approvePost={props.approvePost}
+            disapproveAndDelete={props.disapproveAndDelete}
             />
         )
     }) : 'Loading'
@@ -23,7 +30,16 @@ const Admin = (props) => {
             <div>
                 <h1>Admin view</h1>
                 <div className='awaiting-approval'>
-                    {posts}
+                    <div>
+                        <h2>User Stats</h2>
+                        <div className='stats-column'>
+                            <UserSignUpData/>
+                        </div>
+                    </div>
+                    <div className='pending-approval-posts'>
+                        <h2>Pending posts</h2>
+                        {posts}
+                    </div>
                 </div>
             </div>
         </div>

@@ -141,6 +141,11 @@ app.put('/api/reset_password', fP.resetPassword);
 //admin api's
 app.get('/api/get_unapproved_posts', aD.getUnapproved);
 
+app.put('/api/approve_post', aD.approvePost);
+
+app.delete('/api/disapprove_delete', aD.disapproveAndDelete);
+
+app.get('/api/getUserSignUpData', aD.getUserSignUpInfo);
 //for production
 
 // const path = require('path')

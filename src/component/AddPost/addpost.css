@@ -6,6 +6,16 @@
     
 }
 
+.add-post-container .approval-message {
+    color: rgb(67, 228, 67);
+    text-shadow: 1px 1px 2px black;
+    padding: 5px;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 
 .add-post-display {

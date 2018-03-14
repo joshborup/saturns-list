@@ -22,13 +22,15 @@ const ListView = (props) => {
             condition={e.condition}
             markAsSold={markAsSold}
             username={e.username}
+            hideItems={props.hideItems}
+            active={e.active}
             />
         </Link>
         )
     }) : 'Loading'
     const noMoreItems = props.posts.length ? '' : 'You have reached the end'
 
-    
+    console.log(props.posts);
     return (
         <div>
             <Header color={props.headerStyle}/>
