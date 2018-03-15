@@ -1,9 +1,45 @@
+const nodemailer = require('nodemailer');
+
 module.exports = {
     newPost: (req, res) => {
         const db = req.app.get('db');
         const posted = Date().split(' ').splice(1, 4).join(' ');
         const { cat_id, price, name, condition, description, imageArray } = req.body
         db.create_post([req.session.user.id, cat_id, posted, name, description, price, condition, false, imageArray, false]).then(() => {
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                       user: 'no.reply.saturns.list@gmail.com',
+                       pass: process.env.EMAIL_PASSWORD
+                   }
+               });
+            
+            const mailOptions = {
+                from: 'no.reply.saturns.list@gmail.com', // sender address
+                to: 'no.reply.saturns.list@gmail.com', // list of receivers
+                subject: 'New Post: Approval Needed', // Subject line
+                html: `<body style='text-align: center; background-color:#F1F2F4; width:100%; padding: 40px 0px'>
+                    <div>
+                        <img style='margin: 10px auto;' src='https://res.cloudinary.com/saturnslist/image/upload/v1520963194/saturn.png'/>
+                    <div>
+                    <div style='background-color: white; padding:10px; width:320px; margin: 0 auto; border-radius:3px;'>
+                        <div style='font-size: 28px; background-color:grey; color:white; padding: 5px;'>New Post</div>
+                        <h1 style='color: #777777'>Post requires approval</h1>
+                        <h2 style='color: #777777'>Post by ${req.session.user.username}</h2>
+                        <h4 style='color: #999999'>Item Name: ${name}</h4>
+                        <a style='text-decoration: none' href="https://saturnslist.com/account_login"><button style='width: 150px; background-color: #F85D49; color: white; font-size: 16px; height:60px; padding:5px; border: none; border-radius: 3px; box-sizing: border-box; font-weight: 900;'>Log in to approve</button></a>
+                    </div>
+                <body>`// plain text body
+              };
+            
+            transporter.sendMail(mailOptions, function (err, info) {
+                if(err){
+                  console.log(err)
+                }else{
+                  console.log(info);
+             }});
+
 
             res.redirect('/');
 

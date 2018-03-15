@@ -47,6 +47,8 @@
     padding: 0px 25px;
     margin-bottom: 10px;
     font-size: 34px;
+    max-width: 350px;
+    margin: 0 auto 10px;
 }
 
 .admin-container .awaiting-approval > div:first-child .stats-column {
