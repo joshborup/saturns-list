@@ -22,25 +22,6 @@ render(){
 
     const cutOffDesc = stripedHtml.split(' ').splice(stripedHtml.split(' ').length - 15).join(' ') + '...';
     
-
-    // if(this.props.isActive){
-
-    //    return <button onClick={()=> this.props.markAsSold(this.props.itemId)} className='soldButton'>mark as sold</button>
-
-    // }else if(this.props.notActive){
-
-    //    return <button onClick={()=> this.props.reactivate(this.props.itemId)} className='reactivateButton'>re-list</button> 
-
-    // }else if(this.props.approved){
-
-    //     return null
-
-    // }else{
-
-    //   return <div className='pendingApproval'>Approval Pending</div>
-    // }
-
-
     const flex = {
         display:'flex',
         flexDirection:'column',

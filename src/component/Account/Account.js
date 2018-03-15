@@ -10,6 +10,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Reviews from '../shared/Reviews';
 
+
 const styles = {
     headline: {
       fontSize: 24,
@@ -113,6 +114,7 @@ const Account = (props) => {
                     <div>
                         <Link to='/edit_account'><button className='edit-profile'>Edit Profile</button></Link>
                     </div>
+                    
                     <div>
                         <span>
                         About:

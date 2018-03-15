@@ -12,6 +12,7 @@ const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
 const fP = require('./controllers/forgotPassword');
 const aD = require('./controllers/admin');
+const nC = require('./controllers/notifications')
 
 
 require('dotenv').config();
@@ -148,6 +149,20 @@ app.delete('/api/disapprove_delete', aD.disapproveAndDelete);
 app.get('/api/getUserSignUpData', aD.getUserSignUpInfo);
 
 app.get('/api/active_inactive_count', aD.activeInactiveCount);
+
+
+//notifications
+
+app.get('/api/notifications', nC.postApproval);
+
+app.get('/api/notifications_count', nC.count);
+
+app.put('/api/dismiss_notification', nC.dismissNotification);
+
+app.get('/api/notifications_review', nC.newReview);
+
+app.put('/api/dismiss_review', nC.dismissReview);
+
 //for production
 
 // const path = require('path')

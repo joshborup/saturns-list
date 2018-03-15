@@ -70,7 +70,7 @@ class AdminContainer extends Component {
    
 
     render() {
-        console.log(this.state.posts);
+        
         return (
             <div>
                 <Header

@@ -25,7 +25,7 @@ export default class UserSignUpData extends Component {
 
     componentDidMount(){
         axios.get('/api/getUserSignUpData').then(response => {
-            console.log(response.data[0].count)
+            
             this.setState({
                 jan: response.data[0].count,
                 feb: response.data[1].count,

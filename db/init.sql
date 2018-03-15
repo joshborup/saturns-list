@@ -34,6 +34,7 @@ id SERIAL NOT NULL PRIMARY KEY
 , review TEXT
 , rating INTEGER NOT NULL
 , reviewer_id INTEGER REFERENCES users(id)
+, notified TEXT
 );
 
 CREATE TABLE profiles(
@@ -89,6 +90,7 @@ CREATE TABLE posts(
     ,condition TEXT NOT NULL
     ,active BOOLEAN NOT NULL
     ,approved BOOLEAN
+    ,notified TEXT
 );
 
 INSERT INTO country (country_id, country_name) VALUES (840,'United States');

@@ -124,10 +124,6 @@ class AccountContainer extends Component {
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>
                 }
                 
-                 {/* <Account
-                user={this.props.user}
-                
-                />  */}
             </div>
         );
     }

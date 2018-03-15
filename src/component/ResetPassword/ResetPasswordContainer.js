@@ -76,7 +76,6 @@ export default class ResetPasswordContainer extends Component {
     }
 
     render() {
-        console.log(this.state.reset_key);
         return (
             <ResetPassword 
             enterNewPassword={this.enterNewPassword}

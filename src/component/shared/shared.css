@@ -29,7 +29,7 @@
 
 .AdminGrow {
     transition: 0.4s;
-    height: 320px;
+    height: 330px;
     
 }
 
@@ -38,6 +38,21 @@
     height: 60px;
 }
 
+.header .notification-alert {
+    display: flex;
+    flex-direction: column;
+    min-width: 55px;
+    padding: 1px;
+    
+}
+
+.header .notification-alert span > div {
+    padding: 10px 10px 28px 10px!important;
+}
+
+.header .notification .alert-text .alert-text-size {
+    font-size: 10px;
+}
 
 
 
@@ -54,11 +69,52 @@
     width: 500px;
     display: flex;
     align-content: center;
-    align-items: center;
-
-    
+    align-items: center;   
 }
 
+.notification {
+    min-width: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(87, 194, 210, 0), rgba(30, 225, 255, 0));
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px black;
+    cursor: pointer;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px black;
+}
+
+.button-menu > .big-hide {
+    box-shadow: 1px 1px 5px black;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+div.header div.button-menu  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.header div.button-menu .big-hide {
+    margin-right: 10px;
+}
+
+
+.notification system span{
+    padding: 10px;
+    background: white;
+}
+
+div.header div.button-menu ul > .small-hide {
+    display: flex;
+}
+
+.notification > span div {
+    padding: 12px 12px 24px 12px!important;
+}
 .header > div > div:first-child img {
     width: 40px;
     height: 40px;
@@ -143,6 +199,8 @@
 }
 
 
+
+
 @media (min-width: 768px){
 
     
@@ -150,6 +208,7 @@
 
 @media (min-width: 991px){
    
+
     .header > div {
         
         padding-right: 40px;
@@ -157,6 +216,8 @@
         transition: 0.5s;
         height: 60px;
     }
+
+
 
     .header > div > div {
         display: flex;
@@ -168,6 +229,7 @@
         transform: rotate(0deg);  
         padding: 15px 40px 15px 15px;   
     }
+
 
     .grow {
         transition: 0.5s;
