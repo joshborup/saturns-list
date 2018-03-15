@@ -60,6 +60,7 @@
     padding: 5px;
 }
 
+
 .admin-container .awaiting-approval > div:last-child {
     flex: 2;
 }
@@ -127,7 +128,7 @@
     .admin-container .awaiting-approval > div:first-child .stats-column {
         flex: 1;
         box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
-        margin: 0 auto;
+        margin: 0 auto 20px;
     }
 
     .admin-container .view-post-admin {

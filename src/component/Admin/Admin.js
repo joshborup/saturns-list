@@ -2,6 +2,7 @@ import React from 'react';
 import Item from '../ItemList/Item';
 import {Link } from 'react-router-dom';
 import UserSignUpData from './UserSignUpData';
+import PostsByCat from './PostsByCat';
 
 const Admin = (props) => {
 
@@ -43,8 +44,12 @@ const Admin = (props) => {
                             </div>
                         </div>
                         <div className='stats-column'>
-                            <UserSignUpData/>
+                            <PostsByCat/>
                         </div>
+                        <div className='stats-column'>
+                            
+                            <UserSignUpData/>
+                        </div> 
                     </div>
                     <div className='pending-approval-posts'>
                         <h2>Pending posts</h2>

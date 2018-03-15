@@ -163,6 +163,8 @@ app.get('/api/notifications_review', nC.newReview);
 
 app.put('/api/dismiss_review', nC.dismissReview);
 
+app.get('/api/get_item_count_by_cat', aD.getItemCountByPosts);
+
 //for production
 
 // const path = require('path')

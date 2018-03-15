@@ -33,16 +33,19 @@ const styles = {
           
       },
       active: {
-        background: 'linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%)',
-        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+        background: 'linear-gradient(135deg, #667db6, #0082c8, #0082c8)',
+        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)',
+        textShadow:   '1px 1px 2px black'
       },
       inactive: {
         background: 'linear-gradient( 135deg, #FFAA85 10%, #B3315F 100%)',
-        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+        boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)',
+        textShadow:   '1px 1px 2px black'
       },
       reviews: {
-          background: 'linear-gradient(135deg, #667db6, #0082c8, #0082c8)',
-          boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)'
+          background: 'linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%)',
+          boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)',
+          textShadow:   '1px 1px 2px black'
       }
       
       
@@ -133,19 +136,14 @@ const PublicProfile = (props) => {
                             value={props.slideIndex}
                             style={tabStyle.main}
                             >
-                            <Tab style={tabStyle.active} label="Active Posts" value={0} />
-                            <Tab style={tabStyle.reviews} label="User Reviews" value={1} />
+                            <Tab style={tabStyle.active} label="User Reviews" value={0} />
+                            <Tab style={tabStyle.reviews} label="Active Posts" value={1} />
                             </Tabs>
                             <SwipeableViews
                             index={props.slideIndex}
                             onChangeIndex={props.handleSlideChange}
                             style={tabStyle.main}
                             >
-                            <div style={styles.slide}>
-                                <div className='active-posts'>
-                                    {userPosts}
-                                </div>
-                            </div>
                             <div style={styles.slide}>
                             <div>
                                 <div className='reviews'>
@@ -165,7 +163,7 @@ const PublicProfile = (props) => {
                                                 <ReactStars
                                                 count={5}
                                                 onChange={props.rating}
-                                                size={24}
+                                                size={22}
                                                 color2={'#ffd700'}
                                                 value={props.userRating} 
                                                 half={false}
@@ -192,6 +190,12 @@ const PublicProfile = (props) => {
                                 </div>
                             </div>
                             </div>
+                            <div style={styles.slide}>
+                                <div className='active-posts'>
+                                    {userPosts}
+                                </div>
+                            </div>
+                            
                             </SwipeableViews>
                         </div>
 

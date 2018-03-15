@@ -196,13 +196,16 @@
     transform: scale(0.8);
 }
 
-.profile-container .myTabs > div:nth-child(2) > div > div:nth-child(2) > div > div > div.reviews > div > div:nth-child(1) > span:nth-child(1) > div > span:nth-child(1){
+
+.profile-container .myTabs > div:nth-child(2) > div > div:nth-child(1) > div > div > div.reviews > div > div:nth-child(1) > span:nth-child(1) > div > span:nth-child(1) {
     margin: 0px;
 }
 
-.profile-container .myTabs > div:nth-child(2) > div > div:nth-child(2) > div > div > div.reviews > div > div:nth-child(1) > span:nth-child(1) > div {
+.profile-container .myTabs > div:nth-child(2) > div > div:nth-child(1) > div > div > div.reviews > div > div:nth-child(1) > span:nth-child(1) > div {
     margin-bottom: 10px;
 }
+
+
 
 @media (min-width: 768px){
     .user-info-container > *+* {

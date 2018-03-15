@@ -34,5 +34,11 @@ module.exports = {
         db.count_active_inactive().then(response => {
             res.status(200).send(response);
         }).catch(error => console.log(error))
+    },
+    getItemCountByPosts: (req, res)=> {
+        const db = req.app.get('db');
+        db.get_item_count_by_cat().then(response => {
+            res.status(200).send(response);
+        }).catch(error => console.log(error))
     }
 }
