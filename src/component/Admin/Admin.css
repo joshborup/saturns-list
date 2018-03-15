@@ -39,12 +39,22 @@
     margin-bottom: 5px;
 }
 
+.admin-container .post-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 25px;
+    margin-bottom: 10px;
+    font-size: 34px;
+}
+
 .admin-container .awaiting-approval > div:first-child .stats-column {
     flex: 1;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
     width: 100%;
     max-width: 350px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     padding: 5px;
 }
 
@@ -115,6 +125,7 @@
     .admin-container .awaiting-approval > div:first-child .stats-column {
         flex: 1;
         box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+        margin: 0 auto;
     }
 
     .admin-container .view-post-admin {

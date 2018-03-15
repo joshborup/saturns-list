@@ -11,7 +11,8 @@ class PostsContainer extends Component {
         this.state = {
             individualPost: '',
             file: '',
-            seller:''
+            seller:'',
+            headerStyle: 'orange'
         }
     }
 
@@ -45,6 +46,7 @@ class PostsContainer extends Component {
                 file={this.state.file}
                 seller={this.state.seller}
                 user={this.props.user}
+                color={this.state.headerStyle}
                 />
         );
     }

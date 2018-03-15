@@ -32,6 +32,16 @@ const Admin = (props) => {
                 <div className='awaiting-approval'>
                     <div>
                         <h2>User Stats</h2>
+                        <div className='post-count'>
+                            <div>
+                                <h3>Active Posts</h3>
+                                {props.activePosts}
+                            </div>
+                            <div>
+                                <h3>Inactive Posts</h3>
+                                {props.inactivePosts}
+                            </div>
+                        </div>
                         <div className='stats-column'>
                             <UserSignUpData/>
                         </div>

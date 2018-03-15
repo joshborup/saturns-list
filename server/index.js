@@ -146,6 +146,8 @@ app.put('/api/approve_post', aD.approvePost);
 app.delete('/api/disapprove_delete', aD.disapproveAndDelete);
 
 app.get('/api/getUserSignUpData', aD.getUserSignUpInfo);
+
+app.get('/api/active_inactive_count', aD.activeInactiveCount);
 //for production
 
 // const path = require('path')

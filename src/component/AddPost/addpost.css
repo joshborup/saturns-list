@@ -3,7 +3,7 @@
     background: #F9F9F9;
     min-width: 100vw;
     background-size: cover;
-    
+    margin-bottom: 20px;
 }
 
 .add-post-container .approval-message {

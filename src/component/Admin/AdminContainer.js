@@ -11,7 +11,10 @@ class AdminContainer extends Component {
         super(props)
         this.state = {
             user:'',
-            posts: ''
+            posts: '',
+            headerStyle: 'orange',
+            activePosts:'',
+            inactivePosts:''
         }
         this.approvePost = this.approvePost.bind(this);
         this.disapproveAndDelete = this.disapproveAndDelete.bind(this);
@@ -26,13 +29,18 @@ class AdminContainer extends Component {
         function getAllPosts(){
             return axios.get('/api/get_unapproved_posts');
         }
+        function getActiveInactive(){
+            return axios.get('/api/active_inactive_count');
+        }
 
 
-        axios.all([getUserData(), getAllPosts()]).then(axios.spread((user, posts)=> {
+        axios.all([getUserData(), getAllPosts(), getActiveInactive()]).then(axios.spread((user, posts, activeInactive)=> {
             
             this.props.fetchUserData(user.data);
             this.setState({
                 posts: posts.data,
+                activePosts: activeInactive.data[0].count,
+                inactivePosts: activeInactive.data[1].count
             })
         }))
     
@@ -65,13 +73,17 @@ class AdminContainer extends Component {
         console.log(this.state.posts);
         return (
             <div>
-                <Header/>
+                <Header
+                color4={this.state.headerStyle}
+                />
                 {this.props.user.Admin ? 
                 <Admin
                 posts={this.state.posts}
                 admin={this.props.user.Admin}
                 approvePost={this.approvePost}
                 disapproveAndDelete={this.disapproveAndDelete}
+                activePosts={this.state.activePosts}
+                inactivePosts={this.state.inactivePosts}
                 /> 
                 :
                  'You are not authorized to be here!'}

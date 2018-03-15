@@ -30,7 +30,8 @@ const Posts = (props) => {
 
 
         <div>
-            <Header />
+            <Header 
+            />
             <div className='posts'>
                 <div>
                     <div className='name-time'>

@@ -14,7 +14,8 @@ class PublicProfileContainer extends Component {
             userReviews:[],
             review: '',
             hideSeller: true,
-            userRating:''
+            userRating:'',
+            headerStyle: 'orange'
         }
         this.handleChange = this.handleChange.bind(this);
         this.rating = this.rating.bind(this);

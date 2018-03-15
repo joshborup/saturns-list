@@ -26,5 +26,11 @@ module.exports = {
         db.get_user_sign_up_info().then(response => {
             res.status(200).send(response);
         }).catch(error => console.log(error))
+    },
+    activeInactiveCount: (req, res) => {
+        const db = req.app.get('db');
+        db.count_active_inactive().then(response => {
+            res.status(200).send(response);
+        }).catch(error => console.log(error))
     }
 }
