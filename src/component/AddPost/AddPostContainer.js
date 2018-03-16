@@ -22,7 +22,8 @@ class AddPostToContainer extends Component {
             images:[],
             upload: 'item',
             text: '',
-            message:''
+            message:'',
+            error: ''
             
         }
         this.getCategory = this.getCategory.bind(this);
@@ -90,17 +91,43 @@ class AddPostToContainer extends Component {
         }else{
             imageArray = ['https://res.cloudinary.com/saturnslist/image/upload/v1520883790/tarae1i8srjcnx7fvgbw.png']
         }
+        if(this.state.category == ''){
+            this.setState({
+                error: 'You Must Select a Catergory'
+            });
+        }else if(this.state.itemPrice == ''){
+            this.setState({
+                error: 'You Must Set a Price'
+            });
+
+        }else if(this.state.itemCondition == ''){
+            this.setState({
+                error: 'You Must Select a Condition'
+            });
+        }else if(this.state.itemName == ''){
+
+            this.setState({
+                error: 'You Must Set an Item Name'
+            });
+
+        }else if(this.state.text == ''){
+            this.setState({
+                error: 'You Must Set an Item Description'
+            });
+
+        }else {
         axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: imageArray}).then(response => {
             
             this.setState({
-                message: 'Thank you for your submission, Your post is pending approval and will be reviewed shortly you will be redirected to the home page in a few seconds'
-
+                message: 'Thank you for your submission, Your post is pending approval and will be reviewed shortly you will be redirected to the home page in a few seconds',
+                error: ''
             })
             setTimeout(function() {
                 window.location.href = response.request.responseURL;
               }, 4000);
            
         })
+        }
     }
     
     render() {
@@ -128,7 +155,7 @@ class AddPostToContainer extends Component {
                     handleChange={this.handleChange}
                     text={this.state.text}
                     message={this.state.message}
-                    
+                    error={this.state.error}
                 /> 
                 <Footer/>
                 </div>

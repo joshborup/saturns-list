@@ -146,7 +146,7 @@ class Header extends Component {
                         <ul className={this.state.isAnimating ? 'show-menu' : 'hide-menu'}>
                             <Link to='/'><li style={boldheader}>Home</li></Link>
                             { this.props.user.Admin ? <Link to='/saturn_admin'><li style={boldheader4}>Admin</li></Link> : ''}
-                            { this.props.user ? <Link to='/add_post'><li style={boldheader1}>Post</li></Link> : ''}
+                            <Link to='/add_post'><li style={boldheader1}>Post</li></Link>
                             { this.props.user ? <Link to='/account'><li style={boldheader2}>Account</li></Link> : ''}
                             { this.props.user ? <li onClick={()=>this.logout()}>Logout</li> : <Link to='/account_login'><li>Login/Register</li></Link>}
                         </ul>

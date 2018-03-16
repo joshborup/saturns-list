@@ -216,8 +216,7 @@ div.header div.button-menu ul > .small-hide {
     padding: 10px;
     margin-top: 50px;
     font-family: 'Lobster', sans-serif;
-    
-    
+    box-shadow: 0px -.5px 10px rgba(0, 0, 0, 0.445);
 }
 
 div.footer > div > div > div {
