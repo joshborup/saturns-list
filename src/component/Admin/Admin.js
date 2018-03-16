@@ -18,6 +18,7 @@ const Admin = (props) => {
             price={e.price}
             condition={e.condition}
             username={e.username}
+            email={e.email}
             itemId={e.id}
             admin={props.admin}
             approvePost={props.approvePost}

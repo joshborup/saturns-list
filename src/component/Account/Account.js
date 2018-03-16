@@ -101,7 +101,7 @@ const Account = (props) => {
         )
     }) : 'Loading';
 
-    console.log(props.inactive);
+    
     return (
         <div className='account'>
             

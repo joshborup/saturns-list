@@ -165,6 +165,8 @@ app.put('/api/dismiss_review', nC.dismissReview);
 
 app.get('/api/get_item_count_by_cat', aD.getItemCountByPosts);
 
+app.post('/api/contact_saturn', nC.contactSaturn);
+
 //for production
 
 // const path = require('path')

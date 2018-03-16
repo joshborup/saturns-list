@@ -4,6 +4,7 @@ import saturn from '../../media/saturn.svg';
 import selfie from '../../media/aztronomy.jpg';
 import UploadForm from '../AddPost/UploadForm'
 import ReactQuill from 'react-quill';
+import Footer from '../shared/Footer';
 import 'react-quill/dist/quill.snow.css';
 import './edit.css';
 
@@ -86,6 +87,7 @@ class EditAccount extends Component {
                 <button className='update-submit' onClick={() => this.props.submitUpdate()}>submit</button>
                 <button className='update-cancel' onClick={() => this.props.cancel()}>cancel</button>
             </div>
+            <Footer/>
         </div>
     );
     }

@@ -4,6 +4,7 @@ import Account from './Account';
 import Header from '../shared/Header';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Footer from '../shared/Footer';
 import { fetchUserData, fetchCategories, fetchProfileInfo } from '../../redux/reducer';
 import './account.css'
 
@@ -105,7 +106,8 @@ class AccountContainer extends Component {
             <div className='account-container'>
                 <Header color2={this.state.headerStyle} />
                 {
-                this.props.user ?  
+                this.props.user ? 
+                <div> 
                 <Account
                 user={this.props.user}
                 posts={this.state.posts}
@@ -119,11 +121,13 @@ class AccountContainer extends Component {
                 handleChange={this.handleChange}
                 slideIndex={this.state.slideIndex}
                 userReviews={this.state.userReviews}
-                /> 
+                />
+                <Footer/> 
+                </div>
                 : 
                 <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>
                 }
-                
+               
             </div>
         );
     }

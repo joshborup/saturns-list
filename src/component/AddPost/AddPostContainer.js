@@ -4,6 +4,7 @@ import axios from 'axios';
 import AddPost from './AddPost';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import Footer from '../shared/Footer';
 import { fetchUserData } from '../../redux/reducer';
 import Categories from '../ItemList/Categories';
 
@@ -106,7 +107,8 @@ class AddPostToContainer extends Component {
         return (
             <div className='add-post-container'>
                 <Header color1={this.state.headerStyle}/>
-                {this.props.user ? 
+                {this.props.user ?
+                <div> 
                 <AddPost
                     getCategory={this.getCategory}
                     getItemName={this.getItemName}
@@ -127,7 +129,10 @@ class AddPostToContainer extends Component {
                     text={this.state.text}
                     message={this.state.message}
                     
-                /> : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
+                /> 
+                <Footer/>
+                </div>
+                : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
                 {/* <AddPost/> */}
             </div>
         );

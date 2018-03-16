@@ -11,6 +11,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import ReactStars from 'react-stars';
 import ReactQuill from 'react-quill';
+import Footer from '../shared/Footer';
 import 'react-quill/dist/quill.snow.css';
 import './profile.css'
 
@@ -89,7 +90,7 @@ const PublicProfile = (props) => {
         )
     }) : 'Loading'
     return (
-        <div>
+        <div className='full-page-container'>
             <Header />
             <div className='profile-container'>
                 <div>
@@ -206,7 +207,7 @@ const PublicProfile = (props) => {
             </div>
                 
         </div>
-            
+            <Footer/>
     </div>
     );
 };

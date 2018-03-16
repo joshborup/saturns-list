@@ -6,6 +6,7 @@ import Header from '../shared/Header';
 import { Link } from 'react-router-dom';
 
 
+
 const ListView = (props) => {
 
     const {markAsSold} = props;
@@ -19,6 +20,7 @@ const ListView = (props) => {
             description={e.description}
             time={e.time_posted}
             price={e.price}
+            itemId={e.id}
             condition={e.condition}
             markAsSold={markAsSold}
             username={e.username}
@@ -75,6 +77,7 @@ const ListView = (props) => {
             </div>
             
         </div>
+        
     </div>
     );
 };

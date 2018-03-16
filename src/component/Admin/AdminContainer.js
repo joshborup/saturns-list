@@ -46,9 +46,9 @@ class AdminContainer extends Component {
     
     }
 
-    approvePost(itemId){
-        console.log(itemId);
-        axios.put(`/api/approve_post`, {itemId: itemId}).then(posts => {
+    approvePost(itemId, email, name, username){
+        
+        axios.put(`/api/approve_post`, {itemId: itemId, email: email, name: name, username: username}).then(posts => {
             this.setState({
                 posts: posts.data,
             })
@@ -56,7 +56,7 @@ class AdminContainer extends Component {
     }
 
     disapproveAndDelete(itemId){
-        console.log(itemId);
+        
         if(window.confirm('are you sure you want to delete this post, this is irreversable')){
         axios.delete(`/api/disapprove_delete?itemId=${itemId}`).then(posts => {
             this.setState({

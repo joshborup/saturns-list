@@ -3,6 +3,7 @@ import Header from '../shared/Header';
 import saturn from '../../media/saturn.svg';
 import ImageGallery from 'react-image-gallery';
 import { Link } from 'react-router-dom';
+import Footer from '../shared/Footer';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import './posting.css'
 
@@ -29,7 +30,7 @@ const Posts = (props) => {
 
 
 
-        <div>
+        <div className='full-posting-container'>
             <Header 
             />
             <div className='posts'>
@@ -77,6 +78,7 @@ const Posts = (props) => {
                 </div>
                 {props.user ? <a href={`mailto:${props.seller.email}`}><button className='contact-button'>Contact Seller</button> </a>: 'Please Login or Create an Account to Contact the seller'}
             </div>
+            <Footer/>
         </div>
     );
 };

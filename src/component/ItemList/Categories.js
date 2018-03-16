@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DownArrow from 'material-ui/svg-icons/navigation/arrow-drop-down-circle.js'
 import './listView.css'
 
 const Categories = (props) => {
@@ -41,11 +42,11 @@ const Categories = (props) => {
         <div style={catStyles} className='catergories-list'>
             <div>
                 <div onClick={() => props.toggleAnimation()} style={catTitle}>
-                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'} > &#9661; </span>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'} > <DownArrow color='white'/> </span>
                     <span>
                         Categories
                     </span>
-                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'}  > &#9661; </span>
+                    <span className={props.isAnimating ? 'down-arrow' : 'up-arrow'}  > <DownArrow color='white'/> </span>
                 </div>
                 <div style={catItems} className={props.isAnimating ? 'cat-container hide' : 'cat-container show'} >
                     <ul>

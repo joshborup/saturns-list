@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchUserData, fetchCategories, fetchProfileInfo } from '../../redux/reducer';
 import './listView.css';
 import Categories from './Categories';
+import Footer from '../shared/Footer';
 
 
 class ItemListContainer extends Component {
@@ -247,6 +248,7 @@ class ItemListContainer extends Component {
                     priceArrange={this.state.priceArrange}
                     hideItems={this.state.hideItems}
                     />
+                    <Footer/>
                 </div>
             
         );

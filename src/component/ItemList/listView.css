@@ -12,7 +12,7 @@
 }
 
 .listView > div > * + * {
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
 .filter {
@@ -130,6 +130,12 @@
     font-size: 10px;
     overflow: hidden;
     font-weight:bolder;
+}
+
+div.catergories-list > div > div:nth-child(1) {
+    padding: 5px!important;
+    align-items: center;
+    justify-content: center;
 }
 
 .date-posted {
@@ -376,6 +382,10 @@
         display: initial;
     }
 
+    div.catergories-list > div > div:nth-child(1) {
+        padding: 13.5px!important;
+        
+    }
     /* .item-container {
        
         max-width: 600px;

@@ -1,8 +1,12 @@
 
 .header{
     /* background-image: linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%); */
-    background: url('../../media/phonetest.jpg'), linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%) ;
+    /* background: url('../../media/phonetest.jpg'), linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%) ;
+    background-size: cover; */
+
+    background:linear-gradient( 135deg,rgba(63, 72, 82, 0.4), rgba(115, 110, 254, 0.4)), url('../../media/phonetest.jpg') ;
     background-size: cover;
+    background-position: top;
     background-repeat: none;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.445);
     overflow: hidden;
@@ -53,6 +57,8 @@
 .header .notification .alert-text .alert-text-size {
     font-size: 10px;
 }
+
+
 
 
 
@@ -199,7 +205,91 @@ div.header div.button-menu ul > .small-hide {
 }
 
 
+.footer {
+    position: absolute;
+    width: 100%;
+    background:linear-gradient( 135deg,rgba(63, 72, 82, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/phonetest.jpg') ;
+    background-size: cover;
+    background-repeat: none;
+    background-position: bottom;
+    color: white;
+    padding: 10px;
+    margin-top: 50px;
+    font-family: 'Lobster', sans-serif;
+    
+    
+}
 
+div.footer > div > div > div {
+    background: transparent;
+}
+
+.footer img {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.footer h1 {
+    margin-bottom: 0px;
+}
+
+.contact-us input {
+    width: 100%;
+    border: solid 1px black;
+    border-radius: 3px;
+    height: 30px;
+    background: rgb(248, 248, 248);
+    font-size: 16px;
+}
+
+.contact-us .input-title, .contact-us .input-email{
+    text-align: center;
+    margin: 10px 0px;
+    color: #222222;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-us .input-email {
+    margin-bottom: 20px;
+}
+
+.contact-us .input-email > div {
+    margin-bottom: 5px;
+}
+
+.contact-us .input-email > div span {
+    margin: 5px;
+}
+
+.contact-us .input-email > div span:last-child{
+    color: red;
+}
+
+.contact-us .input-message {
+    border: solid 1px black;
+    margin-bottom: 5px;
+}
+
+.contact-us .ql-editor .ql-blank {
+    background: lightgray;
+}
+
+.contact-us .error-message {
+    color: red;
+    text-shadow: .5px .5px 1px black;
+    text-align: center;
+}
+
+.contact-us .success-message {
+    color: green;
+    text-shadow: .5px .5px 1px black;
+    text-align: center;
+    
+}
 
 @media (min-width: 768px){
 

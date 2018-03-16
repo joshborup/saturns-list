@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from '../shared/Header'
 import EditPost from './EditPost';
+import Footer from '../shared/Footer';
 import { connect } from 'react-redux';
 
 class EditPostContainer extends Component {
@@ -133,7 +134,8 @@ class EditPostContainer extends Component {
         return (
             <div>
                 <Header/>
-                {this.state.requestingUser == this.state.editablePost.seller_id ? 
+                {this.state.requestingUser == this.state.editablePost.seller_id ?
+                <div> 
                 <EditPost
                 postInfo={this.state.editablePost}
                 category={this.state.category}
@@ -155,7 +157,10 @@ class EditPostContainer extends Component {
                 delete={this.delete}
                 catId={this.state.catId}
                 update={this.update}
-                /> : 'You are not authorized to edit this listing'}
+                /> 
+                <Footer/>
+                </div>
+                : 'You are not authorized to edit this listing'}
            </div>   
         );
     }

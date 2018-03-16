@@ -37,7 +37,7 @@ render(){
                 
             </div>
             <div>
-                <span className='item-name'>{this.props.name}</span>
+            <Link to={`/listing/id=${this.props.itemId}`}><span className='item-name'>{this.props.name}</span></Link>
                 <span className='item-description'>{cutOffDesc}</span>
 
                 {this.props.hideSeller ? '' : this.props.username ? <span className='item-posted-by'>sold by: {this.props.username}</span> : ''}
@@ -68,7 +68,7 @@ render(){
                 
                 {this.props.isActive ? <Link to={`/edit_post/${this.props.itemId}`}><button className='reactivateButton'>Edit Listing</button></Link> : this.props.notActive ? <button onClick={()=> this.props.deletePost(this.props.itemId, this.props.seller_id)} className='soldButton'>Delete</button> : null}
 
-                {this.props.admin ? <button onClick={() => this.props.approvePost(this.props.itemId)}  className='reactivateButton'> Approve </button> : null}
+                {this.props.admin ? <button onClick={() => this.props.approvePost(this.props.itemId, this.props.email, this.props.name, this.props.username)}  className='reactivateButton'> Approve </button> : null}
                 {this.props.admin ? <button onClick={() => this.props.disapproveAndDelete(this.props.itemId)}  className='soldButton'> Delete </button> : null}
             </div>
         </div>
