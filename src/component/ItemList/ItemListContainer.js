@@ -23,6 +23,7 @@ class ItemListContainer extends Component {
             dateArrange: '',
             priceArrange: '',
             hideItems: true,
+            searchQuery:''
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
@@ -31,6 +32,9 @@ class ItemListContainer extends Component {
        this.prevPage = this.prevPage.bind(this);
        this.reversePosts = this.reversePosts.bind(this);
        this.reversePrice = this.reversePrice.bind(this);
+       this.searchBar = this.searchBar.bind(this);
+       this.onEnterSubmitSearch = this.onEnterSubmitSearch.bind(this);
+       this.submitSearch = this.submitSearch.bind(this);
     }
 
     componentDidMount(){
@@ -144,7 +148,8 @@ class ItemListContainer extends Component {
                 isAnimating:true,
                 catId: num,
                 pageCount:0,
-                itemCount: itemCount.data[0].count
+                itemCount: itemCount.data[0].count,
+                searchQuery:''
             })
             
         })
@@ -166,7 +171,21 @@ class ItemListContainer extends Component {
                 })
             }   
             
-        }   else {
+        }   else if(this.state.searchQuery){
+            if(this.state.itemCount > this.state.pageCount){
+                const page = this.state.pageCount + 10
+                this.setState({
+                        pageCount: page
+                })
+
+                axios.get(`/api/search_posts?pageCount=${page}&search_query=${this.state.searchQuery}`).then(posts => {
+                    this.setState({
+                        posts: posts.data 
+                    })
+                })
+            }   
+            
+        } else{
             if(this.state.itemCount > this.state.pageCount){
                 const page = this.state.pageCount + 10
                 this.setState({
@@ -198,7 +217,21 @@ class ItemListContainer extends Component {
                 
             }   
             
-        }   else { 
+        } else if(this.state.searchQuery){
+            if(this.state.pageCount > 0){
+                const page = this.state.pageCount - 10
+                this.setState({
+                        pageCount: page
+                })
+
+                axios.get(`/api/search_posts?pageCount=${page}&search_query=${this.state.searchQuery}`).then(posts => {
+                    this.setState({
+                        posts: posts.data 
+                    })
+                })
+            }   
+            
+        }  else { 
             if(this.state.pageCount > 0) {
                 const page = this.state.pageCount - 10
             this.setState({
@@ -221,14 +254,74 @@ class ItemListContainer extends Component {
                 posts: posts.data,
                 isAnimating:true,
                 catId: '',
-                pageCount:0
+                pageCount:0,
+                searchQuery:''
             })
         })
       }
 
+      searchBar(search){
+          
+          this.setState({
+              searchQuery: search
+          })
+
+      }
+
+      submitSearch(){
+        const query = this.state.searchQuery;
+        function getSearchCount(){
+            return axios.get(`/api/search_count?search_query=${query}`);
+        }
+
+        function getSearch(){
+            return axios.get(`/api/search_posts?search_query=${query}`);
+        }
+
+        axios.all([getSearchCount(), getSearch()]).then(axios.spread((itemCount ,posts)=>{
+            this.setState({
+                posts: posts.data,
+                itemCount: itemCount.data[0].count,
+                pageCount:0 
+            })
+        }))
+
+        //   axios.get(`/api/search_posts?search_query=${this.state.searchQuery}`).then(posts => {
+        //     this.setState({
+        //         posts: posts.data 
+        //     })
+        // })
+      }
+
+      onEnterSubmitSearch(e){
+        const query = this.state.searchQuery;
+        function getSearchCount(){
+            return axios.get(`/api/search_count?search_query=${query}`);
+        }
+
+        function getSearch(){
+            return axios.get(`/api/search_posts?search_query=${query}`);
+        }
+        if(e.key == 'Enter'){
+    
+            axios.all([getSearchCount(), getSearch()]).then(axios.spread((itemCount ,posts)=>{
+                this.setState({
+                    posts: posts.data,
+                    itemCount: itemCount.data[0].count,
+                    pageCount:0
+                })
+            }))
+            // axios.get(`/api/search_posts?search_query=${this.state.searchQuery}`).then(posts => {
+            //     this.setState({
+            //         posts: posts.data 
+            //     })
+            // })
+        }
+    }
+
 
     render() {
-        
+        console.log(this.state.pageCount);
         return (
             
                 <div>
@@ -247,6 +340,10 @@ class ItemListContainer extends Component {
                     dateArrange={this.state.dateArrange}
                     priceArrange={this.state.priceArrange}
                     hideItems={this.state.hideItems}
+                    searchBar={this.searchBar}
+                    searchQuery={this.state.searchQuery}
+                    onEnterSubmitSearch={this.onEnterSubmitSearch}
+                    submitSearch={this.submitSearch}
                     />
                     <Footer/>
                 </div>

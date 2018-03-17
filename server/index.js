@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -21,7 +22,7 @@ require('dotenv').config();
 //app.use( express.static( `${__dirname}/../build` ) );
 
 
-
+app.use(helmet());
 app.use(bodyParser.json());
 
 
@@ -107,6 +108,11 @@ app.get('/api/get_item_count', pC.itemCount);
 
 //get all posts by cat 
 app.get('/api/get_all_cats_by_page', pC.getPostsByCat);
+
+//get posts by search
+app.get('/api/search_posts', pC.searchPosts);
+
+app.get('/api/search_count', pC.getSearchCount);
 
 // get cat item count
 app.get('/api/get_cat_item_count', pC.getCatItemCount);

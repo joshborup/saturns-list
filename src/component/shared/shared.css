@@ -1,8 +1,5 @@
 
 .header{
-    /* background-image: linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%); */
-    /* background: url('../../media/phonetest.jpg'), linear-gradient( 135deg, rgb(48, 48, 51) 10%, #414345 100%) ;
-    background-size: cover; */
 
     background:linear-gradient( 135deg,rgba(63, 72, 82, 0.4), rgba(115, 110, 254, 0.4)), url('../../media/phonetest.jpg') ;
     background-size: cover;
@@ -354,8 +351,7 @@ div.footer > div > div > div {
         display: flex;
         position: initial;
         list-style-type: none;
-        width: 300px;
-        margin-right: 105px;
+        
     }
 
     .header > div > div:last-child ul li {
@@ -384,11 +380,7 @@ div.footer > div > div > div {
         height: 70px;
     }
 
-    .header > div > div:last-child ul {
-        
-        margin-right:120px;
-    }
-
+   
 
     .header > div > div:first-child {
         
@@ -399,8 +391,5 @@ div.footer > div > div > div {
 }
 
 @media (min-width: 1350px) {
-    .header > div > div:last-child ul {
-        
-        margin-right: 45px;
-    }
+    
 }

@@ -152,5 +152,19 @@ module.exports = {
         db.update_listing([seller_id, condition, cat_id, price, itemName, description, image_path, item_id]).then(()=>{
             res.status(200).json('/account')
         }).catch(error => console.log(error));
+    },
+    searchPosts: (req, res) => {
+        const db = req.app.get('db');
+        const { search_query, pageCount} = req.query;
+        db.search_posts([search_query, pageCount]).then(response => {
+            res.status(200).send(response);
+        })
+    },
+    getSearchCount: (req, res) => {
+        const db = req.app.get('db')
+        const { search_query } = req.query;
+        db.get_search_item_count(search_query).then(response => {
+            res.status(200).send(response);
+        })
     }
 }

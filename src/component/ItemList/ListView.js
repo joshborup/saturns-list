@@ -4,6 +4,7 @@ import Categories from './Categories'
 import Recent from './Recently'
 import Header from '../shared/Header';
 import { Link } from 'react-router-dom';
+import Search from 'material-ui/svg-icons/action/search';
 
 
 
@@ -53,8 +54,13 @@ const ListView = (props) => {
                            <span>{props.priceArrange}</span>
                            <span>{props.dateArrange}</span>
                         </div>
-                        <div className='desktop-filter'>
-                            
+                        <div onKeyPress={e => props.onEnterSubmitSearch(e)} className='desktop-filter'>
+                            <div>
+                                
+                                <input onChange={(e) => props.searchBar(e.target.value)} value={props.searchQuery} placeholder='Search...'/>
+                                <Search onClick={() => props.submitSearch()} color='white'/>
+
+                            </div>
                             <button onClick={()=>props.reversePrice()}>Price</button>
                             
                             <button onClick={()=>props.reversePosts()}>Date Added</button>

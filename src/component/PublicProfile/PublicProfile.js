@@ -80,6 +80,7 @@ const PublicProfile = (props) => {
             description={e.description}
             time={e.time_posted}
             price={e.price}
+            itemId={e.id}
             condition={e.condition}
             seller_id={e.seller_id}
             hideSeller={props.hideSeller}
