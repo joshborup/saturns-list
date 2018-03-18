@@ -5724,6 +5724,10 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+react-favicon@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.13.tgz#5fec4f3f2a7cdb39eb253d8bb2d0ceb6194a00bf"
+
 react-image-gallery@^0.8.7:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/react-image-gallery/-/react-image-gallery-0.8.7.tgz#9be02a154a33a562947857db0e6ddb78ad30343c"
