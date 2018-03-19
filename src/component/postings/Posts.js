@@ -65,6 +65,7 @@ const Posts = (props) => {
                             <div className='item-description-info'>
                                 <div>
                                    Condition: <span>{postInfo.condition}</span>
+                                   Location: <span>{props.seller.city},{props.seller.state}</span>
                                 </div>
                                 <div dangerouslySetInnerHTML={{__html: postInfo.description}}>
                                 

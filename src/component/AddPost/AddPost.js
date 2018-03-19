@@ -67,10 +67,10 @@ const AddPost = (props) => {
                 </div>
                 <div className='add-post-input item-description-input'>
                     <span>Item Description:</span>
-                    {/* <textarea onChange={(e)=> props.getItemDescription(e.target.value)} value={props.itemDescription}/> */}
                     <ReactQuill value={props.text}
                   onChange={props.handleChange} />
                 </div>
+                
                 <div className='image-uploads'>
                             {imagesUploads}
                 </div>

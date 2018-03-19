@@ -23,7 +23,7 @@ class AddPostToContainer extends Component {
             upload: 'item',
             text: '',
             message:'',
-            error: ''
+            error: '',
             
         }
         this.getCategory = this.getCategory.bind(this);
@@ -35,6 +35,7 @@ class AddPostToContainer extends Component {
         this.getImage = this.getImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         
+        
     }
 
     componentDidMount(){
@@ -42,6 +43,8 @@ class AddPostToContainer extends Component {
             this.props.fetchUserData(user.data);
         })
     }
+
+    
 
     handleChange(value) {
         this.setState({ text: value })

@@ -28,7 +28,8 @@ const PostApproval = (props) => {
         borderRadius: '2px',
         border: 'none',
         boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.445)',
-        textShadow:  '1px 1px 2px rgba(0, 0, 0, 1)'
+        textShadow:  '1px 1px 2px rgba(0, 0, 0, 1)',
+        cursor:'pointer'
     }
     
 

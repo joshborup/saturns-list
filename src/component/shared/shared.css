@@ -44,7 +44,7 @@
     flex-direction: column;
     min-width: 55px;
     padding: 1px;
-    
+    cursor: pointer;
 }
 
 .header .notification-alert span > div {
@@ -55,8 +55,9 @@
     font-size: 10px;
 }
 
-
-
+.header .notification .alert-text  button {
+    cursor: pointer;
+}
 
 
 .header > div h1{

@@ -75,6 +75,11 @@
 .posts .item-description-info div:first-child{
     display: flex;
     flex-direction: column;
+
+}
+
+.posts .item-description-info div:first-child > span:nth-child(1) {
+    margin: 0px 0px 10px;
 }
 
 .posts .item-description-info div:nth-child(2) {
