@@ -22,15 +22,19 @@
     align-items: center;
 }
 
+.header div a {
+    text-decoration: none;
+}
+
 .grow {
     transition: 0.4s;
-    height: 270px;
+    height: 330px;
     
 }
 
 .AdminGrow {
     transition: 0.4s;
-    height: 330px;
+    height: 380px;
     
 }
 

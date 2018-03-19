@@ -112,6 +112,9 @@ app.get('/api/get_all_cats_by_page', pC.getPostsByCat);
 //get posts by search
 app.get('/api/search_posts', pC.searchPosts);
 
+//get users by username
+app.get('/api/search_users_by_username', uC.searchUserByName);
+
 app.get('/api/search_count', pC.getSearchCount);
 
 // get cat item count
@@ -135,6 +138,10 @@ app.get('/api/user-reviews', uC.getUserRatingInfo);
 
 //leave review 
 app.post('/api/leave_review', uC.leaveReview)
+
+//get user search info
+
+app.get('/api/get_user_search', uC.getUserSearch);
 
 //get reviews for account page 
 

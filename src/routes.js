@@ -11,6 +11,7 @@ import EditPostContainer from './component/EditPost/EditPostContainer';
 import ResetPasswordContainer from './component/ResetPassword/ResetPasswordContainer';
 import AdminContainer from './component/Admin/AdminContainer';
 import Footer from './component/shared/Footer';
+import UserSearchContainer from './component/UserSearch/UserSearchContainer'
 
 
 export default (
@@ -26,7 +27,7 @@ export default (
         <Route path='/edit_post/:id' component={EditPostContainer} />
         <Route path='/reset_password' component={ResetPasswordContainer}/>
         <Route path='/saturn_admin' component={AdminContainer}/>
-        <Route path='/test' component={Footer}/>
+        <Route path='/search_users' component={UserSearchContainer}/>
     </Switch>
 
 )

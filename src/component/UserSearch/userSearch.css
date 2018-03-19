@@ -1,0 +1,102 @@
+.user-search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.user-search-container > div >div:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user-search-container > div >div:first-child {
+margin: 10px 0px;    
+}
+
+.user-search-container > div >div:first-child input{
+    width: 100%;
+    max-width: 300px;
+}
+
+.user-cards {
+    max-width: 200px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: #444444;
+    margin: 5px;
+}
+
+.user-cards > div:first-child {
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-cards > div > img {
+    max-height: 300px;
+    
+}
+
+.user-cards .user-search-username {
+    font-size: 24px;
+}
+
+.user-cards .joined span, .user-cards .active-posts-search span {
+    color: rgb(0, 162, 226);
+}
+
+.user-cards .joined, .user-cards .active-posts-search {
+    margin-top: 10px;
+}
+
+.user-cards .active-posts-search {
+    margin-bottom: 10px;
+}
+
+.wrapped-user-card-container a{
+    text-decoration: none;
+}
+
+.search-bar-users {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar-users > *+* {
+    margin: 5px;
+}
+
+.search-bar-users input {
+    height: 30px;
+    font-size: 16px;
+}
+
+.search-bar-users button {
+    background: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+        color: white;
+        height: 30px;
+        width: 120px;
+}
+
+
+
+@media (min-width:768px) {
+    .search-bar-users {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+

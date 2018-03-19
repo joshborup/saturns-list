@@ -66,6 +66,7 @@ const PublicProfile = (props) => {
            rating={e.rating}
            review={e.review}
            username={e.username}
+           reviewer_id={e.reviewer_id}
            />
         )
     }) : props.user ? 'There are no reviews yet for this user, be the first to leave a review' : ''
@@ -89,7 +90,8 @@ const PublicProfile = (props) => {
             />
         </Link>
         )
-    }) : 'Loading'
+    }) : 'Loading';
+    console.log(props.seller)
     return (
         <div className='full-page-container'>
             <Header />
@@ -100,7 +102,7 @@ const PublicProfile = (props) => {
                 <div className='user-info-container'>
                     <div>
                         <div className='image-container'>
-                            {props.sellerInfo.profile_image !== 'No Info' ? <img src={props.sellerInfo.profile_image} /> : <img src={saturn}/>} 
+                            {props.sellerInfo.profile_image != 'No Info' ? <img src={props.sellerInfo.profile_image} /> : <img src={saturn}/>} 
                         </div>
                         <div>
                             <span>Member since:</span>

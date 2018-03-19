@@ -125,10 +125,14 @@ class Header extends Component {
             <div className={this.state.isAnimating && this.props.user.Admin ? 'header AdminGrow' : this.state.isAnimating ?'header grow' : 'header shrink'} >
                 <div>
                     <div>
-                        <img src={saturn}/>   
+                        <Link to='/'>
+                        <img src={saturn}/>  
+                        </Link> 
+                        <Link to='/'>
                         <h1>
                             Saturn's List
                         </h1>
+                        </Link> 
                     </div>
                     
                     <div className='button-menu'>
@@ -148,6 +152,7 @@ class Header extends Component {
                             { this.props.user.Admin ? <Link to='/saturn_admin'><li style={boldheader4}>Admin</li></Link> : ''}
                             <Link to='/add_post'><li style={boldheader1}>Post</li></Link>
                             { this.props.user ? <Link to='/account'><li style={boldheader2}>Account</li></Link> : ''}
+                            { this.props.user ? <Link to='/search_users'><li style={boldheader3}>Users</li></Link> : ''}
                             { this.props.user ? <li onClick={()=>this.logout()}>Logout</li> : <Link to='/account_login'><li>Login/Register</li></Link>}
                         </ul>
                         

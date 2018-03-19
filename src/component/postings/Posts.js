@@ -4,6 +4,7 @@ import saturn from '../../media/saturn.svg';
 import ImageGallery from 'react-image-gallery';
 import { Link } from 'react-router-dom';
 import Footer from '../shared/Footer';
+import Avatar from 'material-ui/Avatar';
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import './posting.css'
 
@@ -39,7 +40,8 @@ const Posts = (props) => {
                         <div>
                             <span className='postedby'>
                                Posted By: </span>
-                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'>{props.seller.username}</span></Link>
+                            
+                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'><Avatar src={props.seller.profile_image}/>{props.seller.username}</span></Link>
                             
                         </div>
                         <div>

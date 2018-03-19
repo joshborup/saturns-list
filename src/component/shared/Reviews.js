@@ -1,8 +1,17 @@
-import React from 'react';
-import ReactStars from 'react-stars'
+import React, {Component}from 'react';
+import ReactStars from 'react-stars';
+import {Link} from 'react-router-dom';
 import './shared.css';
 
-const Reviews = (props) => {
+export default class Reviews extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+
+        }
+    }
+
+    render(){
     return (
         <div className='user-reviews'>
                 <div>
@@ -12,12 +21,12 @@ const Reviews = (props) => {
                                     size={24}
                                     edit={false}
                                     color2={'#ffd700'}
-                                    value={props.rating} 
+                                    value={this.props.rating} 
                                     half={false}
                                     /></span>
-                    <span>Review by: {props.username}</span>
+                    <span>Review by: {this.props.username}</span>
                 </div>
-                <div dangerouslySetInnerHTML={{__html: props.review}}>
+                <div dangerouslySetInnerHTML={{__html: this.props.review}}>
                                 
                 </div>
                 <div>
@@ -25,6 +34,6 @@ const Reviews = (props) => {
 
             </div>
     );
-};
+    }
+}
 
-export default Reviews;

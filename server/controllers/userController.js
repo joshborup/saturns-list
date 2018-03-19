@@ -50,6 +50,19 @@ module.exports = {
         db.getMyUserReviews(req.session.user.id).then(response => {
             res.status(200).send(response)
         })
+    },
+    getUserSearch: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all_users_search().then(response => {
+            res.status(200).send(response);
+        })
+    },
+    searchUserByName: (req, res) => {
+        const db = req.app.get('db')
+        const {username} = req.query;
+        db.search_user_by_name(username).then(response => {
+            res.status(200).send(response)
+        })
     }
 
 }

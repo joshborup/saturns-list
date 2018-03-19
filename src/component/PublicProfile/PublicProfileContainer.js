@@ -24,7 +24,7 @@ class PublicProfileContainer extends Component {
     }
 
     componentDidMount(){
-        const id = window.location.href.split('').pop();
+        const id = window.location.href.split('/').pop();
         function getUserReviews(){
             return axios.get(`/api/user-reviews?seller_id=${id}`)
         }
@@ -49,7 +49,7 @@ class PublicProfileContainer extends Component {
                 
             })
             this.props.fetchUserData(user.data);
-            axios.get(`/api/get_seller_by_id?seller_id=${profile.data[0].id}`).then(seller => {
+            axios.get(`/api/get_seller_by_id?seller_id=${id}`).then(seller => {
                 
                 this.setState({
                     seller: seller.data[0]
@@ -58,6 +58,7 @@ class PublicProfileContainer extends Component {
         }))
     }
 
+    
     rating(userRating){
         this.setState({
             userRating:userRating
@@ -84,7 +85,7 @@ class PublicProfileContainer extends Component {
     }
 
     render() {
-
+        console.log(this.state.sellerInfo)
         return (
             <PublicProfile 
             sellerInfo={this.state.sellerInfo} 
