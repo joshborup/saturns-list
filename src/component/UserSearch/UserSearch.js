@@ -10,7 +10,7 @@ export default class UserSearch extends Component {
         }
     }
     render() {
-        console.log(this.props.usersSearch)
+        
         const userSearch = this.props.usersSearch ? this.props.usersSearch.map((e,i) => {
             return(<Link to={`/profile/${e.id}`}>
                 <UserCard 

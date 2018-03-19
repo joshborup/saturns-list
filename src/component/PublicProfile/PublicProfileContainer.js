@@ -85,7 +85,7 @@ class PublicProfileContainer extends Component {
     }
 
     render() {
-        console.log(this.state.sellerInfo)
+        
         return (
             <PublicProfile 
             sellerInfo={this.state.sellerInfo} 

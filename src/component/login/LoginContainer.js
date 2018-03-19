@@ -215,7 +215,6 @@ class LoginContainer extends Component {
     }
 
     render() {
-        console.log(!this.props.email.includes("@"))
         const { username, password, firstName, lastName, email, phone, city, state, zip, country } = this.props
         return (
             <div className='login-star-animation'>

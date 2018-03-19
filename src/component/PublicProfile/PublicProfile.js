@@ -91,7 +91,7 @@ const PublicProfile = (props) => {
         </Link>
         )
     }) : 'Loading';
-    console.log(props.seller)
+    
     return (
         <div className='full-page-container'>
             <Header />

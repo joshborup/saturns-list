@@ -26,7 +26,7 @@ export default class PostsByCat extends Component {
         const inputData = this.state.data.map((e,i) => {
             return (e.count)
         })
-        console.log(label);
+        
 
         const data = {
             labels: label,

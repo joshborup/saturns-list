@@ -82,13 +82,14 @@ margin: 10px 0px;
 }
 
 .search-bar-users button {
-    background: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
+        background: linear-gradient( 135deg, #52E5E7 10%, #130CB7 100%);
         color: white;
         height: 30px;
         width: 120px;
+        border-radius: 2px;
+        border: none;
+        font-size: 16px;
 }
-
-
 
 @media (min-width:768px) {
     .search-bar-users {
