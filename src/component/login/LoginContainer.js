@@ -60,9 +60,87 @@ class LoginContainer extends Component {
         }).catch(error => console.log(error));
     }
 
+    // registrationSubmit(){
+        
+    //     if(this.props.username.length >= 4 && this.props.password.length >= 7 && this.props.firstName && this.props.lastName && this.props.email && this.props.state && this.props.city && this.props.zip && this.props.country){
+    //         axios.post('/register', {
+    //             username: this.props.username,
+    //             password: this.props.password,
+    //             first_name: this.props.firstName,
+    //             last_name: this.props.lastName,
+    //             email: this.props.email,
+    //             state: this.props.state,
+    //             city: this.props.city,
+    //             phone: this.props.phone,
+    //             zip: this.props.zip,
+    //             country: this.props.country
+    //         }).then((response)=>{
+    //             fetchUserData(response)
+    //             window.location.href = response.request.responseURL;
+    //         })
+    //     }else if(this.props.username.length < 4){
+    //         this.setState({
+    //             message: 'username must be atleast 4 characters'
+    //         })
+    //     }else if(this.props.password.length < 7){
+    //         this.setState({
+    //             message: 'password must be atlease 7 characters'
+    //         })
+    //     }else{
+
+    //         this.setState({
+    //             message: 'please fill out all required fields'
+    //         })
+    //     }
+
+    // }
+
     registrationSubmit(){
         
-        if(this.props.username.length >= 4 && this.props.password.length >= 7 && this.props.firstName && this.props.lastName && this.props.email && this.props.state && this.props.city && this.props.zip && this.props.country){
+        if(this.props.username.length < 4 && this.props.username == ''){
+            this.setState({
+                message: 'username must be atleast 4 characters'
+            })
+        } else if(this.props.password.length < 7 && this.props.password == ''){
+            this.setState({
+                message: 'password must be atlease 7 characters'
+            })
+        } if(this.props.firstName == '') {
+
+            this.setState({
+                message: 'You must provide your first name'
+            })
+
+        } else if (this.props.lastName == ''){
+            this.setState({
+                message: 'You must provide your last name'
+            })
+        } else if(this.props.email == '' ){
+            this.setState({
+                message: 'You must provide a valid email'
+            })
+        } else if (!this.props.email.includes("@")){
+            this.setState({
+                message: 'You must provide a valid email'
+            })
+        }else if (this.props.state == ''){
+            this.setState({
+                message: 'Please select a state'
+            })
+        } else if(this.props.city == ''){
+            this.setState({
+                message: 'Please provide a city'
+            })
+        } else if (this.props.zip == ''){
+            this.setState({
+                message: 'Please provide a zip code'
+            })
+        } else if (this.props.country == ''){
+            this.setState({
+                message: 'Please select a country'
+            })
+        } else if(this.props.username.length >= 4 && this.props.password.length >= 7){
+
             axios.post('/register', {
                 username: this.props.username,
                 password: this.props.password,
@@ -78,22 +156,10 @@ class LoginContainer extends Component {
                 fetchUserData(response)
                 window.location.href = response.request.responseURL;
             })
-        }else if(this.props.username.length < 4){
-            this.setState({
-                message: 'username must be atleast 4 characters'
-            })
-        }else if(this.props.password.length < 7){
-            this.setState({
-                message: 'password must be atlease 7 characters'
-            })
-        }else{
 
-            this.setState({
-                message: 'please fill out all required fields'
-            })
         }
-
     }
+
 
     forgot(){
         if(!this.state.forgotPassword){
@@ -148,6 +214,7 @@ class LoginContainer extends Component {
     }
 
     render() {
+        console.log(!this.props.email.includes("@"))
         const { username, password, firstName, lastName, email, phone, city, state, zip, country } = this.props
         return (
             <div>

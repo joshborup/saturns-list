@@ -173,7 +173,6 @@ class ItemListContainer extends Component {
             
         }   else if(this.state.searchQuery){
             if(this.state.itemCount > this.state.pageCount){
-                console.log('chosen')
                 const page = this.state.pageCount + 10
                 this.setState({
                         pageCount: page
@@ -323,8 +322,6 @@ class ItemListContainer extends Component {
 
 
     render() {
-        console.log('itemCount', this.state.itemCount)
-        console.log('pageCount', this.state.pageCount)
         return (
             
                 <div>

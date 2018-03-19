@@ -48,27 +48,27 @@ const Register = (props) => {
                     <div id='registration-container'>
                         <div className='first-last-row'>
                             <div>
-                                Username:
+                                * Username:
                                 <input onChange={(e) => props.enterUserName(e.target.value)} type='text' className='register-input' value={props.username}/>
                             </div>
                             <div>
-                                Password:
+                                * Password:
                                 <input onChange={(e) => props.enterPassword(e.target.value)} type='password' className='register-input' value={props.password}/>
                             </div>
                         </div>
                         <div className='first-last-row'>
                             <div>
-                                First Name:
+                                * First Name:
                                 <input onChange={(e) => props.enterFirst(e.target.value)} type='text' className='register-input' value={props.firstName}/>
                             </div>
                             <div>
-                                Last Name:
+                                * Last Name:
                                 <input onChange={(e) => props.enterLast(e.target.value)} type='text' className='register-input' value={props.lastName}/>
                             </div>
                         </div>
                         <div className='email-phone-row'>
                             <div>
-                                Email:
+                                * Email:
                                 <input onChange={(e) => props.enterEmail(e.target.value)} type='email' className='register-input' value={props.email}/>
                             </div>
                             <div>
@@ -78,29 +78,29 @@ const Register = (props) => {
                         </div>
                         <div className='city-state-row'>
                             <div>
-                                City:
+                                * City:
                                 <input onChange={(e) => props.enterCity(e.target.value)} type='text' className='register-input' value={props.city} autocomplete='on'/>
                             </div>
                             <div>
-                                State:
+                                * State:
                                 <StatesDropDown enterState={props.enterState} />
                             </div>
                         </div>
                         <div className='zip-country-row'>
                             <div>
-                                zip:
+                                * zip:
                                 <input onChange={(e) => props.enterZip(e.target.value)} type='text' className='register-input' value={props.zip}/>
                             </div>
                             <div>
-                                country:
+                                * country:
                                 <CountryDropDown enterCountry={props.enterCountry}/>
                             </div>
                         </div>
                         <div className='button-container'>
+                            <span>* = Required</span>
                             <div className='error-message'>
                                 {props.message}
                             </div>
-                            
                             <button onClick={() => props.submit()} className='submit-button'>Submit</button>
                             <span onClick={() => props.register()}  className='go-back-button'>Go Back</span>
                         </div>

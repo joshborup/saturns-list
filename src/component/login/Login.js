@@ -7,7 +7,8 @@ const Login = (props) => {
     const flex = {
         display:'flex',
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
+        flexDirection:'column'
     }
 
     const loginContainer = {
@@ -42,8 +43,11 @@ const Login = (props) => {
     return (
         <div className='login' style={loginContainer}>
             <div style={flex}>
+                <h1>
+                    Saturn's List
+                </h1>
                 <div onKeyPress={(e)=> props.loginKeyPress(e)} className='login-content-container'style={login}>
-                    <div><h1>Login</h1></div>
+                    <div><h2>Login</h2></div>
                     <div>
                         Username:
                         <input onChange={(e) => props.enterUserName(e.target.value)} type='text' className='login-name' value={props.username}ref={(input) => { this.nameInput = input; }} 
@@ -63,7 +67,7 @@ const Login = (props) => {
                     </div>
                     <div className='link-container'>
                         <Link className='browse' to='/'><button className='forgot'><span>Browse</span></button></Link>
-                        <button onClick={()=> props.forgot()} className='forgot'><span>Forgot Password</span></button>
+                        <button onClick={()=> props.forgot()} className='forgot'><span>Forgot Password?</span></button>
                     </div>
                 </div>
             </div>
