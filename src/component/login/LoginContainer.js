@@ -5,6 +5,7 @@ import Register from './Register';
 import ForgotPassword from './ForgotPassword';
 import { fetchUserData, enterUserName, enterPassword, enterFirstName, enterLastName, enterEmail, enterPhone, enterCity, enterState, enterZip, enterCountry} from '../../redux/reducer';
 import axios from 'axios';
+import './stars.css';
 
 class LoginContainer extends Component {
     constructor(props){
@@ -217,7 +218,8 @@ class LoginContainer extends Component {
         console.log(!this.props.email.includes("@"))
         const { username, password, firstName, lastName, email, phone, city, state, zip, country } = this.props
         return (
-            <div>
+            <div className='login-star-animation'>
+                 
                 {this.state.register 
                 ? 
                 <Register
@@ -269,6 +271,9 @@ class LoginContainer extends Component {
                 message={this.state.message}
                 forgot={this.forgot}
                 />}
+                <div id='stars'></div>
+                <div id='stars2'></div>
+                <div id='stars3'></div>
             </div>     
         );
     }

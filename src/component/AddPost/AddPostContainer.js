@@ -119,7 +119,9 @@ class AddPostToContainer extends Component {
             });
 
         }else {
-        axios.post('/api/new_item', {cat_id: this.state.category, price: this.state.itemPrice, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: imageArray}).then(response => {
+
+            const price = parseInt(this.state.itemPrice)
+        axios.post('/api/new_item', {cat_id: this.state.category, price: price, name:this.state.itemName, condition:this.state.itemCondition, description: this.state.text, imageArray: imageArray}).then(response => {
             
             this.setState({
                 message: 'Thank you for your submission, Your post is pending approval and will be reviewed shortly you will be redirected to the home page in a few seconds',

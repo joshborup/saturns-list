@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './login.css';
 
+
 const Login = (props) => {
 
     const flex = {
@@ -17,6 +18,7 @@ const Login = (props) => {
         display:'flex',
         justifyContent: 'center',
         alignItems:'center',
+        overflow:'hidden'
         }
 
     const login = {
@@ -42,6 +44,7 @@ const Login = (props) => {
 
     return (
         <div className='login' style={loginContainer}>
+           
             <div style={flex}>
                 <h1>
                     Saturn's List

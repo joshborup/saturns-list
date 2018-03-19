@@ -11,6 +11,12 @@
     
 }
 
+.login-star-animation {
+    overflow: hidden;
+    background:linear-gradient( 135deg, rgba(94, 252, 232, 0.5), rgba(115, 110, 254, 0.5)), url('../../media/login.jpg') ;
+    background-position: bottom;
+}
+
 .login button{
 
     width: 150px;
