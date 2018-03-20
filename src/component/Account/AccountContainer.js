@@ -74,7 +74,7 @@ class AccountContainer extends Component {
 
     deletePost(item_id, seller_id){
         axios.get(`/api/inactive_by_item_id?item_id=${item_id}`).then(inactive=> {
-            console.log(item_id)
+
             axios.post('/api/deleted_posts', {
                 cat_id: inactive.data[0].catergory_id,
                 posted: inactive.data[0].time_posted,

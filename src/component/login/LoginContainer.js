@@ -97,16 +97,26 @@ class LoginContainer extends Component {
     // }
 
     registrationSubmit(){
-        
-        if(this.props.username.length < 4 && this.props.username == ''){
+        console.log(this.props.username.length)
+        console.log(this.props.password.length)
+
+        if(this.props.username.length < 4){
             this.setState({
                 message: 'username must be atleast 4 characters'
             })
-        } else if(this.props.password.length < 7 && this.props.password == ''){
+        }else if(this.props.username == ''){
+            this.setState({
+                message: 'you must choose a username'
+            })
+        } else if(this.props.password.length < 7){
             this.setState({
                 message: 'password must be atlease 7 characters'
             })
-        } if(this.props.firstName == '') {
+        }else if(this.props.password == ''){
+            this.setState({
+                message: 'you must set a password'
+            })
+        }else if(this.props.firstName == '') {
 
             this.setState({
                 message: 'You must provide your first name'
