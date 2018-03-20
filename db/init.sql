@@ -93,6 +93,19 @@ CREATE TABLE posts(
     ,notified TEXT
 );
 
+CREATE TABLE deleted_posts(
+    id SERIAL PRIMARY KEY
+    ,seller_id INTEGER NOT NULL REFERENCES users(id)
+    ,catergory_id INTEGER NOT NULL
+    ,time_posted TEXT NOT NULL
+    ,name TEXT NOT NULL
+    ,description TEXT NOT NULL
+    ,image_path TEXT
+    ,price INTEGER NOT NULL
+    ,condition TEXT NOT NULL
+    ,item_id INTEGER NOT NULL
+);
+
 INSERT INTO country (country_id, country_name) VALUES (840,'United States');
 INSERT INTO country (country_id, country_name) VALUES (4,'Afghanistan');
 INSERT INTO country (country_id, country_name) VALUES (248,'Åland Islands');

@@ -128,6 +128,10 @@ app.get('/api/profile/:id', uC.getPublicProfile);
 
 app.get('/api/get_user_posts_public/:id', pC.getUserPostsById);
 
+app.get('/api/inactive_by_item_id', pC.getInactiveById)
+
+app.post('/api/deleted_posts', pC.moveToDeleted)
+
 app.delete('/api/delete_post_by_id', pC.deletePost);
 
 //update listing

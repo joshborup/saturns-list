@@ -166,5 +166,17 @@ module.exports = {
         db.get_search_item_count(search_query).then(response => {
             res.status(200).send(response);
         })
+    },
+    getInactiveById: (req, res) => {
+        const db = req.app.get('db')
+        const { item_id } = req.query;
+        db.get_inactive_by_item_id(item_id).then(response => {
+            res.status(200).send(response);
+        })
+    },
+    moveToDeleted: (req, res) => {
+        const db = req.app.get('db')
+        const { seller_id, cat_id, posted, name, description, images, price, condition, item_id } = req.body;
+        db.move_to_deleted([seller_id, cat_id, posted, name, description, images, price, condition, item_id])
     }
 }

@@ -18,7 +18,8 @@ class AccountContainer extends Component {
             isActive: true,
             notActive: true,
             slideIndex: 0,
-            userReviews: ''
+            userReviews: '',
+            singleInactive: ''
         }
         this.markAsSold = this.markAsSold.bind(this);
         this.reactivate = this.reactivate.bind(this);
@@ -72,14 +73,34 @@ class AccountContainer extends Component {
     }
 
     deletePost(item_id, seller_id){
+        axios.get(`/api/inactive_by_item_id?item_id=${item_id}`).then(inactive=> {
+            console.log(item_id)
+            axios.post('/api/deleted_posts', {
+                cat_id: inactive.data[0].catergory_id,
+                posted: inactive.data[0].time_posted,
+                name: inactive.data[0].name,
+                description: inactive.data[0].description,
+                price: inactive.data[0].price, 
+                condition: inactive.data[0].condition, 
+                images: inactive.data[0].image_path, 
+                seller_id: inactive.data[0].seller_id,
+                item_id: inactive.data[0].id
+             })
+            axios.delete(`/api/delete_post_by_id/?item_id=${item_id}&seller_id=${seller_id}`).then((inactive)=>{ 
+                    this.setState({
+                        inactive: inactive.data
+                    })
         
-        axios.delete(`/api/delete_post_by_id/?item_id=${item_id}&seller_id=${seller_id}`).then((inactive)=>{
-                    
-                this.setState({
-                    inactive: inactive.data
-                })
-           
+            })
         })
+        
+        // axios.delete(`/api/delete_post_by_id/?item_id=${item_id}&seller_id=${seller_id}`).then((inactive)=>{
+                    
+        //         this.setState({
+        //             inactive: inactive.data
+        //         })
+           
+        // })
     }
 
     reactivate(itemId){
