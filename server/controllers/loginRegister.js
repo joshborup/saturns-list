@@ -114,14 +114,30 @@ module.exports = {
         res.status(200).send('logged out');
     },
     emailVerification: (req, res) => {
+
         const db = req.app.get('db');
         const { verification_key } = req.body;
+
+        db.find_verification(verification_key).then(users => {
+            const user = {
+                id: users[0].id,
+                username: users[0].username,
+                email: users[0].email,
+                location: users[0].state,
+                memberSince: users[0].member_since,
+                Admin: users[0].admin,
+                verified: users[0].verified
+            }
+            req.session.user = user;
+            console.log('before true promise: ',req.session.user)
+            db.verify_email(verification_key).then((response) => {
+                req.session.user.verified = response[0].verified;
+                console.log('after promise: ', req.session.user)
+                res.status(200).send('hello!')
+            }) 
+        })
         console.log('hit')
-        db.verify_email(verification_key).then((response) => {
-            req.session.user.verified = response[0].verified;
-            console.log(req.session.user)
-            res.status(200).send('hello!')
-        }) 
+        
     },
     resendEmail: (req, res) => {
         const db = req.app.get('db');

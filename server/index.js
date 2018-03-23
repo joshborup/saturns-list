@@ -44,7 +44,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 // }))
 
 
-for production 
+//for production 
 app.use(session({
     store: new pgSession({
         conString:process.env.CONNECTION_STRING
