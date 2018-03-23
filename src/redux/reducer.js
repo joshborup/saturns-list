@@ -13,10 +13,10 @@ var initialState = {
     firstName:'',
     lastName:'',
     email:'',
-    phone:'',
+    phone:null,
     city:'',
-    state:'',
-    zip:'',
+    state:null,
+    zip:null,
     country:'',
     categories: ''
 }

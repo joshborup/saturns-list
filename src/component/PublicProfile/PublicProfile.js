@@ -92,6 +92,7 @@ const PublicProfile = (props) => {
         )
     }) : 'Loading';
     
+    
     return (
         <div className='full-page-container'>
             <Header />
@@ -102,7 +103,8 @@ const PublicProfile = (props) => {
                 <div className='user-info-container'>
                     <div>
                         <div className='image-container'>
-                            {props.sellerInfo.profile_image != 'No Info' ? <img src={props.sellerInfo.profile_image} /> : <img src={saturn}/>} 
+                            
+                            {props.sellerInfo.profile_image != 'No Info' ? <img src={props.sellerInfo.profile_image} alt={saturn}/> : <img src={saturn} alt={saturn}/>} 
                         </div>
                         <div>
                             <span>Member since:</span>

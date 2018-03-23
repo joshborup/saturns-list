@@ -13,21 +13,17 @@ const bI = require('./controllers/basicInfo');
 const pC = require('./controllers/postController');
 const fP = require('./controllers/forgotPassword');
 const aD = require('./controllers/admin');
-const nC = require('./controllers/notifications')
+const nC = require('./controllers/notifications');
 
 
 require('dotenv').config();
 
 //for production
-//app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
 
 
 app.use(helmet());
 app.use(bodyParser.json());
-
-
-
-
 
 
 massive(process.env.CONNECTION_STRING).then(db => {
@@ -37,34 +33,38 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 //For Development
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: false,
-    cookie: {
-        // 2 weeks
-        maxAge: 60 * 60 * 24 * 14 * 1000
-    } 
-}))
-
-
-// for production 
 // app.use(session({
-//     store: new pgSession({
-//         conString:process.env.CONNECTION_STRING
-//         }),
 //     secret: process.env.SESSION_SECRET,
-//     resave: false,
 //     saveUninitialized: true,
-//     cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
+//     resave: false,
+//     cookie: {
+//         // 2 weeks
+//         maxAge: 60 * 60 * 24 * 14 * 1000
+//     } 
+// }))
+
+
+for production 
+app.use(session({
+    store: new pgSession({
+        conString:process.env.CONNECTION_STRING
+        }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
     
-// }));
+}));
 
 
 
 app.post('/register', lR.register);
 app.post('/login', lR.login);
 app.post('/logout', lR.logout);
+
+app.put('/email_verification', lR.emailVerification);
+
+app.get('/api/resend_email', lR.resendEmail);
 
 app.get('/api/user-data', uC.getUserData);
 
@@ -186,10 +186,10 @@ app.post('/api/contact_saturn', nC.contactSaturn);
 
 //for production
 
-// const path = require('path')
-// app.get('*', (req, res)=>{
-//   res.sendFile(path.join(__dirname, '../build/index.html'));
-// })
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

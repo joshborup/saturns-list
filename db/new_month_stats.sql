@@ -1,0 +1,1 @@
+INSERT INTO stats (logins, month) VALUES($1, $2);

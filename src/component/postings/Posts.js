@@ -41,8 +41,8 @@ const Posts = (props) => {
                             <span className='postedby'>
                                Posted By: </span>
                             
-                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'><Avatar src={props.seller.profile_image}/>{props.seller.username}</span></Link>
-                            
+                            <Link to={`/profile/${postInfo.seller_id}`}><span className='username'><Avatar src={props.seller.profile_image != 'No Info' ? props.seller.profile_image : saturn}/>{props.seller.username}</span></Link>
+                             
                         </div>
                         <div>
                             <span className='item-name'>

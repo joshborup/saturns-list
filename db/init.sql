@@ -106,6 +106,11 @@ CREATE TABLE deleted_posts(
     ,item_id INTEGER NOT NULL
 );
 
+CREATE TABLE stats (
+id SERIAL NOT NULL
+, logins INTEGER
+);
+
 INSERT INTO country (country_id, country_name) VALUES (840,'United States');
 INSERT INTO country (country_id, country_name) VALUES (4,'Afghanistan');
 INSERT INTO country (country_id, country_name) VALUES (248,'Åland Islands');

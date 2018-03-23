@@ -34,6 +34,7 @@ class AddPostToContainer extends Component {
         this.post = this.post.bind(this);
         this.getImage = this.getImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.resendLink = this.resendLink.bind(this);
         
         
     }
@@ -84,6 +85,15 @@ class AddPostToContainer extends Component {
     getImage(image){
         this.setState({
             images: [...this.state.images].concat(image)
+        })
+    }
+
+    resendLink(){
+        axios.get('/api/resend_email').then(response => {
+            console.log()
+            this.setState({
+                message: response.data
+            })
         })
     }
 
@@ -139,7 +149,8 @@ class AddPostToContainer extends Component {
         return (
             <div className='add-post-container'>
                 <Header color1={this.state.headerStyle}/>
-                {this.props.user ?
+                {this.props.user == false ? 
+                <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1> : this.props.user.verified ?
                 <div> 
                 <AddPost
                     getCategory={this.getCategory}
@@ -164,7 +175,12 @@ class AddPostToContainer extends Component {
                 /> 
                 <Footer/>
                 </div>
-                : <h1>You Must <Link to='/account_login'>Login</Link> or <Link to='/account_login'>Register</Link> for an account</h1>}
+                : <div className='resend-container'>
+                    <h1>You Must verify your email address before posting</h1>
+                    <button onClick={()=>this.resendLink()} className='resend-email-link'>Resend veification link</button>
+                    <span className='resend-message'>{this.state.message}</span>
+                    </div>
+                }
                 {/* <AddPost/> */}
             </div>
         );

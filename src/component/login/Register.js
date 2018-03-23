@@ -82,14 +82,14 @@ const Register = (props) => {
                                 <input onChange={(e) => props.enterCity(e.target.value)} type='text' className='register-input' value={props.city} autocomplete='on'/>
                             </div>
                             <div>
-                                * State:
+                                State:
                                 <StatesDropDown enterState={props.enterState} />
                             </div>
                         </div>
                         <div className='zip-country-row'>
                             <div>
-                                * zip:
-                                <input onChange={(e) => props.enterZip(e.target.value)} type='text' className='register-input' value={props.zip}/>
+                                zip:
+                                <input onChange={(e) => props.enterZip(e.target.value)} type='number' className='register-input' value={props.zip}/>
                             </div>
                             <div>
                                 * country:

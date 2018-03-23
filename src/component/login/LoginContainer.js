@@ -134,17 +134,9 @@ class LoginContainer extends Component {
             this.setState({
                 message: 'You must provide a valid email'
             })
-        }else if (this.props.state == ''){
-            this.setState({
-                message: 'Please select a state'
-            })
         } else if(this.props.city == ''){
             this.setState({
                 message: 'Please provide a city'
-            })
-        } else if (this.props.zip == ''){
-            this.setState({
-                message: 'Please provide a zip code'
             })
         } else if (this.props.country == ''){
             this.setState({
