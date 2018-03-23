@@ -23,7 +23,8 @@ class ItemListContainer extends Component {
             dateArrange: '',
             priceArrange: '',
             hideItems: true,
-            searchQuery:''
+            searchQuery:'',
+            closed: false
         }
        this.toggleAnimation = this.toggleAnimation.bind(this);
        this.selectCategory = this.selectCategory.bind(this);
@@ -35,6 +36,7 @@ class ItemListContainer extends Component {
        this.searchBar = this.searchBar.bind(this);
        this.onEnterSubmitSearch = this.onEnterSubmitSearch.bind(this);
        this.submitSearch = this.submitSearch.bind(this);
+       this.closeMessage = this.closeMessage.bind(this);
     }
 
     componentDidMount(){
@@ -269,6 +271,15 @@ class ItemListContainer extends Component {
 
       }
 
+      closeMessage(){
+          axios.get('/api/read_message').then((user)=>{
+                console.log(user.data.adminMessage);
+                
+                this.props.fetchUserData(user.data);
+           
+          })
+      }
+
       submitSearch(){
         const query = this.state.searchQuery;
         function getSearchCount(){
@@ -322,6 +333,7 @@ class ItemListContainer extends Component {
 
 
     render() {
+        console.log(this.props.user);
         return (
             
                 <div>
@@ -344,6 +356,8 @@ class ItemListContainer extends Component {
                     searchQuery={this.state.searchQuery}
                     onEnterSubmitSearch={this.onEnterSubmitSearch}
                     submitSearch={this.submitSearch}
+                    user={this.props.user}
+                    closeMessage={this.closeMessage}
                     />
                     <Footer/>
                 </div>

@@ -73,5 +73,38 @@ module.exports = {
         db.get_item_count_by_cat().then(response => {
             res.status(200).send(response);
         }).catch(error => console.log(error))
+    },
+    adminMessage: (req, res) => {
+        const db = req.app.get('db');
+        db.admin_message(req.session.user.id).then((users)=>{
+            const user = {
+                id: users[0].id,
+                username: users[0].username,
+                email: users[0].email,
+                location: users[0].state,
+                memberSince: users[0].member_since,
+                Admin: users[0].admin,
+                verified: users[0].verified,
+                adminMessage: users[0].admin_message
+            }
+            req.session.user = user;
+            console.log(req.session.user)
+            res.json(req.session.user);
+        })
+    },
+    getAdminMessage: (req, res) => {
+        const db = req.app.get('db');
+        db.get_admin_message().then(response=> {
+            res.status(200).send(response)
+        })
+    },
+    createNewAdminMessage: (req, res) => {
+        const db = req.app.get('db');
+        const {message} = req.body;
+        db.create_new_admin_message(message).then(()=> {
+            res.status(200).send('Message Sent')
+        })
     }
+
+    
 }

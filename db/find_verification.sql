@@ -1,2 +1,2 @@
 SELECT * from users
-WHERE verified_lin = $1;
+WHERE verified_link = $1;

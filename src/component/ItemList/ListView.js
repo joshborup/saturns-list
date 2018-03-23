@@ -5,6 +5,7 @@ import Recent from './Recently'
 import Header from '../shared/Header';
 import { Link } from 'react-router-dom';
 import Search from 'material-ui/svg-icons/action/search';
+import AdminMessage from '../shared/AdminMessage';
 
 
 
@@ -31,15 +32,18 @@ const ListView = (props) => {
         </Link>
         )
     }) : 'Loading'
-    const noMoreItems = props.posts.length ? '' : 'You have reached the end'
+    const noMoreItems = props.posts.length ? '' : 'You have reached the end';
 
-    
+    console.log()
     return (
         <div>
             <Header color={props.headerStyle}/>
             <div className='listView'>
             
             <div>
+            {props.user.adminMessage == false ? <AdminMessage
+            closeMessage={props.closeMessage}
+            /> : ''}
                 <Categories 
                     categories={props.categories}
                     toggleAnimation={props.toggleAnimation}

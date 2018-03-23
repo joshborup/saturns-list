@@ -14,10 +14,14 @@ class AdminContainer extends Component {
             posts: '',
             headerStyle: 'orange',
             activePosts:'',
-            inactivePosts:''
+            inactivePosts:'',
+            text: '',
+            success:''
         }
         this.approvePost = this.approvePost.bind(this);
         this.disapproveAndDelete = this.disapproveAndDelete.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.submitMessage = this.submitMessage.bind(this);
     }
 
    
@@ -67,10 +71,25 @@ class AdminContainer extends Component {
             console.log('you clicked no');
         }
     }
+
+    handleChange(value) {
+        this.setState({ text: value })
+    }
+
+    submitMessage(){
+        axios.put('/api/create_new_message', {message: this.state.text}).then(response => {
+            console.log('admin-hit')
+            console.log(response);
+            this.setState({
+                success: response.data,
+                text:''
+            })
+        })
+    }
    
 
     render() {
-        
+        console.log(this.state.text)
         return (
             <div>
                 <Header
@@ -84,6 +103,10 @@ class AdminContainer extends Component {
                 disapproveAndDelete={this.disapproveAndDelete}
                 activePosts={this.state.activePosts}
                 inactivePosts={this.state.inactivePosts}
+                handleChange={this.handleChange}
+                text={this.state.text}
+                submitMessage={this.submitMessage}
+                success={this.state.success}
                 /> 
                 :
                  'You are not authorized to be here!'}

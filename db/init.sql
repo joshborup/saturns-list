@@ -28,6 +28,7 @@ CREATE TABLE users(
     , admin BOOLEAN
     , verified BOOLEAN
     , verified_link TEXT
+    , admin_message BOOLEAN
 );
 
 CREATE TABLE reviews(
@@ -106,6 +107,11 @@ CREATE TABLE deleted_posts(
     ,price INTEGER NOT NULL
     ,condition TEXT NOT NULL
     ,item_id INTEGER NOT NULL
+);
+
+CREATE TABLE admin_message (
+id SERIAL NOT NULL
+, message TEXT
 );
 
 CREATE TABLE stats (

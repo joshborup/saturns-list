@@ -292,6 +292,39 @@ div.footer > div > div > div {
     
 }
 
+.admin-message {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: 0px auto 10px;
+    max-width: 1340px!important;
+    background: red;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-message .close-message {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 25px;
+    widows: 25px;
+    padding: 5px;
+    background: gray;
+    border-radius: 2px;
+    text-shadow: .5px .5px 1px black;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.445);
+    cursor: pointer;
+}
+
+.admin-message .close-message:active {
+    box-shadow: none;
+}
+
+
 @media (min-width: 768px){
 
     

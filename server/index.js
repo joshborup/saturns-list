@@ -19,7 +19,7 @@ const nC = require('./controllers/notifications');
 require('dotenv').config();
 
 //for production
-app.use( express.static( `${__dirname}/../build` ) );
+// app.use( express.static( `${__dirname}/../build` ) );
 
 
 app.use(helmet());
@@ -33,28 +33,28 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 //For Development
 
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     saveUninitialized: true,
-//     resave: false,
-//     cookie: {
-//         // 2 weeks
-//         maxAge: 60 * 60 * 24 * 14 * 1000
-//     } 
-// }))
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: false,
+    cookie: {
+        // 2 weeks
+        maxAge: 60 * 60 * 24 * 14 * 1000
+    } 
+}))
 
 
 //for production 
-app.use(session({
-    store: new pgSession({
-        conString:process.env.CONNECTION_STRING
-        }),
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
+// app.use(session({
+//     store: new pgSession({
+//         conString:process.env.CONNECTION_STRING
+//         }),
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 }, // 14 days 
     
-}));
+// }));
 
 
 
@@ -167,6 +167,12 @@ app.get('/api/getUserSignUpData', aD.getUserSignUpInfo);
 
 app.get('/api/active_inactive_count', aD.activeInactiveCount);
 
+app.get('/api/read_message', aD.adminMessage);
+
+app.get('/api/admin_message', aD.getAdminMessage);
+
+app.put('/api/create_new_message', aD.createNewAdminMessage)
+
 
 //notifications
 
@@ -186,10 +192,10 @@ app.post('/api/contact_saturn', nC.contactSaturn);
 
 //for production
 
-const path = require('path')
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+// const path = require('path')
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
 
 const port = process.env.PORT || 4000;
 app.listen(port, ()=> console.log(`listenning on port: ${port}`))

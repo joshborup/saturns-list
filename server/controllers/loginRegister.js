@@ -12,7 +12,7 @@ module.exports = {
         //salt for hashing password
         const saltRounds = 12;
         bcrypt.hash(password, saltRounds).then(hashedPassword => {
-            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since, random_reset_string, false, verification_link]).then(response =>{
+            db.create_user([first_name, last_name, username, hashedPassword, email, phone, zip, city, state, country, member_since, random_reset_string, false, verification_link, false]).then(response =>{
                 //send verificartion email for posting
 
                 var transporter = nodemailer.createTransport({
@@ -56,7 +56,8 @@ module.exports = {
                     location: response[0].state,
                     memberSince: response[0].member_since,
                     Admin: response[0].admin,
-                    verified: response[0].verified
+                    verified: response[0].verified,
+                    adminMessage: response[0].admin_message
                 }
                 req.session.user = user;
                 res.redirect('/')
@@ -90,7 +91,8 @@ module.exports = {
                             location: users[0].state,
                             memberSince: users[0].member_since,
                             Admin: users[0].admin,
-                            verified: users[0].verified
+                            verified: users[0].verified,
+                            adminMessage: users[0].admin_message
                         }
                         req.session.user = user;
                         
@@ -126,7 +128,8 @@ module.exports = {
                 location: users[0].state,
                 memberSince: users[0].member_since,
                 Admin: users[0].admin,
-                verified: users[0].verified
+                verified: users[0].verified,
+                adminMessage: users[0].admin_message
             }
             req.session.user = user;
             console.log('before true promise: ',req.session.user)
@@ -136,7 +139,7 @@ module.exports = {
                 res.status(200).send('hello!')
             }) 
         })
-        console.log('hit')
+        
         
     },
     resendEmail: (req, res) => {

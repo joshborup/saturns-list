@@ -3,6 +3,8 @@ import Item from '../ItemList/Item';
 import {Link } from 'react-router-dom';
 import UserSignUpData from './UserSignUpData';
 import PostsByCat from './PostsByCat';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const Admin = (props) => {
 
@@ -51,6 +53,16 @@ const Admin = (props) => {
                             
                             <UserSignUpData/>
                         </div> 
+                        <div className='admin-messages'>
+                            <div>
+                                <h3>Message Users</h3>
+                                <ReactQuill value={props.text} 
+                                onChange={props.handleChange}
+                                />
+                            </div>
+                            <button onClick={() => props.submitMessage()}>Submit</button>
+                            {props.success}
+                        </div>
                     </div>
                     <div className='pending-approval-posts'>
                         <h2>Pending posts</h2>
