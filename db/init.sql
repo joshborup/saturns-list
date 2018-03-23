@@ -26,6 +26,8 @@ CREATE TABLE users(
     , member_since TEXT NOT NULL
     , pass_reset_string TEXT
     , admin BOOLEAN
+    , verified BOOLEAN
+    , verified_link TEXT
 );
 
 CREATE TABLE reviews(
