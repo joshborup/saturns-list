@@ -78,8 +78,7 @@ class AdminContainer extends Component {
 
     submitMessage(){
         axios.put('/api/create_new_message', {message: this.state.text}).then(response => {
-            console.log('admin-hit')
-            console.log(response);
+            
             this.setState({
                 success: response.data,
                 text:''

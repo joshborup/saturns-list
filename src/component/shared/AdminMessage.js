@@ -12,7 +12,7 @@ export default class AdminMessage extends Component {
 
     componentDidMount(){
         axios.get('/api/admin_message').then(response => {
-            console.log(response.data)
+            console.log(response)
             this.setState({
                 message: response.data[0].message
             })

@@ -102,7 +102,9 @@ module.exports = {
         const db = req.app.get('db');
         const {message} = req.body;
         db.create_new_admin_message(message).then(()=> {
-            res.status(200).send('Message Sent')
+            db.reset_admin_message().then(()=> {
+                res.status(200).send('Message Sent')
+            })  
         })
     }
 
