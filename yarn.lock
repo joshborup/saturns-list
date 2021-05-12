@@ -1337,9 +1337,9 @@ chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
 
-chart.js@^2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.7.2.tgz#3c9fde4dc5b95608211bdefeda7e5d33dffa5714"
+chart.js@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
   dependencies:
     chartjs-color "^2.1.0"
     moment "^2.10.2"
@@ -5728,13 +5728,6 @@ react-favicon@^0.0.13:
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.13.tgz#5fec4f3f2a7cdb39eb253d8bb2d0ceb6194a00bf"
 
-react-ga@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.4.1.tgz#dfbd5f028ed39a07067f7a8bf57dc0d240000767"
-  optionalDependencies:
-    prop-types "^15.6.0"
-    react "^15.6.2 || ^16.0"
-
 react-image-gallery@^0.8.7:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/react-image-gallery/-/react-image-gallery-0.8.7.tgz#9be02a154a33a562947857db0e6ddb78ad30343c"
@@ -5899,7 +5892,7 @@ react-transition-group@^1.2.1:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-"react@^15.6.2 || ^16.0", react@^16.2.0:
+react@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
   dependencies:
